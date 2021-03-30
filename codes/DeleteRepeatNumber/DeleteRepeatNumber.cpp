@@ -1,9 +1,15 @@
 /* No.26 Delete repeat numbers in an ascing array. */
-#include "../public_helper/global_define.h"
 #include <iostream>
 #include <vector>
 
 using namespace std;
+
+template <typename T>
+struct LinkOb
+{
+	T data;
+	LinkOb<T>* next;
+};
 
 /*
  * @brief Delete repeat numbers in an ascing array
@@ -32,9 +38,6 @@ int DelRepeatNum(LinkOb<int>* resultArr)
 
 int main()
 {
-	
-	memory lost
-
 	LinkOb<int> *resultArr = new LinkOb<int>();
 	LinkOb<int>* p = resultArr;
 

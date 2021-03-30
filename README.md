@@ -1,5 +1,5 @@
 # 算法练习
-​	**针对[LeetCode](https://leetcode-cn.com)算法练习，欢迎大佬指点**
+​	**针对[LeetCode](https://leetcode-cn.com)算法练习，欢迎大佬指点。**
 
 
 

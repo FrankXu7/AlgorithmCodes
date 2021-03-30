@@ -1,9 +1,15 @@
 /* No.21 Merge two ascending linked list and return the new ascending linked list.  */
-#include "../public_helper/global_define.h"
 #include <iostream>
 #include <vector>
 
 using namespace std;
+
+template <typename T>
+struct LinkOb
+{
+	T data;
+	LinkOb<T>* next;
+};
 
 /*
  * @brief Merge two ascending linked list to a new ascending linkes list

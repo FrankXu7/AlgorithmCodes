@@ -1,7 +1,30 @@
-/* No.13 A Roman numeral turned into an integer.  */
-
-Not ready yet.
-
+/**
+ * 【题目描述】
+ * 将给定的罗马数字，范围限定在[1, 3999]，超出定义域或罗马数字组合非法，则返回-1；
+ * 
+ * 罗马数字只包含下列字符：
+ * {
+ *		I=1,	V=5,
+ *		X=10,	L=50,
+ *		C=100,	D=500,
+ *		M=1000,
+ * }
+ * 
+ * 通常情况下，罗马数字中小的数字在大的数字右边，但存在以下6中情况例外：
+ * {
+ *		IV=4,	IX=9,
+ *		XL=40,	XC=90,
+ *		CD=400,	CM=900,
+ * }
+ * 
+ * 【输入】
+ * roman number=VII
+ * 【输出】
+ * integer=7
+ *
+ * @author FrankX
+ * @date 2021-03-30
+ */
 #include <iostream>
 #include <string>
 #include <map>
@@ -11,12 +34,6 @@ Not ready yet.
 
 using namespace std;
 
-/*
- * Special case:
- * IV=4		IX=9
- * XL=40	XC=90
- * CD=400	CM=900
- * */
 map<char, int> numMap = {
 	{'I', 1}, {'V', 5},
 	{'X', 10}, {'L', 50},
@@ -28,55 +45,9 @@ map<char, int> numMap = {
 	{'m', 1000},
 };
 
-/*
- * @brief Convert the given Roman numerals steing intoto Integer
- * @param str The given Roman numerals string
- * */
-void RomanToInt(vector<char>& str)
+int RomanToInteger(vector<char>& str)
 {
-	int resultNum = 0;
-
-	char curKey = '\0';
-	int nextValue = 0;
-
-	vector<char>::iterator itr = str.begin();
-
-	cout << "Valid Input: ";
-	for (; itr != str.end(); ++itr)
-	{
-		if (!curKey)
-		{
-			curKey = *itr;
-			++itr;
-		}
-		if (numMap.count(curKey) == 0)
-		{
-			curKey = '\0';
-			continue;
-		}
-		
-		if (itr != str.end() && numMap.count(*itr) == 0) continue;
-		if (itr == str.end()) nextValue = 0;
-		else nextValue = numMap[*itr];
-
-		if (numMap[curKey] >= nextValue)
-		{
-			resultNum += numMap[curKey];
-			cout << curKey;
-		}
-		else if (nextValue / numMap[curKey] <= 10)
-		{
-			resultNum += (nextValue - numMap[curKey]);
-			numMap.erase(curKey);
-			cout << curKey << *itr;
-		}
-		else continue;
-
-		--itr;
-		curKey = '\0';
-	}
-
-	cout << endl << "Integer: " << resultNum << endl;
+	return 0;
 }
 
 int main()
@@ -89,7 +60,9 @@ int main()
 	{
 		inputStr.push_back(tempChar);
 	}
-	RomanToInt(inputStr);
+	RomanToInteger(inputStr);
 
 	return 0;
 }
+
+还未完成
