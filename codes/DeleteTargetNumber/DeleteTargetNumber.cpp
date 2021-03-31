@@ -1,32 +1,37 @@
-/* No.27 Remove the element which is equal to the given number in an unsorted array. */
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-template <typename T>
-struct LinkOb
+int removeElement(vector<int>& nums, int target)
 {
-	T data;
-	LinkOb<T>* next;
-};
+	unsigned int leftIdx = 0;
+	unsigned int rightIdx = nums.size() - 1;
 
-/*
- * @brief Remove the element which is equal to the given number in an unsorted array
- * @param arr Target array
- * @param num The given number
- * */
-int removeElement(LinkOb<int>* arr, int num)
-{
-	int countElement = 0;
-	while(arr)
+	while (leftIdx <= rightIdx)
 	{
-		arr = arr->next;
+		if (nums[leftIdx] == target)
+		{
+			nums[leftIdx] = nums[rightIdx];
+			--rightIdx;
+		}
+		else ++leftIdx;
 	}
 
-	return countElement;
+	return leftIdx;
 }
 
 int main()
 {
+	vector<int> nums = {1,2,3,4,5,5,6,6,6,7,8};
+	
+	int leftNum = removeElement(nums, 6);
+
+	for (unsigned int i = 0; i < leftNum; ++i)
+	{
+		cout << nums[i] << ' ';
+	}
+	cout << endl;
+
 	return 0;
 }
