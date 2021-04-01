@@ -14,6 +14,7 @@
 7. [简单 - 21th] [合并两个有序列表(MergeTwoOrderedLists)](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
 8. [简单 - 26th] [删除有序数组中的重复项(DeleteRepeatNumber)](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
 9. [简单 - 27th] [移除元素(DeleteTargetNumber)](https://leetcode-cn.com/problems/remove-element/)
+10. [简单 - 28th] [字符串搜索(StrStr)](https://leetcode-cn.com/problems/implement-strstr/)
 
 
 
