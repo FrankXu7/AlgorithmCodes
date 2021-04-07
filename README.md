@@ -15,7 +15,8 @@
 8. [简单 - 26th] [删除有序数组中的重复项(DeleteRepeatNumber)](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/)
 9. [简单 - 27th] [移除元素(DeleteTargetNumber)](https://leetcode-cn.com/problems/remove-element/)
 10. [简单 - 28th] [字符串搜索(StrStr)](https://leetcode-cn.com/problems/implement-strstr/)
-11. [简单 - 35th] [搜索插入位置SearchInsertIndex](https://leetcode-cn.com/problems/search-insert-position/)
+11. [简单 - 35th] [搜索插入位置(SearchInsertIndex)](https://leetcode-cn.com/problems/search-insert-position/)
+12. [简单 - 38th] [外观数列查询(ExteriorArray)](https://leetcode-cn.com/problems/count-and-say/)
 
 
 
