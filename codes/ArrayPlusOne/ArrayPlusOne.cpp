@@ -44,7 +44,7 @@ vector<unsigned int> ArrayPlusOne(vector<unsigned int>& digits)
 
 int main()
 {
-	vector<unsigned int> digits = {};
+	vector<unsigned int> digits = {1, 4, 9, 9};
 
 	ArrayPlusOne(digits);
 
