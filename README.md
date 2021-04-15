@@ -22,6 +22,7 @@
 15. [简单 - 66th] [数组加一(ArrayPlusOne)](https://leetcode-cn.com/problems/plus-one/)
 16. [简单 - 67th] [二进制求和(BinaryPlus)](https://leetcode-cn.com/problems/add-binary/)
 17. [简单 - 69th] [求平方根(SquareRoot)](https://leetcode-cn.com/problems/sqrtx/)
+18. [简单 - 70th] [爬楼梯(ClimbTheStairs)](https://leetcode-cn.com/problems/climbing-stairs/)
 
 
 
