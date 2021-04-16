@@ -23,6 +23,7 @@
 16. [简单 - 67th] [二进制求和(BinaryPlus)](https://leetcode-cn.com/problems/add-binary/)
 17. [简单 - 69th] [求平方根(SquareRoot)](https://leetcode-cn.com/problems/sqrtx/)
 18. [简单 - 70th] [爬楼梯(ClimbTheStairs)](https://leetcode-cn.com/problems/climbing-stairs/)
+19. [简单 - 83th] [删除有序列表重复节点(DeleteRepeatNode)](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/)
 
 
 
