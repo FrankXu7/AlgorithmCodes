@@ -1,4 +1,5 @@
 /**************************************************************************************************
+ *
  * 【题目描述】
  * 合并两个升序链表，返回合并后的链表的头节点
  *
@@ -29,7 +30,7 @@ struct LinkOb
 	LinkOb<T>* next;
 };
 
-LinkOb<int>* MergeTwoOrderedLists(LinkOb<int>* l1, LinkOb<int>* l2)
+LinkOb<int>* MergeTwoSortedLists(LinkOb<int>* l1, LinkOb<int>* l2)
 {
 	LinkOb<int> *r = l1;
 	LinkOb<int> *last_r = nullptr;
@@ -103,7 +104,7 @@ int main()
 	}
 
 	// 完成合并后，resultArr包含两个链表所有节点
-	resultArr = MergeTwoOrderedLists(resultArr, mergeArr);
+	resultArr = MergeTwoSortedLists(resultArr, mergeArr);
 	// 合并完成后，mergeArr的结构会被破坏，直接置空
 	mergeArr = nullptr;
 	pm = nullptr;
