@@ -10,13 +10,12 @@
  * link={1,2,3,4,5,6,7,8,9,10}
  *
  * 【解题思路】
- * 合并链表并不会有废弃节点产生，故可将链表2合并到链表1，并返回链表1的头节点作为最终结果：
- *（1）遍历到链表1节点数据小于等于链表2节点数据，将链表2节点插入到链表1节点之后；
- *（2）遍历到链表1节点数据大于链表2节点数据，将链表2节点插入到链表1节点之前，需要特别注意的是，
- * 此时如果链表1节点为头节点，插入完成后，链表1头节点应该指向刚刚插入的链表2节点。
+ * 并行比较两个链表数据，将两个链表表头节点数据更小的保存起来，同时更小数据所在链表的头节点需要后移一位，
+ * 这里必须对表头节点后移一位，指针也是变量，对单独保存的节点后移一位并不改变头节点指针变量的值；
+ * 将保存的节点追加到结果链表，需要注意的是，结果链表初始为空指针，需要额外判断结果链表是否为空。
  *
  * @author FrankX
- * @date 2021-03-30
+ * @date 2021-04-19
  **************************************************************************************************/
 #include <iostream>
 #include <vector>
@@ -32,93 +31,98 @@ struct LinkOb
 
 LinkOb<int>* MergeTwoSortedLists(LinkOb<int>* l1, LinkOb<int>* l2)
 {
-	LinkOb<int> *r = l1;
-	LinkOb<int> *last_r = nullptr;
+	if (!l1 || !l2)
+		return l1 ? l1 : l2;
 
-	while (r && l2)
+	LinkOb<int>* resultArr = nullptr;
+	LinkOb<int>* ptr = nullptr;
+	LinkOb<int>* minPtr = nullptr;
+
+	while (l1 && l2)
 	{
-		if (r->data <= l2->data)
+		if (l1->data < l2->data)
 		{
-			last_r = r;
-			r = l2;
-			l2 = l2->next;
-			r->next = last_r->next;
-			last_r->next = r;
+			minPtr = l1;
+			l1 = l1->next;
 		}
 		else
 		{
-			if (!last_r)
-			{
-				l1 = l2;
-				l2 = l2->next;
-				l1->next = r;
-				last_r = l1;
-			}
-			else
-			{
-				last_r->next = l2;
-				last_r = l2;
-				l2 = l2->next;
-				last_r->next = r;
-			}
+			minPtr = l2;
+			l2 = l2->next;
 		}
+
+		if (resultArr)
+		{
+			ptr->next = minPtr;
+			ptr = ptr->next;
+		}
+		else
+		{
+			ptr = resultArr = minPtr;
+		}
+
+		minPtr = minPtr->next;
 	}
 
-	if (l2) r ? r->next = l2 : last_r->next = l2;
+	if (l1) ptr->next = l1;
+	else if (l2) ptr->next = l2;
 
-	return l2;
+	return resultArr;
+}
+
+/**
+ * @brief 依据vector创建链表
+ * @param dataArr 原始数据，vector容器
+ * @param head 赋值好的链表头指针，指针引用
+ */
+template<typename T>
+void SetLinkListData(vector<T>&& dataArr, LinkOb<T>*& head)
+{
+	LinkOb<T>* p = head;
+
+	for (typename vector<T>::iterator itr = dataArr.begin(); itr != dataArr.end(); ++itr)
+	{
+		if (!head)
+		{
+			p = new LinkOb<T>();
+			head = p;
+		}
+
+		p->data = *itr;
+		if (itr + 1 != dataArr.end())
+		{
+			p->next = new LinkOb<T>();
+			p = p->next;
+		}
+		else 
+			p->next = nullptr;
+	}
 }
 
 int main()
 {
-	LinkOb<int> *resultArr = new LinkOb<int>();
-	LinkOb<int> *mergeArr = new LinkOb<int>();
-
-	LinkOb<int> *pr = resultArr;
-	LinkOb<int> *pm = mergeArr;
+	LinkOb<int> *beMergeList = nullptr;
+	LinkOb<int> *mergeList = nullptr;
 	
-	vector<int> arr1 = { 2 };
-	vector<int> arr2 = { 1, 3 };
+	SetLinkListData({1,3,5,7,9}, beMergeList);
+	SetLinkListData({2,4,6,8,10}, mergeList);
 
-	for (int i = 0; i < arr1.size() || i < arr2.size(); ++i)
-	{
-		if (i < arr1.size())
-		{
-			pr->data = arr1[i];
-			if (i + 1 < arr1.size())
-			{
-				pr->next = new LinkOb<int>();
-				pr = pr->next;
-			}
-		}
-
-		if (i < arr2.size())
-		{
-			pm->data = arr2[i];
-			if (i + 1 < arr2.size())
-			{
-				pm->next = new LinkOb<int>();
-				pm = pm->next;
-			}
-		}
-	}
-
-	// 完成合并后，resultArr包含两个链表所有节点
-	resultArr = MergeTwoSortedLists(resultArr, mergeArr);
-	// 合并完成后，mergeArr的结构会被破坏，直接置空
-	mergeArr = nullptr;
-	pm = nullptr;
+	// 完成合并后，beMergeList包含两个链表所有节点
+	beMergeList = MergeTwoSortedLists(beMergeList, mergeList);
+	// 合并完成后，mergeList的结构会被破坏，直接置空
+	mergeList = nullptr;
 
 	cout << "Merge result: " << endl;
-	while (resultArr)
+	LinkOb<int> *p = beMergeList;
+	while (beMergeList)
 	{
-		cout << resultArr->data << ' ';
-		pr = resultArr;
-		resultArr = resultArr->next;
-		delete pr;
+		cout << beMergeList->data << ' ';
+		p = beMergeList;
+		beMergeList = beMergeList->next;
+		delete p;
 	}
-	pr = nullptr;
-	resultArr = nullptr;
+	p = nullptr;
+	beMergeList = nullptr;
 	cout << endl;
 
 	return 0;
