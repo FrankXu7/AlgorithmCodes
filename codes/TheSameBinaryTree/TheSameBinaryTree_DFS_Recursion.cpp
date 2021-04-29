@@ -9,6 +9,7 @@ struct TreeNode
 	T data;
 	TreeNode* left;
 	TreeNode* right;
+
 };
 
 bool TheSameBinaryTree_DFS_Recursion(TreeNode<int>* tree1, TreeNode<int>* tree2)
@@ -33,7 +34,13 @@ int main()
 {
 	// 应该依据数据构造平衡二叉树，这里直接手写两棵树
 	TreeNode<int>* tree1 = new TreeNode<int>;
-	tree1->data = 1;
+	tree1->data = 2;
+	tree1->left = new TreeNode<int>;
+	tree1->left->data = 1;
+	tree1->left->left = nullptr;
+	tree1->right = new TreeNode<int>;
+	TreeNode<int>* tree2 = new TreeNode<int>;
+	tree2
 
 	return 0;
 }
