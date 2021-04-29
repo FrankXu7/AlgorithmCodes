@@ -29,7 +29,7 @@ using namespace std;
 template<typename T>
 void MergeTwoSortedArray(vector<T>& beMergeArr, vector<T>& mergeArr)
 {
-	// 重置后beMergeArr实际大小会改变，保存重置前的大小，便以拿到该数组数据最大下标 
+	// 重置后beMergeArr实际大小会改变，保存重置前的大小，便以拿到该数组数据最大下标
 	unsigned int beMergeSize = beMergeArr.size();
 	
 	beMergeArr.resize(beMergeSize + mergeArr.size());
