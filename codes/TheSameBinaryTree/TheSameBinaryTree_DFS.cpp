@@ -43,7 +43,7 @@ bool TheSameBinaryTree_DFS_Recursion(TreeNode<int>* tree1, TreeNode<int>* tree2)
 	{
 		return true;
 	}
-	else if ((tree1 == nullptr || tree2 == nullptr) ||
+	else if ((tree1 == nullptr || tree2 == nullptr) || 
 			 tree1->data != tree2->data)
 	{
 		return false;
@@ -57,7 +57,7 @@ bool TheSameBinaryTree_DFS_Recursion(TreeNode<int>* tree1, TreeNode<int>* tree2)
 
 int main()
 {
-	// 应该依据数据构造平衡二叉树，这里直接手写两棵树
+	// 应该依据数据构造平衡二叉树，这里直接手写两棵树 
 	TreeNode<int>* tree1 = new TreeNode<int>(4);
 	tree1->left = new TreeNode<int>(2);
 	tree1->left->left = new TreeNode<int>(1);

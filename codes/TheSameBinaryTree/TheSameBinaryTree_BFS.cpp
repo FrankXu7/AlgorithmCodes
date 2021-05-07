@@ -8,9 +8,13 @@
  * 判断两颗二叉树结构与节点对应值是否相同
  *
  * 【解题思路】
+ * 使用队列FIFO特性，对两颗树进行层次遍历，比较元素的值：
+ * （1）两棵树是空二叉树，自然是相同的；
+ * （2）若其中一颗为空二叉树，另一颗非空，则二叉树不相同；
+ * （3）不是以上两种情况，就按左右顺序依次比较节点的值，发现有不同，则两棵树不同；
  *
  * @author FrankX
- * @date 2021-04-30
+ * @date 2021-05-07
  **************************************************************************************************/
 #include <iostream>
 #include <vector>
@@ -34,12 +38,43 @@ struct TreeNode
 
 bool TheSameBinaryTree_DFS_Stack(TreeNode<int>* tree1, TreeNode<int>* tree2)
 {
-	return false;
+	queue<TreeNode<int>*> que1({ tree1 });
+	queue<TreeNode<int>*> que2({ tree2 });
+
+	while (tree1 && tree2)
+	{
+		que1.pop();
+		que2.pop();
+
+		if (tree1 == nullptr && tree2 == nullptr);
+		else if ((tree1 == nullptr || tree2 == nullptr) ||
+			tree1->data != tree2->data)
+		{
+			return false;
+		}
+		
+		if (tree1 != nullptr)
+		{
+			if (tree1->left != nullptr) que1.push(tree1->left);
+			if (tree1->right != nullptr) que1.push(tree1->right);
+		}
+		
+		if (tree2 != nullptr)
+		{
+			if (tree2->left != nullptr) que2.push(tree2->left);
+			if (tree2->right != nullptr) que2.push(tree2->right);
+		}
+
+		tree1 = que1.empty() ? nullptr : que1.front();
+		tree2 = que2.empty() ? nullptr : que2.front();
+	}
+
+	return true;
 }
 
 int main()
 {
-	// 应该依据数据构造平衡二叉树，这里直接手写两棵树
+	// 应该依据数据构造平衡二叉树，这里直接手写两棵树 
 	TreeNode<int>* tree1 = new TreeNode<int>(4);
 	tree1->left = new TreeNode<int>(2);
 	tree1->left->left = new TreeNode<int>(1);
@@ -52,7 +87,7 @@ int main()
 	tree2->left->left = new TreeNode<int>(1);
 	tree2->left->right = new TreeNode<int>(3);
 	tree2->right = new TreeNode<int>(6);
-	tree2->right->left = new TreeNode<int>(5);
+	tree2->right->left = new TreeNode<int>(7);
 	tree2->right->right = new TreeNode<int>(7);
 
 	cout << (TheSameBinaryTree_DFS_Stack(tree1, tree2) ? "TRUE" : "FALSE") << endl;
