@@ -41,31 +41,23 @@ bool TheSameBinaryTree_BFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 	queue<TreeNode<int>*> que1({ tree1 });
 	queue<TreeNode<int>*> que2({ tree2 });
 
-	while (tree1 && tree2)
+	while (tree1 != nullptr || tree2 != nullptr)
 	{
-		que1.pop();
-		que2.pop();
+		if (!que1.empty()) que1.pop();
+		if (!que2.empty()) que2.pop();
 
-		if (tree1 == nullptr && tree2 == nullptr);
-		else if ((tree1 == nullptr || tree2 == nullptr) ||
+		if ((tree1 == nullptr || tree2 == nullptr) ||
 			tree1->data != tree2->data)
 		{
 			return false;
 		}
-		
-		if (tree1 != nullptr)
-		{
-			if (tree1->left != nullptr) que1.push(tree1->left);
-			if (tree1->right != nullptr) que1.push(tree1->right);
-		}
-		
-		if (tree2 != nullptr)
-		{
-			if (tree2->left != nullptr) que2.push(tree2->left);
-			if (tree2->right != nullptr) que2.push(tree2->right);
-		}
 
+		if (tree1->left != nullptr) que1.push(tree1->left);
+		if (tree1->right != nullptr) que1.push(tree1->right);
 		tree1 = que1.empty() ? nullptr : que1.front();
+
+		if (tree2->left != nullptr) que2.push(tree2->left);
+		if (tree2->right != nullptr) que2.push(tree2->right);
 		tree2 = que2.empty() ? nullptr : que2.front();
 	}
 
@@ -89,6 +81,7 @@ int main()
 	tree2->right = new TreeNode<int>(6);
 	tree2->right->left = new TreeNode<int>(5);
 	tree2->right->right = new TreeNode<int>(7);
+	tree2->right->right->right = new TreeNode<int>(9);
 
 	cout << (TheSameBinaryTree_BFS(tree1, tree2) ? "TRUE" : "FALSE") << endl;
 
