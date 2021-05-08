@@ -8,6 +8,7 @@
  * 判断两颗二叉树结构与节点对应值是否相同
  *
  * 【解题思路】
+ * 首先需要特别注意的是，给定的二叉树不一定是平衡二叉树；
  * 使用队列FIFO特性，对两颗树进行层次遍历，比较元素的值：
  * （1）两棵树是空二叉树，自然是相同的；
  * （2）若其中一颗为空二叉树，另一颗非空，则二叉树不相同；
@@ -15,7 +16,7 @@
  *
  * @author FrankX
  * @date 2021-05-07
- **************************************************************************************************/
+ **************************************************************************************************/ 
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -41,23 +42,37 @@ bool TheSameBinaryTree_BFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 	queue<TreeNode<int>*> que1({ tree1 });
 	queue<TreeNode<int>*> que2({ tree2 });
 
-	while (tree1 != nullptr || tree2 != nullptr)
+	while (!que1.empty() && !que2.empty())
 	{
 		if (!que1.empty()) que1.pop();
 		if (!que2.empty()) que2.pop();
 
-		if ((tree1 == nullptr || tree2 == nullptr) ||
+		if (tree1 == nullptr && tree2 == nullptr)
+		{
+			break;
+		}
+		else if ((tree1 == nullptr || tree2 == nullptr) ||
 			tree1->data != tree2->data)
 		{
 			return false;
 		}
 
-		if (tree1->left != nullptr) que1.push(tree1->left);
-		if (tree1->right != nullptr) que1.push(tree1->right);
-		tree1 = que1.empty() ? nullptr : que1.front();
+		/**
+		 * 这里需要注意，只有左右子节点都不为空时，才需要将子节点入队；
+		 * 子节点都为空，表示已经遍历到该分支的叶子节点，不需要继续遍历了；
+		 */
+		if (tree1->left != nullptr || tree1->right != nullptr)
+		{
+			que1.push(tree1->left);
+			que1.push(tree1->right);
+		}
+		if (tree2->left != nullptr || tree2->right != nullptr)
+		{
+			que2.push(tree2->left);
+			que2.push(tree2->right);
+		}
 
-		if (tree2->left != nullptr) que2.push(tree2->left);
-		if (tree2->right != nullptr) que2.push(tree2->right);
+		tree1 = que1.empty() ? nullptr : que1.front();
 		tree2 = que2.empty() ? nullptr : que2.front();
 	}
 
@@ -66,7 +81,7 @@ bool TheSameBinaryTree_BFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 
 int main()
 {
-	// 应该依据数据构造平衡二叉树，这里直接手写两棵树 
+	// 应该依据数据构造二叉树，这里直接手写两棵树 
 	TreeNode<int>* tree1 = new TreeNode<int>(4);
 	tree1->left = new TreeNode<int>(2);
 	tree1->left->left = new TreeNode<int>(1);
@@ -74,6 +89,7 @@ int main()
 	tree1->right = new TreeNode<int>(6);
 	tree1->right->left = new TreeNode<int>(5);
 	tree1->right->right = new TreeNode<int>(7);
+	tree1->right->right->left = new TreeNode<int>(9);
 	TreeNode<int>* tree2 = new TreeNode<int>(4);
 	tree2->left = new TreeNode<int>(2);
 	tree2->left->left = new TreeNode<int>(1);

@@ -8,6 +8,7 @@
  * 判断两颗二叉树结构与节点对应值是否相同
  *
  * 【解题思路】
+ * 首先需要特别注意的是，给定的二叉树不一定是平衡二叉树；
  * 使用深度优先算法，采用递归来实现：
  * （1）两棵树是空二叉树，自然是相同的；
  * （2）若其中一颗为空二叉树，另一颗非空，则二叉树不相同；
@@ -57,7 +58,7 @@ bool TheSameBinaryTree_DFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 
 int main()
 {
-	// 应该依据数据构造平衡二叉树，这里直接手写两棵树 
+	// 应该依据数据构造二叉树，这里直接手写两棵树 
 	TreeNode<int>* tree1 = new TreeNode<int>(4);
 	tree1->left = new TreeNode<int>(2);
 	tree1->left->left = new TreeNode<int>(1);
