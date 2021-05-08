@@ -52,7 +52,7 @@ bool TheSameBinaryTree_BFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 			break;
 		}
 		else if ((tree1 == nullptr || tree2 == nullptr) ||
-			tree1->data != tree2->data)
+				 tree1->data != tree2->data)
 		{
 			return false;
 		}
