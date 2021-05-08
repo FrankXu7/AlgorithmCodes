@@ -37,7 +37,7 @@ struct TreeNode
 	}
 };
 
-bool TheSameBinaryTree_DFS_Recursion(TreeNode<int>* tree1, TreeNode<int>* tree2)
+bool TheSameBinaryTree_DFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 {
 	if (tree1 == nullptr && tree2 == nullptr)
 	{
@@ -50,8 +50,8 @@ bool TheSameBinaryTree_DFS_Recursion(TreeNode<int>* tree1, TreeNode<int>* tree2)
 	}
 	else
 	{
-		return (TheSameBinaryTree_DFS_Recursion(tree1->left, tree2->left) && 
-				TheSameBinaryTree_DFS_Recursion(tree1->right, tree2->right));
+		return (TheSameBinaryTree_DFS(tree1->left, tree2->left) && 
+				TheSameBinaryTree_DFS(tree1->right, tree2->right));
 	}
 }
 
@@ -73,7 +73,7 @@ int main()
 	tree2->right->left = new TreeNode<int>(5);
 	tree2->right->right = new TreeNode<int>(7);
 
-	cout << (TheSameBinaryTree_DFS_Recursion(tree1, tree2) ? "TRUE" : "FALSE") << endl;
+	cout << (TheSameBinaryTree_DFS(tree1, tree2) ? "TRUE" : "FALSE") << endl;
 
 	return 0;
 }

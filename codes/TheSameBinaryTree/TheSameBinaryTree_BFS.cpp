@@ -36,7 +36,7 @@ struct TreeNode
 	}
 };
 
-bool TheSameBinaryTree_DFS_Stack(TreeNode<int>* tree1, TreeNode<int>* tree2)
+bool TheSameBinaryTree_DFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 {
 	queue<TreeNode<int>*> que1({ tree1 });
 	queue<TreeNode<int>*> que2({ tree2 });
@@ -87,10 +87,10 @@ int main()
 	tree2->left->left = new TreeNode<int>(1);
 	tree2->left->right = new TreeNode<int>(3);
 	tree2->right = new TreeNode<int>(6);
-	tree2->right->left = new TreeNode<int>(7);
+	tree2->right->left = new TreeNode<int>(5);
 	tree2->right->right = new TreeNode<int>(7);
 
-	cout << (TheSameBinaryTree_DFS_Stack(tree1, tree2) ? "TRUE" : "FALSE") << endl;
+	cout << (TheSameBinaryTree_DFS(tree1, tree2) ? "TRUE" : "FALSE") << endl;
 
 	return 0;
 }
