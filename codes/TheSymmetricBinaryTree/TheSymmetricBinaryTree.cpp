@@ -19,6 +19,8 @@
  **************************************************************************************************/
 #include <iostream>
 #include <stack>
+#include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -35,6 +37,8 @@ struct TreeNode
 		left = right = nullptr;
 	}
 };
+
+#define NODE(data) (new TreeNode<int>(data))
 
 bool TheSymmetricBinaryTree(TreeNode<int>* tree)
 {
@@ -82,19 +86,91 @@ bool TheSymmetricBinaryTree(TreeNode<int>* tree)
 	return true;
 }
 
+/**
+ * @brief 利用传入的vector数据生成一颗二叉树，非搜索树，非平衡树
+ * @param treeData 树的原始数据
+ * @param treeRoot 完成后的树根节点
+ */
+void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
+{
+	treeRoot = treeData[0];
+	unsigned int dataSize = treeData.size();
+
+	// n 的增加必定快于 idx，故边界判断用 n 即可 
+	for (unsigned int idx = 0, n = 0; n < dataSize; ++idx)
+	{
+		if (++n < dataSize)
+			treeData[idx]->left = treeData[n];
+		if (++n < dataSize)
+			treeData[idx]->right = treeData[n];
+	}
+}
+
+/**
+* @brief 释放一颗二叉树内存
+* @param treeRoot 树的根节点
+*/
+void DeleteTree(TreeNode<int>*& treeRoot)
+{
+	queue<TreeNode<int>*> delQue({ treeRoot });
+	TreeNode<int>* node = nullptr;
+	while (!delQue.empty())
+	{
+		node = delQue.front();
+		delQue.pop();
+		if (node && (node->left || node->right))
+		{
+			delQue.push(node->left);
+			delQue.push(node->right);
+		}
+		delete node;
+	}
+	treeRoot = nullptr;
+}
+
+/**
+* @brief 打印一颗二叉树
+* @brief treeRoot 树的根节点
+*/
+void PrintTree(const TreeNode<int>* treeRoot)
+{
+	queue<const TreeNode<int>*> printQue({ treeRoot });
+	queue<const TreeNode<int>*> tempQue;
+	const TreeNode<int>* node = nullptr;
+	while (!printQue.empty())
+	{
+		while (!printQue.empty())
+		{
+			node = printQue.front();
+			printQue.pop();
+			if (node) cout << node->data << ", ";
+			else cout << "null, ";
+
+			if (node && (node->left || node->right))
+			{
+				tempQue.push(node->left);
+				tempQue.push(node->right);
+			}
+		}
+		printQue.swap(tempQue);
+		cout << endl;
+	}
+}
+
 int main()
 {
-	// 应该依据数据构造平衡二叉树，这里直接手写两棵树 
-	TreeNode<int>* tree1 = new TreeNode<int>(4);
-	tree1->left = new TreeNode<int>(2);
-	tree1->left->left = new TreeNode<int>(1);
-	tree1->left->right = new TreeNode<int>(3);
-	tree1->right = new TreeNode<int>(2);
-	tree1->right->left = new TreeNode<int>(1);
-	tree1->right->right = new TreeNode<int>(3);
-	tree1->right->right->left = new TreeNode<int>(9);
+	TreeNode<int>* tree = nullptr;
+	CreateTree({NODE(4),
+		NODE(1), NODE(1),
+		NODE(3), NODE(6), NODE(3), NODE(0),
+		}, tree);
 
-	cout << (TheSymmetricBinaryTree(tree1) ? "Symmetric" : "NOT Symmetric") << endl;
+	cout << "Tree:\n";
+	PrintTree(tree);
+
+	cout << "\nThe Symmetric Binary Tree?\n" << (TheSymmetricBinaryTree(tree) ? "YES" : "NO") << endl;
+
+	DeleteTree(tree);
 
 	return 0;
 }

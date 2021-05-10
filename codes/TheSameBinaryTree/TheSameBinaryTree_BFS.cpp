@@ -37,6 +37,8 @@ struct TreeNode
 	}
 };
 
+#define NODE(data) (new TreeNode<int>(data))
+
 bool TheSameBinaryTree_BFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 {
 	queue<TreeNode<int>*> que1({ tree1 });
@@ -78,27 +80,103 @@ bool TheSameBinaryTree_BFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 	return true;
 }
 
+/**
+ * @brief 利用传入的vector数据生成一颗二叉树，非搜索树，非平衡树
+ * @param treeData 树的原始数据
+ * @param treeRoot 完成后的树根节点
+ */
+void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
+{
+	treeRoot = treeData[0];
+	unsigned int dataSize = treeData.size();
+
+	unsigned int n = 0;
+	// n 的增加必定快于 idx，故边界判断用 n 即可 
+	for (unsigned int idx = 0; n < dataSize; ++idx)
+	{
+		if (++n < dataSize)
+			treeData[idx]->left = treeData[n];
+		if (++n < dataSize)
+			treeData[idx]->right = treeData[n];
+	}
+}
+
+/**
+ * @brief 释放一颗二叉树内存
+ * @param treeRoot 树的根节点
+ */
+void DeleteTree(TreeNode<int>*& treeRoot)
+{
+	queue<TreeNode<int>*> delQue({ treeRoot });
+	TreeNode<int>* node = nullptr;
+	while (!delQue.empty())
+	{
+		node = delQue.front();
+		delQue.pop();
+		if (node && (node->left || node->right))
+		{
+			delQue.push(node->left);
+			delQue.push(node->right);
+		}
+		delete node;
+	}
+	treeRoot = nullptr;
+}
+
+/**
+ * @brief 打印一颗二叉树
+ * @brief treeRoot 树的根节点
+ */
+void PrintTree(const TreeNode<int>* const treeRoot)
+{
+	queue<const TreeNode<int>*> printQue({ treeRoot });
+	queue<const TreeNode<int>*> tempQue;
+	const TreeNode<int>* p = nullptr;
+
+	while (!printQue.empty())
+	{
+		while (!printQue.empty())
+		{
+			p = printQue.front();
+			printQue.pop();
+			if (p) cout << p->data << ", ";
+			else cout << "null, ";
+
+			if (p && (p->left || p->right))
+			{
+				tempQue.push(p->left);
+				tempQue.push(p->right);
+			}
+		}
+		printQue.swap(tempQue);
+		cout << endl;
+	}
+}
+
 int main()
 {
-	// 应该依据数据构造二叉树，这里直接手写两棵树 
-	TreeNode<int>* tree1 = new TreeNode<int>(4);
-	tree1->left = new TreeNode<int>(2);
-	tree1->left->left = new TreeNode<int>(1);
-	tree1->left->right = new TreeNode<int>(7);
-	tree1->right = new TreeNode<int>(6);
-	tree1->right->left = new TreeNode<int>(5);
-	tree1->right->right = new TreeNode<int>(7);
-	tree1->right->right->left = new TreeNode<int>(9356);
-	TreeNode<int>* tree2 = new TreeNode<int>(4);
-	tree2->left = new TreeNode<int>(2);
-	tree2->left->left = new TreeNode<int>(1);
-	tree2->left->right = new TreeNode<int>(7);
-	tree2->right = new TreeNode<int>(6);
-	tree2->right->left = new TreeNode<int>(5);
-	tree2->right->right = new TreeNode<int>(7);
-	tree2->right->right->right = new TreeNode<int>(9356);
+	TreeNode<int>* tree1 = nullptr;
+	CreateTree({ NODE(4),
+		NODE(2), NODE(6),
+		NODE(1), NODE(7), NODE(5), NODE(7),
+		NODE(9356),
+		}, tree1);
+	TreeNode<int>* tree2 = nullptr;
+	CreateTree({ NODE(4),
+		NODE(2), NODE(6),
+		NODE(1), NODE(7), NODE(5), NODE(7),
+		NODE(9356), NODE(99)
+		}, tree2);
 
-	cout << (TheSameBinaryTree_BFS(tree1, tree2) ? "TRUE" : "FALSE") << endl;
+	cout << "Tree 1: \n";
+	PrintTree(tree1);
+	cout << "\nTree 2: \n";
+	PrintTree(tree2);
+
+	cout << "\nThe Same Binary Tree?\n" << (TheSameBinaryTree_BFS(tree1, tree2) ? "YES" : "NO") << endl;
+
+	DeleteTree(tree1);
+	DeleteTree(tree2);
 
 	return 0;
 }
