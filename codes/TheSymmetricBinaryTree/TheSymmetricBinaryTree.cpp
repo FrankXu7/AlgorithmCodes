@@ -99,6 +99,8 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 	// n 的增加必定快于 idx，故边界判断用 n 即可 
 	for (unsigned int idx = 0, n = 0; n < dataSize; ++idx)
 	{
+		if (treeData[idx] == nullptr) continue;
+
 		if (++n < dataSize)
 			treeData[idx]->left = treeData[n];
 		if (++n < dataSize)
