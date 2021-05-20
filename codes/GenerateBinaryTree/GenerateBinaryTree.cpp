@@ -11,11 +11,12 @@ struct TreeNode
 	T data;
 	TreeNode<T>* left;
 	TreeNode<T>* right;
+	TreeNode<T>* dad;
 
 	TreeNode<T>(T _data)
 	{
 		data = _data;
-		left = right = nullptr;
+		dad = left = right = nullptr;
 	}
 };
 
@@ -29,6 +30,9 @@ TreeNode<int>* GenerateBinaryTree(vector<TreeNode<int>*>& treeData, int leftIdx,
 	TreeNode<int>* root = treeData[midIdx];
 	root->left = GenerateBinaryTree(treeData, leftIdx, midIdx - 1);
 	root->right = GenerateBinaryTree(treeData, midIdx + 1, rightIdx);
+	
+	if (root->left) root->left->dad = root;
+	if (root->right) root->right->dad = root;
 
 	return root;
 }
@@ -54,7 +58,34 @@ void DeleteTree(TreeNode<int>*& treeRoot)
 
 void PrintTree(const TreeNode<int>* treeRoot)
 {
+	queue<const TreeNode<int>*> printQue({ treeRoot });
+	queue<const TreeNode<int>*> tempQue;
 
+	while (!printQue.empty())
+	{
+		while (!printQue.empty())
+		{
+			treeRoot = printQue.front();
+			printQue.pop();
+
+			if (treeRoot)
+			{
+				
+				cout << treeRoot->data;				
+				if (treeRoot->dad)
+					cout << '(' << treeRoot->dad->data << "), ";
+				else
+					cout << "(null), ";
+			}
+
+			if (treeRoot->left)
+				tempQue.push(treeRoot->left);
+			if (treeRoot->right)
+				tempQue.push(treeRoot->right);
+		}
+		cout << endl;
+		printQue.swap(tempQue);
+	}
 }
 
 int main()
@@ -66,6 +97,8 @@ int main()
 	};
 
 	TreeNode<int>* root = GenerateBinaryTree(treeData, 0, treeData.size() - 1);
+	
+	PrintTree(root);
 
 	DeleteTree(root);
 
