@@ -1,3 +1,22 @@
+/**************************************************************************************************
+ * 【题目描述】
+ * 将一个有序数组，转化为一颗平衡二叉树
+ *
+ * 【输入】
+ * sortedArray 一个有序的数组
+ * 【输出】
+ * 一颗平衡二叉树
+ *
+ * 【解题思路】
+ * 一颗二叉搜索树（BST）的中序遍历即为一个有序数组；
+ * 因为数组有序，需要高度平衡的话，那根节点肯定是数组中间的元素，分解步骤：
+ * （1）给定有序数组的左右下标，当前树的根节点即为中间下标对应的节点；
+ * （2）以中间下标为界，按（1）的方式递归左右的子有序数组；
+ * （3）重复上述（1）（2）步骤，直到左下标大于右下标，返回nullptr；
+ *
+ * @author FrankX
+ * @date 2021-03-30
+ **************************************************************************************************/
 #include <iostream>
 #include <queue>
 #include <vector>
@@ -8,9 +27,10 @@ template <typename T>
 struct TreeNode
 {
 	T data;
+	// 父节点的作用是为了方便打印的时候看树结构，算法本身并不需要记录父节点指针 
+	TreeNode<T>* dad;
 	TreeNode<T>* left;
 	TreeNode<T>* right;
-	TreeNode<T>* dad;
 
 	TreeNode<T>(T _data)
 	{
@@ -36,6 +56,10 @@ TreeNode<int>* GenerateBinaryTree(vector<TreeNode<int>*>& treeData, int leftIdx,
 	return root;
 }
 
+/**
+ * @breif 释放树节点内存
+ * @param treeRoot 树的根节点，指针引用，释放指向内存后会置nullptr
+ */
 void DeleteTree(TreeNode<int>*& treeRoot)
 {
 	if (treeRoot == nullptr) return;
@@ -55,6 +79,10 @@ void DeleteTree(TreeNode<int>*& treeRoot)
 	treeRoot = nullptr;
 }
 
+/**
+ * @brief 打印树，打印的每个值都会显示其父节点值以便观察树结构，根节点的父节点打印为null
+ * @param treeRoot 树的根节点常量指针，其指向的内容不允许改变 
+ */
 void PrintTree(const TreeNode<int>* treeRoot)
 {
 	queue<const TreeNode<int>*> printQue({ treeRoot });
@@ -70,7 +98,7 @@ void PrintTree(const TreeNode<int>* treeRoot)
 			if (treeRoot)
 			{
 				
-				cout << treeRoot->data;				
+				cout << treeRoot->data;
 				if (treeRoot->dad)
 					cout << '(' << treeRoot->dad->data << "), ";
 				else
