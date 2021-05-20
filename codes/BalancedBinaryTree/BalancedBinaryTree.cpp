@@ -36,12 +36,45 @@ struct TreeNode
 
 void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 {
+	treeRoot = treeData[0];
+	TreeNode<int>* node = nullptr;
+	unsigned int dataSize = vector.size();
+	
+	for (unsigned int idx = 0, n = 0; n < dataSize; ++idx)
+	{
+		node =  treeRoot[idx];
+		if (++n < dataSize)
+		{
+			node->left = treeRoot[n];
+			node->left->dad = node;
+		}
 
+		if (++n < dataSize)
+		{
+			node->right = treeRoot[n];
+			node->right->dad = treeRoot[n];
+		}
+
+	}
 }
 
 void DeleteTree(TreeNode<int>*& treeRoot)
 {
-	
+	queue<TreeNode<int>*> delQue({ treeRoot });
+
+	while (!delQue.empty())
+	{
+		treeRoot = delQue.front();
+		delQue.pop();
+
+		if (treeRoot->left)
+			delQue.push(treeRoot->left);
+		if (treeRoot->right)
+			delQue.push(treeRoot->right);
+		delete treeRoot;
+	}
+
+	treeRoot = nullptr;
 }
 
 void PrintTree(const TreeNode<int>* treeRoot) 
