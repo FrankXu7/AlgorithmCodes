@@ -37,12 +37,14 @@ struct TreeNode
 
 #define NODE(Value) (new TreeNode<int>(Value))
 
-bool BalancedBinaryTree_UpDown()
+bool BalancedBinaryTree_1(const TreeNode<int>* treeRoot)
 {
+		
+
 	return true;
 }
 
-bool BalancedBinaryTree_DownUp()
+bool BalancedBinaryTree_2()
 {
 	return true;
 }
@@ -64,12 +66,14 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 		if (++n < dataSize)
 		{
 			node->left = treeData[n];
-			node->left->dad = node;
+			if (node->left)
+				node->left->dad = node;
 		}
 		if (++n < dataSize)
 		{
 			node->right = treeData[n];
-			node->right->dad = node;
+			if (node->right)
+				node->right->dad = node;
 		}
 	}
 }
@@ -175,8 +179,8 @@ int main()
 		}, root);
 	PrintTree(root);
 
-	cout << (BalancedBinaryTree_UpDown() ? "\nIt's a AVL tree!\n" : "\nNot AVL Tree!\n");
-	cout << (BalancedBinaryTree_DownUp() ? "\nIt's a AVL tree!\n" : "\nNot AVL Tree!\n");
+	cout << (BalancedBinaryTree_1() ? "\nIt's a AVL tree!\n" : "\nNot AVL Tree!\n");
+	cout << (BalancedBinaryTree_2() ? "\nIt's a AVL tree!\n" : "\nNot AVL Tree!\n");
 
 	DeleteTree(root);
 	
