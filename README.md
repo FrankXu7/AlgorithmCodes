@@ -29,6 +29,7 @@
 22. [简单 - 101th] [对称的二叉树(TheSymmetricBinaryTree)](https://leetcode-cn.com/problems/symmetric-tree/)
 23. [简单 - 104th] [二叉树深度(TheBinaryTreeDepth)](https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/)
 24. [简单 - 108th] [将有序数组转化为平衡二叉树(GenerateBinaryTree)](https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/)
+25. [简单 - 110th] [判断是否为平衡二叉树(BalancedBinaryTree)](https://leetcode-cn.com/problems/balanced-binary-tree/)
 
 
 
