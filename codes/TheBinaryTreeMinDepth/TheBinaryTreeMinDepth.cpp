@@ -1,17 +1,21 @@
 /**************************************************************************************************
  * 【题目描述】
- * 刷出一句英文中最后一个单词的长度，单词以空格分割。
+ * 找出一颗二叉树的最小深度。
  *
  * 【输入】
- * string="Hello world"
+ * 一颗二叉树，不一定是AVL或BST树
  * 【输出】
- * lastWorldLen=5
+ * 该二叉树的最小深度
  *
  * 【解题思路】
- * 反序遍历字符串，遇到空格或tab即停止，需要特别注意的是，最后一个单词后，可能还会有空格和tab，需要排除。
- *
+ * 最小深度即为根节点到最近的叶子节点的最小路径。
+ * 考虑采用自底向上的方式计算深度，遍历为后续遍历，大致过程为：
+ * （1）后续遍历，从叶子节点往上遍历到根节点，叶子节点返回深度为0；
+ * （2）当前节点左右子树的最小深度，在+1后，即为当前节点父节点的子树最小深度；
+ * （3）每层递归返回的都是子树的最小深度，到根节点时，即为二叉树的最小深度；
+ * 
  * @author FrankX
- * @date 2021-04-09
+ * @date 2021-05-22
  **************************************************************************************************/
 #include <iostream>
 #include <queue>
@@ -42,6 +46,7 @@ unsigned int TheBinaryTreeMinDepth(const TreeNode<int>* treeRoot)
 	unsigned int leftDepth = TheBinaryTreeMinDepth(treeRoot->left);
 	unsigned int rightDepth = TheBinaryTreeMinDepth(treeRoot->right);
 
+	// 当前节点的子树最小深度，+1后即为当前节点父节点的子树最小深度 
 	return (min(leftDepth, rightDepth) + 1);
 }
 
