@@ -39,7 +39,7 @@ struct TreeNode
 
 #define NODE(data) (new TreeNode<int>(data))
 
-bool TheSameBinaryTree_BFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
+bool SameBinaryTree_BFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 {
 	queue<TreeNode<int>*> que1({ tree1 });
 	queue<TreeNode<int>*> que2({ tree2 });
@@ -175,7 +175,7 @@ int main()
 	cout << "\nTree 2: \n";
 	PrintTree(tree2);
 
-	cout << "\nThe Same Binary Tree?\n" << (TheSameBinaryTree_BFS(tree1, tree2) ? "YES" : "NO") << endl;
+	cout << "\nThe Same Binary Tree?\n" << (SameBinaryTree_BFS(tree1, tree2) ? "YES" : "NO") << endl;
 
 	DeleteTree(tree1);
 	DeleteTree(tree2);

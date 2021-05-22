@@ -41,7 +41,7 @@ struct TreeNode
 
 #define NODE(data) (new TreeNode<int>(data))
 
-bool TheSameBinaryTree_DFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
+bool SameBinaryTree_DFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 {
 	if (tree1 == nullptr && tree2 == nullptr)
 	{
@@ -54,8 +54,8 @@ bool TheSameBinaryTree_DFS(TreeNode<int>* tree1, TreeNode<int>* tree2)
 	}
 	else
 	{
-		return (TheSameBinaryTree_DFS(tree1->left, tree2->left) && 
-				TheSameBinaryTree_DFS(tree1->right, tree2->right));
+		return (SameBinaryTree_DFS(tree1->left, tree2->left) && 
+				SameBinaryTree_DFS(tree1->right, tree2->right));
 	}
 }
 
@@ -152,7 +152,7 @@ int main()
 	cout << "\nTree 2: \n";
 	PrintTree(tree2);
 
-	cout << "\nThe Same Binary Tree?\n" << (TheSameBinaryTree_DFS(tree1, tree2) ? "YES" : "NO") << endl;
+	cout << "\nThe Same Binary Tree?\n" << (SameBinaryTree_DFS(tree1, tree2) ? "YES" : "NO") << endl;
 
 	DeleteTree(tree1);
 	DeleteTree(tree2);

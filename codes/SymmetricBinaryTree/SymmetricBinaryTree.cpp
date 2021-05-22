@@ -40,7 +40,7 @@ struct TreeNode
 
 #define NODE(data) (new TreeNode<int>(data))
 
-bool TheSymmetricBinaryTree(TreeNode<int>* tree)
+bool SymmetricBinaryTree(TreeNode<int>* tree)
 {
 	if (tree == nullptr) return true;
 
@@ -170,7 +170,7 @@ int main()
 	cout << "Tree:\n";
 	PrintTree(tree);
 
-	cout << "\nThe Symmetric Binary Tree?\n" << (TheSymmetricBinaryTree(tree) ? "YES" : "NO") << endl;
+	cout << "\nThe Symmetric Binary Tree?\n" << (SymmetricBinaryTree(tree) ? "YES" : "NO") << endl;
 
 	DeleteTree(tree);
 

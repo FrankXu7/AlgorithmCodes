@@ -39,12 +39,12 @@ struct TreeNode
 
 #define NODE(Value) (new TreeNode<int>(Value))
 
-unsigned int TheBinaryTreeMinDepth(const TreeNode<int>* treeRoot)
+unsigned int BinaryTreeMinDepth(const TreeNode<int>* treeRoot)
 {
 	if (!treeRoot) return 0;
 
-	unsigned int leftDepth = TheBinaryTreeMinDepth(treeRoot->left);
-	unsigned int rightDepth = TheBinaryTreeMinDepth(treeRoot->right);
+	unsigned int leftDepth = BinaryTreeMinDepth(treeRoot->left);
+	unsigned int rightDepth = BinaryTreeMinDepth(treeRoot->right);
 
 	// 当前节点的子树最小深度，+1后即为当前节点父节点的子树最小深度 
 	return (min(leftDepth, rightDepth) + 1);
@@ -152,7 +152,7 @@ int main()
 
 	PrintTree(root);
 
-	cout << "\nThe Mininum binary tree depth: " << TheBinaryTreeMinDepth(root) << endl;
+	cout << "\nThe Mininum binary tree depth: " << BinaryTreeMinDepth(root) << endl;
 
 	DeleteTree(root);
 

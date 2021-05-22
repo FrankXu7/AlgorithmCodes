@@ -49,7 +49,7 @@ struct TreeNode
 
 #define NODE(data) (new TreeNode<int>(data))
 
-unsigned int TheBinaryTreeMaxDepth_1(const TreeNode<int>* treeRoot)
+unsigned int BinaryTreeMaxDepth_1(const TreeNode<int>* treeRoot)
 {
 	unsigned int treeDepth = 0;
 	queue<const TreeNode<int>*> que1({ treeRoot });
@@ -79,7 +79,7 @@ unsigned int TheBinaryTreeMaxDepth_1(const TreeNode<int>* treeRoot)
 	return treeDepth;
 }
 
-unsigned int TheBinaryTreeMaxDepth_2(const TreeNode<int>* treeRoot)
+unsigned int BinaryTreeMaxDepth_2(const TreeNode<int>* treeRoot)
 {
 	unsigned int treeDepth = 0;
 	queue<const TreeNode<int>*> que({ treeRoot });
@@ -168,8 +168,8 @@ int main()
 	cout << "Tree: \n";
 	PrintTree(treeRoot);
 
-	cout << "\n[Solution 1] The Binary Tree Depth: " << TheBinaryTreeMaxDepth_1(treeRoot) << endl;
-	cout << "[Solution 2] The Binary Tree Depth: " << TheBinaryTreeMaxDepth_2(treeRoot) << endl;
+	cout << "\n[Solution 1] The Binary Tree Depth: " << BinaryTreeMaxDepth_1(treeRoot) << endl;
+	cout << "[Solution 2] The Binary Tree Depth: " << BinaryTreeMaxDepth_2(treeRoot) << endl;
 
 	DeleteTree(treeRoot);
 
