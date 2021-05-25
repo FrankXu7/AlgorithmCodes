@@ -36,22 +36,14 @@ struct TreeNode
 
 #define NODE(value) (new TreeNode<int>(value))
 
-int BinaryTreePathSum(const TreeNode<int>* treeRoot, int curSum, const int& targetNum)
+bool BinaryTreePathSum(const TreeNode<int>* treeRoot, int curSum, const int& targetNum)
 {
-	int leftSum = curSum;
-	int rightSum = curSum;
-
-	if (treeRoot && treeRoot->left)
+	if (!treeRoot)
 	{
-		leftSum = BinaryTreePathSum(treeRoot->left, curSum + treeRoot->left->data, targetNum);
+		return curSum == targetNum;
 	}
 
-	if (treeRoot && treeRoot->right)
-	{
-		rightSum = BinaryTreePathSum(treeRoot->right, curSum + treeRoot->right->data, targetNum);
-	}
-
-	return (leftSum + rightSum);
+	return BinaryTreePathSum(treeRoot->left, curSum + treeRoot->data, targetNum) || BinaryTreePathSum(treeRoot->right, curSum + treeRoot->data, targetNum);
 }
 
 /**
@@ -70,10 +62,16 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 		node = treeData[idx];
 		if (!node)
 		{
-			if (idx + 1 > n) ++n;
+			if (!treeData[n + 1] || idx + 1 > n)
+			{
+				++n;
+				if (!treeData[n + 1])
+					++n;
+			}
+			continue;
 		}
-		else if (!treeRoot)
-			treeRoot = node;
+
+		if (!treeRoot) treeRoot = node;
 
 		if (node && ++n < dataSize)
 		{
@@ -88,6 +86,51 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 		}
 	
 	}
+}
+
+void _CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
+{
+	TreeNode<int>* node = nullptr;
+	queue<TreeNode<int>*> que;
+	unsigned int idx = 0, n = 0, dataSize = treeData.size();
+	
+	treeRoot = nullptr;
+	while (!treeRoot && idx < dataSize)
+	{
+		treeRoot = treeData[idx];
+		++idx;
+	}
+	if (!treeRoot) return;
+
+	que.push(treeRoot);
+	unsigned int layerCount = 1;
+	unsigned int nodeCount = 1;
+	for (; idx < dataSize; )
+	{
+		node = que.front;
+		que.pop();
+		--nodeCount;
+
+		if (node && ++idx < dataSize)
+		{
+			que.push(treeData[idx]);
+			node->left = treeData[idx];
+			treeData[idx]->dad = node;
+		}		
+		if (node && ++idx < dataSize)
+		{
+			que.push(treeData[idx]);
+			node->left ? node->right = treeData[idx] : node->left = treeData[idx];
+		}
+
+		if (nodeCount == 0)
+		{
+			++layerCount;
+			nodeCount = que.size();
+		}
+	}
+
+	 
 }
 
 /**
@@ -168,9 +211,16 @@ int main()
 	}, root);
 
 	PrintTree(root);
-
+	
+	int targetNum = 0;
+	cout << "Input target number:\n";
+	cin >> targetNum;
+	cout << "\nHas any path node value sum equal the target number?\n"; 
+	cout << (BinaryTreePathSum(root, 0, targetNum) > 0 ? "true" : "false") << endl << endl;
+	
 	DeleteTree(root);
 
 	return 0;
 }
+
 
