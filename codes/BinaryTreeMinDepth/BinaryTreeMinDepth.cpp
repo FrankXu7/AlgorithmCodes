@@ -50,32 +50,28 @@ unsigned int BinaryTreeMinDepth(const TreeNode<int>* treeRoot)
 	return (min(leftDepth, rightDepth) + 1);
 }
 
+/**
+ * @brief 创建一颗二叉树，并非BST树或AVL树
+ * @param treeData 二叉树数据源，右值引用
+ * @param treeRoot 二叉树根节点，指针引用
+ */
 void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 {
-	treeRoot = nullptr;
+	treeRoot = treeData[0];
 	TreeNode<int>* node = nullptr;
 	unsigned int dataSize = treeData.size();
 
 	for (unsigned int idx = 0, n = 0; n < dataSize; ++idx)
 	{
 		node = treeData[idx];
-		if (!node)
-		{
-			// 容器前X个元素为nullptr, n跟随idx增加 
-			++n;
-			continue;
-		}
 
-		// 防止treeData首元素为nullptr，你永远不知道用户会对你的程序干什么...
-		if (!treeRoot) treeRoot = node;
-
-		if (++n < dataSize)
+		if (++n < dataSize && node)
 		{
 			node->left = treeData[n];
 			if (node->left)
 				node->left->dad = node;
 		}
-		if (++n < dataSize)
+		if (++n < dataSize && node)
 		{
 			node->right = treeData[n];
 			if (node->right)
@@ -142,7 +138,6 @@ int main()
 {
 	TreeNode<int>* root = nullptr;
 	CreateTree({
-		nullptr,
 		NODE(1), NODE (2), NODE(3),NODE(4), NODE(5), 
 		NODE(6), NODE(7), NODE(8), NODE(9), NODE(10),
 		NODE(11), NODE(12), nullptr, nullptr, nullptr,
