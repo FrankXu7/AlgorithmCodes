@@ -57,6 +57,8 @@ unsigned int BinaryTreeMinDepth(const TreeNode<int>* treeRoot)
  */
 void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 {
+	if (treeData.empty()) treeRoot = nullptr;
+
 	treeRoot = treeData[0];
 	TreeNode<int>* node = nullptr;
 	unsigned int dataSize = treeData.size();
@@ -80,6 +82,10 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 	}
 }
 
+/**
+ * @brief 释放一棵二叉树的内存
+ * @param treeRoot 树根结点，指针引用，释放后置nullptr
+ */
 void DeleteTree(TreeNode<int>*& treeRoot)
 {
 	if (!treeRoot) return;
@@ -101,6 +107,10 @@ void DeleteTree(TreeNode<int>*& treeRoot)
 	treeRoot = nullptr;
 }
 
+/**
+ * @brief 打印一颗二叉树
+ * @param treeRoot 树根结点，常量指针
+ */
 void PrintTree(const TreeNode<int>* treeRoot)
 {
 	queue<const TreeNode<int>*> printQue({ treeRoot });

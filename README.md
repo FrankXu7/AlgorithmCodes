@@ -31,6 +31,7 @@
 24. [简单 - 108th] [将有序数组转化为平衡二叉树(GenerateBinaryTree)](https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree/)
 25. [简单 - 110th] [判断是否为平衡二叉树(BalancedBinaryTree)](https://leetcode-cn.com/problems/balanced-binary-tree/)
 26. [简单 - 111th] [二叉树的最小深度(BinaryTreeMinDepth)](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
+27. [简单- 112th] [二叉树路径总和(BinaryTreePathSum)](https://leetcode-cn.com/problems/path-sum/)
 
 
 

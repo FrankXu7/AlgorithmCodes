@@ -1,18 +1,25 @@
 /**************************************************************************************************
  * 【题目描述】
- * 
+ * 给定一个目标整数，在一颗二叉树中，判断是否存在一条路径上所有节点值之和等于该目标整数的路径。
+ * 二叉树一条路径定义为从根节点到叶节点的一条分支。
  *
  * 【输入】
- * 
+ * 一颗二叉树 treeRoot
+ * 目标整数 targetNum
  *
  * 【输出】
- * 
+ * 是否存在题中所要求的路径
  *
  * 【解题思路】
- * 
+ * 可以发现规律：在二叉树中，从树根结点到某节点的路径一定是唯一的。
+ * 采用自顶向下的策略，将当前结点及传入的路径上祖先结点之和，分别传入左右子树；
+ * 直到叶节点位置，判断和是否等于给定的目标整数，符合中序遍历，大致步骤：
+ * （1）传入树根结点，到达当前节点的祖先路径上节点之和，目标整数引用；
+ * （2）将当前节点的值与祖先节点之和相加，并传入到左右子节点中；
+ * （3）递归（1）（2）步骤直至叶节点，判断此时的和是否与目标整数相等。
  *
  * @author FrankX
- * @date 2021-
+ * @date 2021-05-25
  **************************************************************************************************/
 #include <iostream>
 #include <queue>
@@ -43,7 +50,8 @@ bool BinaryTreePathSum(const TreeNode<int>* treeRoot, int curSum, const int& tar
 		return curSum == targetNum;
 	}
 
-	return BinaryTreePathSum(treeRoot->left, curSum + treeRoot->data, targetNum) || BinaryTreePathSum(treeRoot->right, curSum + treeRoot->data, targetNum);
+	return BinaryTreePathSum(treeRoot->left, curSum + treeRoot->data, targetNum) || 
+		BinaryTreePathSum(treeRoot->right, curSum + treeRoot->data, targetNum);
 }
 
 /**
@@ -53,84 +61,29 @@ bool BinaryTreePathSum(const TreeNode<int>* treeRoot, int curSum, const int& tar
  */
 void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 {
-	treeRoot = nullptr;
+	if (treeData.empty()) treeRoot = nullptr;
+
+	treeRoot = treeData[0];
 	TreeNode<int>* node = nullptr;
 	unsigned int dataSize = treeData.size();
 
 	for (unsigned int idx = 0, n = 0; n < dataSize; ++idx)
 	{
 		node = treeData[idx];
-		if (!node)
-		{
-			if (!treeData[n + 1] || idx + 1 > n)
-			{
-				++n;
-				if (!treeData[n + 1])
-					++n;
-			}
-			continue;
-		}
 
-		if (!treeRoot) treeRoot = node;
-
-		if (node && ++n < dataSize)
+		if (++n < dataSize && node)
 		{
 			node->left = treeData[n];
-			if (node->left) node->left->dad = node;
+			if (node->left)
+				node->left->dad = node;
 		}
-
-		if (node && ++n < dataSize)
+		if (++n < dataSize && node)
 		{
 			node->right = treeData[n];
-			if (node->right) node->right->dad = node;
-		}
-	
-	}
-}
-
-void _CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
-{
-	TreeNode<int>* node = nullptr;
-	queue<TreeNode<int>*> que;
-	unsigned int idx = 0, n = 0, dataSize = treeData.size();
-	
-	treeRoot = nullptr;
-	while (!treeRoot && idx < dataSize)
-	{
-		treeRoot = treeData[idx];
-		++idx;
-	}
-	if (!treeRoot) return;
-
-	que.push(treeRoot);
-	unsigned int layerCount = 1;
-	unsigned int nodeCount = 1;
-	for (; idx < dataSize; )
-	{
-		node = que.front;
-		que.pop();
-		--nodeCount;
-
-		if (node && ++idx < dataSize)
-		{
-			que.push(treeData[idx]);
-			node->left = treeData[idx];
-			treeData[idx]->dad = node;
-		}		
-		if (node && ++idx < dataSize)
-		{
-			que.push(treeData[idx]);
-			node->left ? node->right = treeData[idx] : node->left = treeData[idx];
-		}
-
-		if (nodeCount == 0)
-		{
-			++layerCount;
-			nodeCount = que.size();
+			if (node->right)
+				node->right->dad = node;
 		}
 	}
-
-	 
 }
 
 /**
@@ -168,6 +121,12 @@ void DeleteTree(TreeNode<int>*& treeRoot)
  */
 void PrintTree(const TreeNode<int>* treeRoot)
 {
+	if (!treeRoot)
+	{
+		cout << "Empty Tree!\n\n";
+		return;
+	}
+
 	queue<const TreeNode<int>*> printQue({ treeRoot });
 	queue<const TreeNode<int>*> tempQue;
 	int layerCount = 0;
@@ -204,10 +163,10 @@ int main()
 	TreeNode<int>* root = nullptr;
 
 	CreateTree({
-		NODE(5), 
-		NODE(4), NODE(8), 
-		NODE(11), nullptr, NODE(13), NODE(4), 
-		NODE(7), NODE(2), nullptr, nullptr, nullptr, nullptr, nullptr, NODE(1),
+		NODE(5),
+		NODE(4), NODE(8),
+		NODE(11), nullptr, NODE(13), NODE(4),
+		NODE(7), NODE(2), nullptr,  nullptr, nullptr, nullptr, nullptr, NODE(1),
 	}, root);
 
 	PrintTree(root);
