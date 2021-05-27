@@ -46,12 +46,26 @@ struct TreeNode
  */
 void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 {
+	treeRoot = treeData[0];
 	// 空容器或首节点为空，当作空树处理，
-	if (treeData.empty() || !treeData[0])
+	if (treeData.empty() || !treeRoot)
 	{
-		treeRoot = nullptr;
+		for (unsigned int idx = 0; idx < treeData.size(); ++idx)
+			delete treeData[idx];
 		return;
 	}
+
+	queue<TreeNode<int>*> que({ treeData[0] });
+	TreeNode<int>* node = nullptr;
+	while (!que.empty())
+	{
+		node = que.front();
+		que.pop();
+
+
+
+	}
+
 }
 
 /**
@@ -106,5 +120,7 @@ void PrintTree(const TreeNode<int>* treeRoot)
 
 int main()
 {
+	TreeNode<int>* root = nullptr;
+	CreateTree({ nullptr, nullptr, NODE(1), NODE(2), NODE(4) }, root);
 	return 0;
 }
