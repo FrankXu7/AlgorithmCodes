@@ -60,7 +60,20 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
  */
 void DeleteTree(TreeNode<int>*& treeRoot)
 {
+	if (!treeRoot) return;
 
+	queue<TreeNode<int>*> delQue({ treeRoot });
+	while (!delQue.empty())
+	{
+		treeRoot = delQue.front();
+		delQue.pop();
+
+		if (treeRoot->left) delQue.push(treeRoot->left);
+		if (treeRoot->right) delQue.push(treeRoot->right);
+
+		delete treeRoot;
+	}
+	treeRoot = nullptr;
 }
 
 /**
@@ -69,7 +82,26 @@ void DeleteTree(TreeNode<int>*& treeRoot)
  */
 void PrintTree(const TreeNode<int>* treeRoot)
 {
+	if (!treeRoot)
+	{
+		cout << "Empty tree!\n";
+		return;
+	}
 
+	queue<const TreeNode<int>*> printQue({ treeRoot });
+	int layerCount = 0;
+	while (!printQue.empty())
+	{
+		treeRoot = printQue.front();
+		printQue.pop();
+		
+		if (treeRoot)
+		{
+			cout << treeRoot->data;
+			if (treeRoot->dad) cout << '(' << treeRoot->dad->data + "), ";
+			else cout << "(null), ";
+		}
+	}
 }
 
 int main()
