@@ -61,9 +61,16 @@ bool BinaryTreePathSum(const TreeNode<int>* treeRoot, int curSum, const int& tar
  */
 void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 {
-	if (treeData.empty()) treeRoot = nullptr;
-
 	treeRoot = treeData[0];
+	// 首元素为空当空树处理
+	if (treeData.empty() || !treeRoot)
+	{
+		// 释放容器中的堆内存
+		for (unsigned int idx = 0; idx < treeData.size(); ++idx)
+			delete treeData[idx];
+		return;
+	}
+	
 	TreeNode<int>* node = nullptr;
 	unsigned int dataSize = treeData.size();
 
@@ -92,6 +99,8 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
  */
 void DeleteTree(TreeNode<int>*& treeRoot)
 {
+	if (!treeRoot) return;
+
 	queue<TreeNode<int>*> delQue({ treeRoot });
 
 	while (!delQue.empty()) 
@@ -99,15 +108,9 @@ void DeleteTree(TreeNode<int>*& treeRoot)
 		treeRoot = delQue.front();
 		delQue.pop();
 
-		if (treeRoot && treeRoot->left)
-		{
-			delQue.push(treeRoot->left);
-		}
+		if (treeRoot->left) delQue.push(treeRoot->left);
 
-		if (treeRoot && treeRoot->right)
-		{
-			delQue.push(treeRoot->right);
-		}
+		if (treeRoot->right) delQue.push(treeRoot->right);
 
 		delete treeRoot;
 	}
@@ -175,7 +178,7 @@ int main()
 	cout << "Input target number:\n";
 	cin >> targetNum;
 	cout << "\nHas any path node value sum equal the target number?\n"; 
-	cout << (BinaryTreePathSum(root, 0, targetNum) > 0 ? "true" : "false") << endl << endl;
+	cout << (BinaryTreePathSum(root, 0, targetNum) ? "true" : "false") << endl << endl;
 	
 	DeleteTree(root);
 

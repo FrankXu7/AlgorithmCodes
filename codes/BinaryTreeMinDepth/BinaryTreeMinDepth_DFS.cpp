@@ -39,12 +39,12 @@ struct TreeNode
 
 #define NODE(Value) (new TreeNode<int>(Value))
 
-unsigned int BinaryTreeMinDepth(const TreeNode<int>* treeRoot)
+unsigned int BinaryTreeMinDepth_DFS(const TreeNode<int>* treeRoot)
 {
 	if (!treeRoot) return 0;
 
-	unsigned int leftDepth = BinaryTreeMinDepth(treeRoot->left);
-	unsigned int rightDepth = BinaryTreeMinDepth(treeRoot->right);
+	unsigned int leftDepth = BinaryTreeMinDepth_DFS(treeRoot->left);
+	unsigned int rightDepth = BinaryTreeMinDepth_DFS(treeRoot->right);
 
 	// 当前节点的子树最小深度，+1后即为当前节点父节点的子树最小深度 
 	return (min(leftDepth, rightDepth) + 1);
@@ -148,16 +148,16 @@ int main()
 {
 	TreeNode<int>* root = nullptr;
 	CreateTree({
-		NODE(1), NODE (2), NODE(3),NODE(4), NODE(5), 
-		NODE(6), NODE(7), NODE(8), NODE(9), NODE(10),
-		NODE(11), NODE(12), nullptr, nullptr, nullptr,
-		NODE(13), NODE(14), NODE(15), nullptr, nullptr,
-		NODE(16)
+		NODE(1), 
+		NODE(2), NODE(3),
+		NODE(4), NODE(5), NODE(6), NODE(7), 
+		NODE(8), NODE(9), NODE(10), NODE(11), NODE(12), nullptr, nullptr, nullptr,
+		NODE(13), NODE(14), NODE(15), nullptr, nullptr, NODE(16)
 	}, root);
 
 	PrintTree(root);
 
-	cout << "\nThe Mininum binary tree depth: " << BinaryTreeMinDepth(root) << endl;
+	cout << "\nThe Mininum binary tree depth: " << BinaryTreeMinDepth_DFS(root) << endl;
 
 	DeleteTree(root);
 
