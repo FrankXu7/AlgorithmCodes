@@ -168,7 +168,7 @@ int main()
 	CreateTree({
 		NODE(5),
 		NODE(4), NODE(8),
-		NODE(11), nullptr, NODE(13), NODE(4),
+		NODE(11), nullptr, NODE(13), NODE(99),
 		NODE(7), NODE(2), nullptr,  nullptr, nullptr, nullptr, nullptr, NODE(1),
 	}, root);
 
