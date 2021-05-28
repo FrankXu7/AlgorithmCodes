@@ -16,6 +16,7 @@
 #include <iostream>
 #include <queue>
 #include <vector>
+#include <utility>
 using namespace std;
 
 template <typename T>
@@ -37,6 +38,11 @@ struct TreeNode
 
 unsigned int BinaryTreeMinDepth_BFS(const TreeNode<int>* treeRoot)
 {
+	if (!treeRoot) return 0;
+
+	queue<pair<TreeNode<int>*, int>> que;
+	pair<TreeNode<int>*, int>(treeRoot, treeRoot->data)
+
 	return 0;
 }
 
