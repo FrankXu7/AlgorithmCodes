@@ -45,11 +45,13 @@ struct TreeNode
 
 bool BinaryTreePathSum_DFS(const TreeNode<int>* treeRoot, int curSum, const int& targetNum)
 {
-	//if (!treeRoot) return false;
-	//else if (!treeRoot->left && !treeRoot->right) return (curSum == targetNum);
+	if (!treeRoot) return false;
+	
+	curSum += treeRoot->data;
+	if (!treeRoot->left && !treeRoot->right) return (curSum == targetNum);
 
-	//return BinaryTreePathSum_DFS(treeRoot->left, curSum + treeRoot->data, targetNum) ||
-	//	BinaryTreePathSum_DFS(treeRoot->right, curSum + treeRoot->data, targetNum);
+	return BinaryTreePathSum_DFS(treeRoot->left, curSum, targetNum) || BinaryTreePathSum_DFS(treeRoot->right, curSum, targetNum);
+	
 }
 
 /**
