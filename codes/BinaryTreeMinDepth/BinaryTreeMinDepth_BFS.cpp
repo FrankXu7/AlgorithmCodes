@@ -73,16 +73,17 @@ unsigned int BinaryTreeMinDepth_BFS(TreeNode<int>* treeRoot)
  */
 void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 {
-	treeRoot = treeData[0];
+	
 	// 空容器或首节点为空，当作空树处理
-	if (treeData.empty() || !treeRoot)
+	if (treeData.empty() || !treeData[0])
 	{
 		// 释放容器内的堆内存
 		for (unsigned int idx = 0; idx < treeData.size(); ++idx)
 			delete treeData[idx];
 		return;
 	}
-
+		
+	treeRoot = treeData[0];
 	TreeNode<int>* node = nullptr;
 	unsigned int idx = 0, n = 0, dataSize = treeData.size();
 	for (; n < dataSize; ++idx)

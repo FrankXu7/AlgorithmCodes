@@ -43,15 +43,13 @@ struct TreeNode
 
 #define NODE(value) (new TreeNode<int>(value))
 
-bool BinaryTreePathSum(const TreeNode<int>* treeRoot, int curSum, const int& targetNum)
+bool BinaryTreePathSum_DFS(const TreeNode<int>* treeRoot, int curSum, const int& targetNum)
 {
-	if (!treeRoot)
-	{
-		return curSum == targetNum;
-	}
+	//if (!treeRoot) return false;
+	//else if (!treeRoot->left && !treeRoot->right) return (curSum == targetNum);
 
-	return BinaryTreePathSum(treeRoot->left, curSum + treeRoot->data, targetNum) || 
-		BinaryTreePathSum(treeRoot->right, curSum + treeRoot->data, targetNum);
+	//return BinaryTreePathSum_DFS(treeRoot->left, curSum + treeRoot->data, targetNum) ||
+	//	BinaryTreePathSum_DFS(treeRoot->right, curSum + treeRoot->data, targetNum);
 }
 
 /**
@@ -61,16 +59,16 @@ bool BinaryTreePathSum(const TreeNode<int>* treeRoot, int curSum, const int& tar
  */
 void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 {
-	treeRoot = treeData[0];
 	// 首元素为空当空树处理
-	if (treeData.empty() || !treeRoot)
+	if (treeData.empty() || !treeData[0])
 	{
 		// 释放容器中的堆内存
 		for (unsigned int idx = 0; idx < treeData.size(); ++idx)
 			delete treeData[idx];
 		return;
 	}
-	
+
+	treeRoot = treeData[0];
 	TreeNode<int>* node = nullptr;
 	unsigned int dataSize = treeData.size();
 
@@ -178,7 +176,7 @@ int main()
 	cout << "Input target number:\n";
 	cin >> targetNum;
 	cout << "\nHas any path node value sum equal the target number?\n"; 
-	cout << (BinaryTreePathSum(root, 0, targetNum) ? "true" : "false") << endl << endl;
+	cout << (BinaryTreePathSum_DFS(root, 0, targetNum) ? "true" : "false") << endl << endl;
 	
 	DeleteTree(root);
 
