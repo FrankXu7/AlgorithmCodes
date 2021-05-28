@@ -1,17 +1,22 @@
 /**************************************************************************************************
  * 【题目描述】
- * 
+ * 找出一颗二叉树的最小深度。
  *
  * 【输入】
- * 
+ * 一颗二叉树，不一定是AVL或BST树
  * 【输出】
+ * 该二叉树的最小深度
  * 
- *
  * 【解题思路】
- *
+ * 小深度即为根节点到最近的叶子节点的最小路径。
+ * 因为遇到的第一个叶子结点的深度即为当前二叉树的最小深度，
+ * 考虑自顶向下的方式逐层计算深度，遍历符合层次遍历，大致过程：
+ * （1）构建一个pair为元素的队列，值分别为树结点和其所在深度，显然树根结点为第一层；
+ * （2）BFS遍历树，当前结点的左右子节点深度+1，并构建pair入队；
+ * （3）当遍历到叶子结点时，返回其当前深度即为二叉树的最小深度；
  *
  * @author FrankX
- * @date 2021-
+ * @date 2021-05-28
  **************************************************************************************************/
 #include <iostream>
 #include <queue>
@@ -36,12 +41,27 @@ struct TreeNode
 
 #define NODE(value) (new TreeNode<int>(value))
 
-unsigned int BinaryTreeMinDepth_BFS(const TreeNode<int>* treeRoot)
+unsigned int BinaryTreeMinDepth_BFS(TreeNode<int>* treeRoot)
 {
 	if (!treeRoot) return 0;
+	
+	queue<pair<TreeNode<int>*, int>> que({ make_pair(treeRoot, 1) });
+	int curLayer = 0;
 
-	queue<pair<TreeNode<int>*, int>> que;
-	pair<TreeNode<int>*, int>(treeRoot, treeRoot->data)
+	while (!que.empty())
+	{
+		treeRoot = que.front().first;
+		curLayer = que.front().second;
+		que.pop();
+
+		if (!treeRoot->left && !treeRoot->right) 
+			return curLayer;
+
+		if (treeRoot->left)
+			que.push(make_pair(treeRoot->left, curLayer + 1));
+		if (treeRoot->right)
+			que.push(make_pair(treeRoot->right, curLayer + 1));
+	}
 
 	return 0;
 }
