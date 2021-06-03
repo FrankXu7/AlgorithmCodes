@@ -33,6 +33,7 @@
 26. [简单 - 111th] [二叉树的最小深度(BinaryTreeMinDepth)](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree/)
 27. [简单 - 112th] [二叉树路径总和(BinaryTreePathSum)](https://leetcode-cn.com/problems/path-sum/)
 28. [简单 - 118th] [杨辉（帕斯卡）三角形(YangHuiTriangle)](https://leetcode-cn.com/problems/pascals-triangle/)
+29. [简单 - 119th] [某一行杨辉（帕斯卡）三角形(YangHuiTriangleRow)](https://leetcode-cn.com/problems/pascals-triangle-ii/)
 
 
 
