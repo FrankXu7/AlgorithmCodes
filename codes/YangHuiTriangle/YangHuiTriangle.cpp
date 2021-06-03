@@ -40,6 +40,9 @@ void PrintTriangle(vector<vector<int>>& triangle);
 
 void YangHuiTriangle(int numRows)
 {
+	// 手测int类型最大行数为34
+	numRows = (numRows < 1) ? (1) : (numRows > 34 ? 34 : numRows);
+
 	vector<vector<int>> triangle(numRows);
 
 	for (int row = 0; row < numRows; ++row)
@@ -81,8 +84,7 @@ int main()
 	cout << "Input rows between [1, 34]: ";
 	cin >> inputRow;
 
-	// 手测int类型最大行数为34
-	YangHuiTriangle((inputRow < 1) ? (1) : (inputRow < 34 ? inputRow : 34));
+	YangHuiTriangle(inputRow);
 
 	return 0;
 }
