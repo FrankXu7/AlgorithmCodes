@@ -15,6 +15,10 @@
  * 匹配到key为右括号时，若与栈顶的右括号相等，则顺利完成一次匹配，弹出栈顶字符，期望后续遍历遇到新栈顶右括号；
  * 匹配到非括号字符，或遍历完成后栈中还剩余待配对的括号，则匹配失败，字符串不是有效括号对。
  *
+ * 【解题分析】
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(1)
+ * 
  * @author FrankX
  * @date 2021-03-30
  **************************************************************************************************/
@@ -39,8 +43,9 @@ bool PairBrackets(string& str)
 {
 	stack<char> desired;
 
-	for (int idx = 0; idx < str.length(); ++idx)
+	for (unsigned int idx = 0; idx < str.length(); ++idx)
 	{
+		// 这里判断时不能直接用[]操作符，否则map中没有操作符指定的key时，会自动添加一个 
 		if (brackets.count(str[idx]) != 0)
 		{
 			if (brackets[str[idx]] != 0)

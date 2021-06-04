@@ -17,6 +17,9 @@
  * （1）释放删除节点的内存，原则为同函数申请和释放，传入指针引用指向删除节点组合而成的链表。
  * （2）删除节点组合而成的链表，最后一个节点一定要置空，否则可能删除结果链表中的节点。
  *
+ * 【解题分析】
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(1)
  *
  * @author FrankX
  * @date 2021-04-16
@@ -65,9 +68,6 @@ ListNode<int>* DeleteRepeatNode(ListNode<int>* head, ListNode<int>*& delHead)
 			p = p->next;
 		}
 	}
-
-	// 组合的删除链表最后一个节点的next可能指向结果链表的节点，所以要置空 
-	pDel->next = nullptr;
 
 	return head;
 }

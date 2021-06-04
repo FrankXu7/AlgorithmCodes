@@ -16,6 +16,11 @@
  * （4）递归重复（1）（2）（3）步骤，直到叶子节点为止；
  * 注意点：左右分支没有值时，指针需要设置为nullptr，否则判断为非空，指针不初始化的话可能为任意值。
  *
+ * 【解题分析】
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(log H)，为空间复杂度平均值，空间复杂度与递归的层级正相关，	
+ *			  最差的情况为单链表，此时树高度等于树的节点数量。
+ * 
  * @author FrankX
  * @date 2021-04-30
  **************************************************************************************************/
@@ -138,13 +143,13 @@ int main()
 	CreateTree({ NODE(4),
 		NODE(2), NODE(6),
 		NODE(1), NODE(7), NODE(5), NODE(7),
-		NODE(9356), NODE(99),
+		NODE(9356), nullptr, NODE(99),
 		}, tree1);
 	TreeNode<int>* tree2 = nullptr;
 	CreateTree({ NODE(4),
 		NODE(2), NODE(6),
 		NODE(1), NODE(7), NODE(5), NODE(7),
-		NODE(9356), NODE(99), NODE(77)
+		NODE(9356), NODE(99),
 		}, tree2);
 
 	cout << "Tree 1: \n";

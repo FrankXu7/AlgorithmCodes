@@ -14,6 +14,10 @@
  * （2）若其中一颗为空二叉树，另一颗非空，则二叉树不相同；
  * （3）不是以上两种情况，就按左右顺序依次比较节点的值，发现有不同，则两棵树不同；
  *
+ * 【解题分析】
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(1)
+ * 
  * @author FrankX
  * @date 2021-05-07
  **************************************************************************************************/ 
@@ -159,9 +163,9 @@ int main()
 {
 	TreeNode<int>* tree1 = nullptr;
 	CreateTree({ NODE(4),
-		NODE(2),nullptr, NODE(6),
-		NODE(1), NODE(7), NODE(5),nullptr, NODE(7),
-		NODE(9356),
+		NODE(2), NODE(6),
+		NODE(1), NODE(7), NODE(5), NODE(7),
+		NODE(9356), nullptr, NODE(99)
 		}, tree1);
 	TreeNode<int>* tree2 = nullptr;
 	CreateTree({ NODE(4),

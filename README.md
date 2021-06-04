@@ -18,7 +18,7 @@
 11. [简单 - 35th] [搜索插入位置(SearchInsertIndex)](https://leetcode-cn.com/problems/search-insert-position/)
 12. [简单 - 38th] [外观数列查询(ExteriorArray)](https://leetcode-cn.com/problems/count-and-say/)
 13. [简单 - 53th] [最大子数列之和(MaxSubArraySum)](https://leetcode-cn.com/problems/maximum-subarray/)
-14. [简单 - 58th] [最后一个单词长度(LastWorldLength)](https://leetcode-cn.com/problems/length-of-last-word/)
+14. [简单 - 58th] [最后一个单词长度(LastWordLength)](https://leetcode-cn.com/problems/length-of-last-word/)
 15. [简单 - 66th] [数组加一(ArrayPlusOne)](https://leetcode-cn.com/problems/plus-one/)
 16. [简单 - 67th] [二进制求和(BinaryPlus)](https://leetcode-cn.com/problems/add-binary/)
 17. [简单 - 69th] [求平方根(SquareRoot)](https://leetcode-cn.com/problems/sqrtx/)

@@ -14,6 +14,11 @@
  * （2）以中间下标为界，按（1）的方式递归左右的子有序数组；
  * （3）重复上述（1）（2）步骤，直到左下标大于右下标，返回nullptr；
  *
+ * 【解题分析】
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(log N)，空间复杂度和递归的层级正相关，而树的深度决定了递归的层级，
+			  由满二叉树的节点数量N = (2^H) - 1，可知空间复杂度为O(log N)。
+ * 
  * @author FrankX
  * @date 2021-05-20
  **************************************************************************************************/
@@ -97,18 +102,15 @@ void PrintTree(const TreeNode<int>* treeRoot)
 
 			if (treeRoot)
 			{
-				
 				cout << treeRoot->data;
 				if (treeRoot->dad)
 					cout << '(' << treeRoot->dad->data << "), ";
 				else
 					cout << "(null), ";
-			}
 
-			if (treeRoot->left)
-				tempQue.push(treeRoot->left);
-			if (treeRoot->right)
-				tempQue.push(treeRoot->right);
+				if (treeRoot->left) tempQue.push(treeRoot->left);
+				if (treeRoot->right) tempQue.push(treeRoot->right);
+			}
 		}
 		cout << endl;
 		printQue.swap(tempQue);

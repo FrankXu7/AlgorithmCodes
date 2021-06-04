@@ -15,6 +15,10 @@
  * （2）BFS遍历树，当前结点的左右子节点深度+1，并构建pair入队；
  * （3）当遍历到叶子结点时，返回其当前深度即为二叉树的最小深度；
  *
+ * 【解题分析】
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(N)
+ * 
  * @author FrankX
  * @date 2021-05-28
  **************************************************************************************************/
@@ -153,10 +157,10 @@ void PrintTree(const TreeNode<int>* treeRoot)
 				cout << treeRoot->data;
 				if (treeRoot->dad) cout << '(' << treeRoot->dad->data << "), ";
 				else cout << "(null), ";
-			}
 
-			if (treeRoot->left) tempQue.push(treeRoot->left);
-			if (treeRoot->right) tempQue.push(treeRoot->right);
+				if (treeRoot->left) tempQue.push(treeRoot->left);
+				if (treeRoot->right) tempQue.push(treeRoot->right);
+			}
 		}
 		cout << endl;
 		printQue.swap(tempQue);
