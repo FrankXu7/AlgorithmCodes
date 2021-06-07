@@ -28,6 +28,8 @@ using namespace std;
 
 int MaxStockGains(const vector<int>& prices)
 {
+	if (prices.size() == 0) return 0;
+
 	int maxGains = 0;
 	unsigned int dataSize = prices.size();
 
