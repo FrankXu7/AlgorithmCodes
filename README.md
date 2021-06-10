@@ -36,3 +36,5 @@
 29. [简单 - 119th] [某一行杨辉（帕斯卡）三角形(YangHuiTriangleRow)](https://leetcode-cn.com/problems/pascals-triangle-ii/)
 30. [简单 - 121th] [买卖股票的最佳时机(MaxStockGains)](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)
 31. [简单 - 122th] [买卖股票多次交易的最佳时机(MaxStockGainsMore)](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)
+32. [简单 - 125th] [验证回文字符串(PalindromeString)](https://leetcode-cn.com/problems/valid-palindrome/)
+
