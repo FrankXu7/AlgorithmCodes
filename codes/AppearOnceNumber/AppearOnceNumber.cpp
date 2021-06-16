@@ -20,63 +20,42 @@
  * （3）异或运算满足 交换律 和 结合律；
  * （4）自反性：A^N^N=A，任何数与另一个数字（包括自己）进行两次异或运算，结果仍是原来的数；
  *
+ * 所以，可将数组中元素逐一异或运算，因为除了只出现一次的元素之外，其余元素都出现两次，异或结果为0，
+ * 最终相当于只出现一次的数字与 (len-1)/2 个0进行异或运算，其结果为原来的数，即找到了那个只出现一次的数字。
+ * 
  * 【解题分析】
- * 时间复杂度：
- * 空间复杂度：
+ * 时间复杂度：O(n)
+ * 空间复杂度：O(1)
  *
  * @author FrankX
- * @date 2021-
+ * @date 2021-06-16
  **************************************************************************************************/
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-void SortArray(vector<int>& nums);
-
-/**
- * @return 如果该数字不存在，返回空指针用以判断 
- */
-int* AppearOnceNumber(vector<int>& nums)
+int AppearOnceNumber(vector<int>& nums)
 {
-	if (nums.empty()) return nullptr;
-
-	// 将数组有序化 .
-	SortArray(nums);
-
-	// 最后一位不越界，长度减一处理 .
-	unsigned int dataSize = nums.size() - 1; 
-	for (unsigned int idx = 0; idx < dataSize; idx += 2)
+	unsigned int dataSize = nums.size();
+	int targetNum = 0;
+	for (unsigned int idx = 0; idx < dataSize; ++idx)
 	{
-		if (nums[idx] != nums[idx + 1])
-		{
-			return &nums[idx]; 
-		}
+		targetNum ^= nums[idx];
 	}
 
-	return nullptr;
-}
-
-/**
- * @brief 对给定的数组从小到大排序
- * @param nums 数组容器引用
- */
-void SortArray(vector<int>& nums)
-{
-	unsigned int leftIdx = 0;
-	unsigned int rightIdx = 0;
+	return targetNum;
 }
 
 int main()
 {
-	vector<int> nums = { 1,1,3,3,4,5,5,6,6 };
+	vector<int> nums = { 1,1,3,3,5,9,5,6,6 };
 	cout << "Input Array:\n";
 	for (vector<int>::iterator itr = nums.begin(); itr != nums.end(); ++itr)
 		cout << *itr << ", ";
 
-	int* targetNum = AppearOnceNumber(nums);
-	if (targetNum) cout << "\nThe targe number is: " << *targetNum << endl;
-	else cout << "\nNumber don't exist!\n";
-	cout << (nums[0] == 106);
+	if (nums.size() % 2 == 0) cout << "\nNot exist!\n";
+	else cout << "\nThe targe number is: " << AppearOnceNumber(nums) << endl;
+	
 	return 0;
 }

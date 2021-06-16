@@ -37,4 +37,4 @@
 30. [简单 - 121th] [买卖股票的最佳时机(MaxStockGains)](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)
 31. [简单 - 122th] [买卖股票多次交易的最佳时机(MaxStockGainsMore)](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)
 32. [简单 - 125th] [验证回文字符串(PalindromeString)](https://leetcode-cn.com/problems/valid-palindrome/)
-
+33. [简单 - 136th] [只出现一次的数字(AppearOnceNumber)](https://leetcode-cn.com/problems/single-number/)
