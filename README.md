@@ -39,3 +39,4 @@
 32. [简单 - 125th] [验证回文字符串(PalindromeString)](https://leetcode-cn.com/problems/valid-palindrome/)
 33. [简单 - 136th] [只出现一次的数字(AppearOnceNumber)](https://leetcode-cn.com/problems/single-number/)
 34. [简单 - 141th] [存在环形链表(ExistCircularList)](https://leetcode-cn.com/problems/linked-list-cycle/)
+35. [简单 - 144th] [二叉树的前序遍历(TraverseBinaryTree_DLR)](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)
