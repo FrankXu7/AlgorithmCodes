@@ -1,19 +1,43 @@
 /**************************************************************************************************
  * 【题目描述】
- *
+ * 给定一颗二叉树，返回其前序遍历
  *
  * 【输入】
- *
+ * 二叉树：
+ *    4
+ *  2   6
+ * 1 3 5 7
  *
  * 【输出】
- *
+ * 前序遍历序列：4 2 1 3 6 5 7
  *
  * 【解题思路】
+ * 方法一：
+ * 前序遍历顺序为“根左右”，考虑采用递归，传入子树根节点，先将根节点推入数组，
+ * 然后依次将根节点的左右子树节点作为参数进行递归调用，遇到传入的根节点为空时返回。
  *
- *
+ * 方法二：
+ * 递归有时候不是那么好理解，而且递归层级多的话，会占用较多资源。也可以考虑用栈的方式，大致步骤：
+ * （1）先将根节点入栈，然后进行循环遍历，中止条件为空栈；
+ * （2）弹出栈顶节点，并作为结果推入数组；
+ * （3）依次入栈弹出节点的右子节点和左子节点（这样出栈的时候就符合“根左右”的顺序了）；
+ * （4）子节点为空不如栈，重复（2）（3）直到栈空是跳出循环。
+ * 
+ * 方法三：
+ * 采用Morris遍历算法，可以将空间复杂度降为O(1)，Morris是一种遍历二叉树的算法，利用叶子节点的左右空指针。
+ * 在二叉树的叶子节点中，其左右子节点指向为空，虽然是空指针，但指针本身已经占用空间了，
+ * Morris算法的核心思想就是临时利用这些，已经声明但没有定义的指针变量，
+ * 相当于把原本对空间的需求转移到了已经存在的但指向为空的指针上，是一种对无指向的内存的充分利用。
+ * 
+ * 
+ * 
  * 【解题分析】
- * 时间复杂度：
- * 空间复杂度：
+ * 方法一：
+ * 时间复杂度：O(n)
+ * 空间复杂度：O(n)
+ * 方法二：
+ * 时间复杂度：O(n)
+ * 空间复杂度：O(n)
  *
  * @author FrankX
  * @date 2021-
@@ -43,6 +67,7 @@ struct TreeNode
 
 #define N(value) (new TreeNode<int>(value))
 
+/** 递归遍历 */
 void TraverseBinaryTree_DLR_Recursion(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
 {
 	if (!treeRoot) return;
@@ -57,10 +82,12 @@ void TraverseBinaryTree_DLR_Recursion(TreeNode<int>* treeRoot, vector<TreeNode<i
 		TraverseBinaryTree_DLR_Recursion(treeRoot->right, resultArr);
 }
 
+/** 利用栈迭代遍历 */
 void TraverseBinaryTree_DLR_Stack(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
 {
 	stack<TreeNode<int>*> tempStack({ treeRoot });
 	TreeNode<int>* node = nullptr;
+
 	while (!tempStack.empty())
 	{
 		node = tempStack.top();
@@ -73,6 +100,50 @@ void TraverseBinaryTree_DLR_Stack(TreeNode<int>* treeRoot, vector<TreeNode<int>*
 			tempStack.push(node->right);
 		if (node && node->left)
 			tempStack.push(node->left);
+	}
+}
+
+/** Morris（莫里斯）遍历 */
+void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
+{
+	TreeNode<int>* pCur = treeRoot;
+	// 左子树最右侧节点 
+	TreeNode<int>* pMostRight = nullptr;
+
+	while (pCur)
+	{
+		if (pCur->left)
+		{
+			pMostRight = pCur->left;
+
+			while (pMostRight && pMostRight->right && pMostRight->right != pCur)
+			{
+				pMostRight = pMostRight->right;
+			}
+
+			if (!pMostRight->right)
+			{
+				resultArr.push_back(pCur);
+
+				pMostRight->right = pCur;
+				pCur = pCur->left;
+				continue;
+			}
+			else
+			{
+				//resultArr.push_back(pCur);
+
+				pCur = pCur->right;
+				pMostRight->right = nullptr;
+			}
+		}
+		else
+		{
+			resultArr.push_back(pCur);
+			pCur = pCur->right;
+		}
+
+		
 	}
 }
 
@@ -204,6 +275,13 @@ int main()
 	resultArr.clear();
 	TraverseBinaryTree_DLR_Stack(treeRoot, resultArr);
 	cout << "\n[Stack] DLR Traverse array: \n";
+	for (vector<TreeNode<int>*>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
+		cout << (*itr)->data << ", ";
+	cout << endl;
+
+	resultArr.clear();
+	TraverseBinaryTree_DLR_Morris(treeRoot, resultArr);
+	cout << "\n[Morris] DLR Traverse array: \n";
 	for (vector<TreeNode<int>*>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
 		cout << (*itr)->data << ", ";
 	cout << endl;
