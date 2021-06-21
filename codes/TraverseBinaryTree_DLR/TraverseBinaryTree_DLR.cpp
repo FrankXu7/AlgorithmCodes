@@ -26,9 +26,17 @@
  * 方法三：
  * 采用Morris遍历算法，可以将空间复杂度降为O(1)，Morris是一种遍历二叉树的算法，利用叶子节点的左右空指针。
  * 在二叉树的叶子节点中，其左右子节点指向为空，虽然是空指针，但指针本身已经占用空间了，
- * Morris算法的核心思想就是临时利用这些，已经声明但没有定义的指针变量，
+ * Morris算法的核心思想就是临时利用这些，已经声明但没有定义的空指针变量，
  * 相当于把原本对空间的需求转移到了已经存在的但指向为空的指针上，是一种对无指向的内存的充分利用。
- * 
+ * 大致步骤：
+ * （1）CurNode.left 不为空，找到以 CurNode.left 为根节点的最右侧节点 MostRightNode：
+ *		I.	MostRightNode 为空，则将 MostRightNode.right = CurNode，这里保证了后续的当前遍历节点右移的时候，
+ *			能够回到根节点，本质为借用叶子节点 MostRightNode 的右指针，该指针必为空值。因为题目要求为前序遍历，
+ *			所以此步骤遍历的 CurNode 为首次访问，将其推入数组，满足前序遍历“根左右”的特性。
+ *		II.	MostRightNode 不为空且等于 CurNode，此时遍历的 CurNode 其实不是首次访问，而是由 CurNode.left 右移而来，
+ *			因为之前优先左移，所以此时回到之前标记的根节点，就需要右移。这里需要注意将 MostRightNode.right = nullptr，
+ *			本质上只是借用了 MostRightNode 叶子节点的右侧空指针，用完后需要重置。
+ * （2）CurNode.left 为空，直接推入 CurNode 节点，这一步符合前序遍历“根左右”和中序遍历“左根右”的特性。
  * 
  * 
  * 【解题分析】
@@ -38,9 +46,12 @@
  * 方法二：
  * 时间复杂度：O(n)
  * 空间复杂度：O(n)
+ * 方法三：
+ * 时间复杂度：O(n)
+ * 空间复杂度：O(1)
  *
  * @author FrankX
- * @date 2021-
+ * @date 2021-06-21
  **************************************************************************************************/
 
 #include <iostream>
@@ -123,27 +134,25 @@ void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>
 
 			if (!pMostRight->right)
 			{
+				// 根 
 				resultArr.push_back(pCur);
 
-				pMostRight->right = pCur;
 				pCur = pCur->left;
+				pMostRight->right = pCur;
 				continue;
 			}
 			else
 			{
-				//resultArr.push_back(pCur);
-
 				pCur = pCur->right;
 				pMostRight->right = nullptr;
 			}
 		}
 		else
 		{
+			// 左右 
 			resultArr.push_back(pCur);
 			pCur = pCur->right;
 		}
-
-		
 	}
 }
 
