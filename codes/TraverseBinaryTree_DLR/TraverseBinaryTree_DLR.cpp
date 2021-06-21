@@ -81,7 +81,11 @@ struct TreeNode
 /** 递归遍历 */
 void TraverseBinaryTree_DLR_Recursion(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
 {
-	if (!treeRoot) return;
+	if (!treeRoot)
+	{
+		resultArr.clear();
+		return;
+	}
 
 	// 根
 	resultArr.push_back(treeRoot);
@@ -96,6 +100,12 @@ void TraverseBinaryTree_DLR_Recursion(TreeNode<int>* treeRoot, vector<TreeNode<i
 /** 利用栈迭代遍历 */
 void TraverseBinaryTree_DLR_Stack(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
 {
+	if (!treeRoot)
+	{
+		resultArr.clear();
+		return;
+	}
+
 	stack<TreeNode<int>*> tempStack({ treeRoot });
 	TreeNode<int>* node = nullptr;
 
@@ -117,6 +127,12 @@ void TraverseBinaryTree_DLR_Stack(TreeNode<int>* treeRoot, vector<TreeNode<int>*
 /** Morris（莫里斯）遍历 */
 void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
 {
+	if (!treeRoot)
+	{
+		resultArr.clear();
+		return;
+	}
+
 	TreeNode<int>* pCur = treeRoot;
 	// 左子树最右侧节点 
 	TreeNode<int>* pMostRight = nullptr;
@@ -137,14 +153,14 @@ void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>
 				// 根 
 				resultArr.push_back(pCur);
 
-				pCur = pCur->left;
 				pMostRight->right = pCur;
+				pCur = pCur->left;
 				continue;
 			}
 			else
 			{
-				pCur = pCur->right;
 				pMostRight->right = nullptr;
+				pCur = pCur->right;
 			}
 		}
 		else
