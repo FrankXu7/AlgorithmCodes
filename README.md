@@ -40,3 +40,4 @@
 33. [简单 - 136th] [只出现一次的数字(AppearOnceNumber)](https://leetcode-cn.com/problems/single-number/)
 34. [简单 - 141th] [存在环形链表(ExistCircularList)](https://leetcode-cn.com/problems/linked-list-cycle/)
 35. [简单 - 144th] [二叉树的前序遍历(TraverseBinaryTree_DLR)](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)
+36. [简单 - 145th] [二叉树的后续遍历(TraverseBinaryTree_LRD)](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/)
