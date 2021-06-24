@@ -37,7 +37,8 @@
  *			而是由 CurNode.left 右移而来，因为之前优先左移，所以此时回到之前标记的根节点，就需要右移。
  *			这里需要注意将 MostRightNode.right = nullptr，本质上只是借用了 MostRightNode 叶子节点的右侧空指针，
  *			用完后需要重置。
- * （2）CurNode.left 为空，直接推入 CurNode 节点，这一步符合前序遍历“根左右”和中序遍历“左根右”的特性。
+ * （2）CurNode.left 为空，直接推入 CurNode 节点，这一步符合前序遍历“根左右”和中序遍历“左根右”的特性，这一步也保证了
+ *		步骤（1）的第 II 种情况中，不会出现 MostRightNode.right 不为空且不等于 CurNode的情况。
  * 
  * 
  * 【解题分析】
