@@ -3,52 +3,77 @@
 template<typename T>
 MinStack<T>::MinStack()
 {
-	// 因为 T 是基础的数字类型，初始化为0 
-	MinElement = 0;
+}
 
-	DataList = std::list<T>();
+template<typename T>
+MinStack<T>::~MinStack()
+{
+	Node<T>* pNode = nullptr;
+	while (pTail)
+	{
+		pNode = pTail;
+		pTail = pTail->front;
+
+		delete pNode;
+	}
+
+	pNode = nullptr;
 }
 
 template<typename T>
 T MinStack<T>::GetMin()
 {
-	return MinElement;
+	return pMin->data;
 }
 
 template<typename T>
 void MinStack<T>::Push(T element)
 {
-	DataList.push_back(element);
+	if (!pTail)
+	{
+		pTail = new Node<T>(element);
+	}
+	else
+	{
+		Node<T>* pNode = new Node<T>(element);
+		pNode->front = pTail;
+		pTail = pNode;
+	}
 
-	SetMinElement();
+	if (!pMin || element < pMin->data) pMin = pTail;
 }
 
 template<typename T>
 T MinStack<T>::Top()
 {
-	return DataList.back();
+	return pTail->data;
 }
 
 template<typename T>
-T MinStack<T>::Pop()
+void MinStack<T>::Pop()
 {
-	T topElement = DataList.back();
-	DataList.pop_back();
+	// 删除链表末尾元素
+	Node<T>* pNode = pTail;
+	pTail = pTail->front;
 
-	SetMinElement();
+	// 弹出的栈顶元素若刚好就是最小节点，重新遍历出最小节点，标记此状态
+	bool shouldFindMin = (pNode == pMin);
 
-	return topElement;
-}
+	delete pNode;
+	pNode = nullptr;
 
-template<typename T>
-void MinStack<T>::SetMinElement()
-{
-	typename std::list<T>::iterator itr = DataList.begin();
-	MinElement = *(itr++);
-
-	for (; itr != DataList.end(); ++itr)
+	if (shouldFindMin)
 	{
-		if (*itr < MinElement)
-			MinElement = *itr;
+		pMin = pTail;
+		pNode = pTail->front;
+		while (pNode)
+		{
+			if (pNode->data < pMin->data)
+			{
+				pMin = pNode;
+			}
+
+			pNode = pNode->front;
+		}
 	}
 }

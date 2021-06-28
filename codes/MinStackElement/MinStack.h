@@ -3,7 +3,19 @@
 
 #pragma once
 
-#include <list>
+/** 反向链表结构 */
+template<typename T>
+struct Node
+{
+	T  data;
+	Node<T>* front;
+
+	Node<T>(T _data)
+	{
+		data = _data;
+		front = nullptr;
+	}
+};
 
 /**
  * T 为基础的数字类数据类型，如int,float,double等
@@ -13,6 +25,8 @@ class MinStack
 {
 public:
 	MinStack();
+	~MinStack();
+
 	/**
 	 * @brief 获取自定义栈的最小元素
 	 * @return 返回成员变量 MinElement
@@ -32,22 +46,17 @@ public:
 	T Top();
 
 	/**
-	 * @brief 弹出栈顶元素
-	 * @return 栈顶元素
+	 * @brief 弹出栈顶元素，每次弹出后，需要重新确定最小节点
 	 */
-	T Pop();
+	void Pop();
 
 private:
 	/** 栈内最小元素 */
-	T MinElement;
-	/** 用以存储数据的list */
-	std::list<T> DataList;
-
-	/**
-	 * @brief 设置栈的最小元素，在每次出入栈的时候需要调用
-	 */
-	void SetMinElement();
+	Node<T>* pMin;
+	/** 用以存储数据的链表尾指针 */
+	Node<T>* pTail;
 };
 
 #endif
+
 
