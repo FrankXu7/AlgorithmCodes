@@ -32,10 +32,25 @@
  * @author FrankX
  * @date 2021-
  **************************************************************************************************/
+#include <iostream>
 #include <vector>
+#include "MinStack.h"
 using namespace std;
 
 int main()
 {
+	MinStack<int>* ob = new MinStack<int>();
+
+	//ob->Push(-2);
+	//ob->Push(0);
+	//ob->Push(-3);
+	//int minElement = ob->GetMin();
+	//ob->Pop();
+	//int topElement = ob->Top();
+	//minElement = ob->GetMin();
+
+	//delete ob;
+	//ob = nullptr;
+
 	return 0;
 }
