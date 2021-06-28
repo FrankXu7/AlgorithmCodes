@@ -1,5 +1,7 @@
-#ifndef _MIN_STACK_CLASS_
-#define _MIN_STACK_CLASS_
+#ifndef _MIN_STACK_CLASS_DEFINE_
+#define _MIN_STACK_CLASS_DEFINE_
+
+#pragma once
 
 #include <list>
 
@@ -46,7 +48,6 @@ private:
 	 */
 	void SetMinElement();
 };
-
 
 #endif
 

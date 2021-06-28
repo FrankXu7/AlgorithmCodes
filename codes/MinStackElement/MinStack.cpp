@@ -5,7 +5,7 @@ MinStack<T>::MinStack()
 {
 	// 因为 T 是基础的数字类型，初始化为0 
 	MinElement = 0;
-	
+
 	DataList = std::list<T>();
 }
 
@@ -44,6 +44,8 @@ template<typename T>
 void MinStack<T>::SetMinElement()
 {
 	typename std::list<T>::iterator itr = DataList.begin();
+	MinElement = *(itr++);
+
 	for (; itr != DataList.end(); ++itr)
 	{
 		if (*itr < MinElement)
