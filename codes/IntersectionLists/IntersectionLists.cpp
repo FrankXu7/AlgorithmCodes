@@ -11,19 +11,21 @@
  * 相交节点：C1
  *
  * 【解题思路】
- * 两个相交的单链表，它们从尾部节点开始，一定存在若干个相同的节点，所以可以遍历并将两个单链表的地址
- * 存储在两个容器数组内，然后再反向遍历容器元素。如果首个末尾元素不相同，则两个单链表没有相交节点，
- * 否则，一直从后往前反向遍历，直到找到两个不相同的节点为止，即找到了两个单链表相交的起始节点。
+ * 首先，两个单链表如果至少一个为空，肯定没有相交节点。
+ * 然后考虑两个存在相交的单链表，它们从尾部节点开始，一定存在若干个相同的节点。
+ * 所以可以将链表1节点地址保存到map，然后遍历链表2，看遍历链表2中的节点，是否在链表1生成的map中，
+ * 如果存在则返回之，否则就是没有相交节点。
  *
  * 【解题分析】
- * 时间复杂度：O(n) 会有两轮独立的遍历，实际时间复杂度为：链表1的长度 + 链表2的长度
- * 空间复杂度：O(n) 两个容器数组存储链表地址，实际空间复杂度为：容器1的空间 + 容器2的空间
+ * 时间复杂度：O(n) 
+ * 空间复杂度：O(n) 
  *
  * @author FrankX
  * @date 2021-06-29
  **************************************************************************************************/
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 
 template<typename T>
@@ -48,40 +50,28 @@ Node<T>* IntersectionLists(Node<T>* pList1, Node<T>* pList2)
 {
 	if (!pList1 || !pList2) return nullptr;
 
-	vector<Node<T>*> pVec1;
-	vector<Node<T>*> pVec2;
-
-	while (pList1 || pList2)
+	// 以节点作为key，保存在一个map中便于遍历
+	map<Node<T>*, bool> mapList1;
+	while (pList1)
 	{
-		if (pList1)
-		{
-			pVec1.push_back(pList1);
-			pList1 = pList1->next;
-		}
-
-		if (pList2)
-		{
-			pVec2.push_back(pList2);
-			pList2 = pList2->next;
-		}
+		mapList1.insert(make_pair(pList1, true));
+		pList1 = pList1->next;
 	}
 
-	Node<T>* pNode = nullptr;
-	typename vector<Node<T>*>::reverse_iterator itr1 = pVec1.rbegin();
-	typename vector<Node<T>*>::reverse_iterator itr2 = pVec2.rbegin();
-	// 存在相同节点，找出第一个相同节点
-	if (*itr1 == *itr2)
+	typename map<Node<T>*, bool>::iterator nodeItr;
+	while (pList2)
 	{
-		pNode = *itr1;
-		++itr1;
-		++itr2;
-		for (; itr1 != pVec1.rend() && itr2 != pVec2.rend(); ++itr1, ++itr2)
+		// find接口的时间复杂度为O(logN)
+		nodeItr = mapList1.find(pList2);
+		if (nodeItr != mapList1.end())
 		{
-			if (*itr1 == *itr2) pNode = *itr1;
+			// 找到后返回节点指针 
+			return nodeItr->first;
 		}
+		pList2 = pList2->next;
 	}
 
-	return pNode;
+	return nullptr;
 }
 
 /**
