@@ -152,7 +152,7 @@ void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>
 
 			if (!pMostRight->right)
 			{
-				// 根 
+				// 根，第一次访问就输出，满足前序遍历“根左右”特性 
 				resultArr.push_back(pCur);
 
 				pMostRight->right = pCur;
@@ -161,6 +161,12 @@ void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>
 			}
 			else
 			{
+				/**
+				 * resultArr.push_back(pCur);
+				 * 
+				 * 如果在这里输出，节点被再次访问，满足中序遍历“左根右”的特性
+				 */
+
 				pMostRight->right = nullptr;
 				pCur = pCur->right;
 			}

@@ -228,7 +228,7 @@ void TraverseBinaryTree_LRD_Morris(TreeNode<int>* treeRoot, list<TreeNode<int>*>
 			else
 			{
 				/**
-				 * 此时回到了之前某个节点A的最右侧节点的右指针所指向的节点，即A节点，
+				 * 此时回到了之前遍历到某个节点A时，以A为根节点的最右侧节点的指向，即指向A本身，
 				 * 逆序遍历A节点的左侧分支最右侧路径并输出，这样就保证了先输出右节点，再输出根节点；
 				 */
 				if (pCur && pCur->left)
