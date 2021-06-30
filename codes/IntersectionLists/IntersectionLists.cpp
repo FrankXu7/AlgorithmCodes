@@ -17,7 +17,7 @@
  * 如果存在则返回之，否则就是没有相交节点。
  *
  * 【解题分析】
- * 时间复杂度：O(n) 
+ * 时间复杂度：O(n) 实际为两个链表长度之和，需要分别遍历两个链表1次
  * 空间复杂度：O(n) 
  *
  * @author FrankX
@@ -39,8 +39,6 @@ struct Node
 		data = _data;
 		next = nullptr;
 	}
-
-	bool isd = false;
 };
 
 #define N(Type, value) (new Node<Type>(value))
