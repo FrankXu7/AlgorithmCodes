@@ -37,6 +37,7 @@ string ExcelColumnName(unsigned int&& colNum)
 
 int main()
 {
-	cout << "Excel column name: " << ExcelColumnName(676) << endl;
+	cout << "Excel column name: " << ExcelColumnName(701) << endl;
+
 	return 0;
 }
