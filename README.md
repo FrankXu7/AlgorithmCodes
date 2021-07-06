@@ -50,4 +50,7 @@
 37. [[简单 - 155th]](https://leetcode-cn.com/problems/min-stack/) [最小栈元素(MinStackElement)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MinStackElement)
 38. [[简单 - 160th]](https://leetcode-cn.com/problems/intersection-of-two-linked-lists/) [两个相交的链表(IntersectionLists)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/IntersectionLists)
 39. [[简单 - 167th]](https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/) [升序数组的两数之和(SumOfTwoNumbersSorted)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SumOfTwoNumbersSorted)
-40. [[简单 - 171th]](https://leetcode-cn.com/problems/excel-sheet-column-number/) [Excel表格列名序号(ExcelColumnName)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ExcelColumnName)
+40. [[简单 - 168th]](https://leetcode-cn.com/problems/excel-sheet-column-title/) [Excel表格列名称(ExcelColumnName)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ExcelColumnName)
+41. [[简单 - 169th]]
+42. [[简单 - 171th]](https://leetcode-cn.com/problems/excel-sheet-column-number/) [Excel表格列序号(ExcelColumnNumber)]()
+
