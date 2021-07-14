@@ -2,10 +2,10 @@
  * 【题目描述】
  * 给定一个在区间[1, 30]的数n，返回外观数列的第n项；
  * 外观数列为一个整数数列，第k+1项是对第k项的描述，如：
- * 第1项：1		首项；
+ * 第1项：1			首项；
  * 第2项：11		前一项由1个1组成；
  * 第3项：21		前一项由2个1组成；
- * 第4项：1211	前一项由1个2，1个1组成；
+ * 第4项：1211		前一项由1个2，1个1组成；
  * 第5项：111221	前一项由1个1，1个2，2个1组成；
  * ......
  *
@@ -30,7 +30,7 @@
 
 using namespace std;
 
-string ExteriorArray(unsigned int & n)
+string ExteriorArray(unsigned int &n)
 {
 	string lastStr = "";
 	string curStr = "1";
@@ -73,7 +73,8 @@ int main()
 	unsigned int n = 1;
 	cout << "Input which item [1, 30]: ";
 	cin >> n;
-	if (n > 30) n = 30;
+	if (n > 30)
+		n = 30;
 	cout << "No." << n << " Exterior string: " << ExteriorArray(n) << endl;
 
 	return 0;
