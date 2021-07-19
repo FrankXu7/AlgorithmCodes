@@ -18,7 +18,7 @@
  * 
  * 方法二：
  * 考虑到多数元素的个数大于n/2，若一个数组是已经排序好的，那么这个在下标 n/2 位置的元素，一定是多数元素。
- * 即使没有排序好，也可以用框架提供的排序算法或者自实现一个简单的排序，这里采用归并排序。
+ * 对没有排序好的元素，可自实现一个简单的排序算法，这里直接用语言提供的 std::sort 接口。
  * 
  * 方法三：
  * 利用摩尔投票法，将两两相邻的一对不相等的数据剔除，因为多数元素个数大于 n/2，所以最终剩余的投票数量大于0的元素，
@@ -33,8 +33,8 @@
  * 时间复杂度：O(n)
  * 空间复杂度：O(n)
  * 方法二：
- * 时间复杂度：O(nlogn) 归并排序的时间复杂度；如果是已经排序好的数组，时间复杂度是O(1)
- * 空间复杂度：O(nlogn) 归并排序的空间复杂度；
+ * 时间复杂度：O(nlogn) std::sort的时间复杂度；如果是已经排序好的数组，时间复杂度是O(1)
+ * 空间复杂度：O(1) std::sort的空间复杂度；
  * 方法三：
  * 时间复杂度：O(n)
  * 空间复杂度：O(1)
@@ -76,15 +76,7 @@ template<typename T>
 const T MajorityElement_2(vector<T>& dataArr)
 {
 	// 直接用内置排序算法
-	//sort(dataArr.begin(), dataArr.end());
-
-	unsigned int dataSize = dataArr.size();
-
-	for (unsigned int stepRange = 1; stepRange < dataSize; stepRange *= 2)
-	{
-
-	}
-
+	sort(dataArr.begin(), dataArr.end());
 	return dataArr[static_cast<unsigned int>(dataArr.size() / 2)];
 }
 
