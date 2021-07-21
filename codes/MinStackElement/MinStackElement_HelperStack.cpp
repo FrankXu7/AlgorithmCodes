@@ -31,8 +31,8 @@
  * 特别注意：首个元素默认为最小值。
  * 
  * 【解题分析】
- * 时间复杂度：O(n)
- * 空间复杂度：O(n) 用了一个辅助栈minStack来存储最小值数据
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(N) 用了一个辅助栈minStack来存储最小值数据
  *
  * @author FrankX
  * @date 2021-06-28
@@ -41,8 +41,8 @@
 #include <stack>
 using namespace std;
 
-void Push(int element, stack<int>& dataStack, stack<int>& minStack);
-void Pop(stack<int>& dataStack, stack<int>& minStack);
+void Push(int element, stack<int> &dataStack, stack<int> &minStack);
+void Pop(stack<int> &dataStack, stack<int> &minStack);
 
 void MinStackElement_HelperStack()
 {
@@ -51,20 +51,20 @@ void MinStackElement_HelperStack()
 	// 存储最小值数据
 	stack<int> minStack;
 
-	Push(-2, dataStack, minStack); // 入栈 -2
-	Push(0, dataStack, minStack); // 入栈 0
-	Push(-3, dataStack, minStack); // 入栈 -3
-	int minElement = minStack.top(); // 返回最小元素 -3
-	Pop(dataStack, minStack); // 弹出栈顶元素
+	Push(-2, dataStack, minStack);	  // 入栈 -2
+	Push(0, dataStack, minStack);	  // 入栈 0
+	Push(-3, dataStack, minStack);	  // 入栈 -3
+	int minElement = minStack.top();  // 返回最小元素 -3
+	Pop(dataStack, minStack);		  // 弹出栈顶元素
 	int topElement = dataStack.top(); // 返回栈顶元素
-	minElement = minStack.top(); // 返回最小元素 -2
+	minElement = minStack.top();	  // 返回最小元素 -2
 }
 
-void Push(int element, stack<int>& dataStack, stack<int>& minStack)
+void Push(int element, stack<int> &dataStack, stack<int> &minStack)
 {
 	dataStack.push(element);
-	
-	// 首个元素默认为最小值 
+
+	// 首个元素默认为最小值
 	if (minStack.empty())
 	{
 		minStack.push(element);
@@ -73,11 +73,11 @@ void Push(int element, stack<int>& dataStack, stack<int>& minStack)
 
 	if (element < minStack.top())
 		minStack.push(element);
-	else 
+	else
 		minStack.push(minStack.top());
 }
 
-void Pop(stack<int>& dataStack, stack<int>& minStack)
+void Pop(stack<int> &dataStack, stack<int> &minStack)
 {
 	dataStack.pop();
 	minStack.pop();

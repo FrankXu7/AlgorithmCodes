@@ -30,13 +30,13 @@
  *
  * 【解题分析】
  * 方法一：
- * 时间复杂度：O(n)
- * 空间复杂度：O(n)
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(N)
  * 方法二：
- * 时间复杂度：O(nlogn) std::sort的时间复杂度；如果是已经排序好的数组，时间复杂度是O(1)
+ * 时间复杂度：O(NlogN) std::sort的时间复杂度；如果是已经排序好的数组，时间复杂度是O(1)
  * 空间复杂度：O(1) std::sort的空间复杂度；
  * 方法三：
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  * 
  * 
@@ -52,16 +52,16 @@
 using namespace std;
 
 /** 算法函数依据题意，假设所给数组非空，且一定存在一个出现 n/2 次以上的元素  */
-template<typename T>
-const T MajorityElement_1(list<T>& dataList)
+template <typename T>
+const T MajorityElement_1(list<T> &dataList)
 {
-	// 此处只统计了出现最多的元素，但按照题意，给定数组中，出现最多的元素，出现次数一定大于 n/2 
+	// 此处只统计了出现最多的元素，但按照题意，给定数组中，出现最多的元素，出现次数一定大于 n/2
 	T majorityNum = 0;
 	map<T, unsigned int> countMap;
 
 	for (typename list<T>::iterator itr = dataList.begin(); itr != dataList.end(); ++itr)
 	{
-		// map在使用成员访问操作符时，如果没有这个key，会默认创建一个 
+		// map在使用成员访问操作符时，如果没有这个key，会默认创建一个
 		++countMap[*itr];
 		if (countMap[*itr] > countMap[majorityNum])
 		{
@@ -72,16 +72,16 @@ const T MajorityElement_1(list<T>& dataList)
 	return majorityNum;
 }
 
-template<typename T>
-const T MajorityElement_2(vector<T>& dataArr)
+template <typename T>
+const T MajorityElement_2(vector<T> &dataArr)
 {
 	// 直接用内置排序算法
 	sort(dataArr.begin(), dataArr.end());
 	return dataArr[static_cast<unsigned int>(dataArr.size() / 2)];
 }
 
-template<typename T>
-const T MajorityElement_3(forward_list<T>& dataList)
+template <typename T>
+const T MajorityElement_3(forward_list<T> &dataList)
 {
 	typename forward_list<T>::iterator itr = dataList.begin();
 	pair<T, int> voteNum = make_pair(*(itr++), 1);
@@ -103,23 +103,23 @@ const T MajorityElement_3(forward_list<T>& dataList)
 
 int main()
 {
-	list<int> dataList = { 6, 3, 6, 6, 3, 6, 2, 6, 1, 6 };
+	list<int> dataList = {6, 3, 6, 6, 3, 6, 2, 6, 1, 6};
 	cout << "Array:\n";
 	for (list<int>::iterator itr = dataList.begin(); itr != dataList.end(); ++itr)
 		cout << *itr << ", ";
 	cout << "\n[Solution 1] The majority element is: " << MajorityElement_1(dataList) << endl;
 
-	vector<int> dataArr = { 6, 3, 6, 6, 3, 6, 2, 6, 1, 6 };
+	vector<int> dataArr = {6, 3, 6, 6, 3, 6, 2, 6, 1, 6};
 	cout << "Array:\n";
 	for (vector<int>::iterator itr = dataArr.begin(); itr != dataArr.end(); ++itr)
 		cout << *itr << ", ";
 	cout << "\n[Solution 2] The majority element is: " << MajorityElement_2(dataArr) << endl;
 
-	forward_list<int> dataSingleList = { 6, 3, 6, 6, 3, 6, 2, 6, 1, 6 };
+	forward_list<int> dataSingleList = {6, 3, 6, 6, 3, 6, 2, 6, 1, 6};
 	cout << "\nArray:\n";
 	for (forward_list<int>::iterator itr = dataSingleList.begin(); itr != dataSingleList.end(); ++itr)
 		cout << *itr << ", ";
 	cout << "\n[Solution 3] The majority element is: " << MajorityElement_3(dataSingleList) << endl;
-	 
+
 	return 0;
 }

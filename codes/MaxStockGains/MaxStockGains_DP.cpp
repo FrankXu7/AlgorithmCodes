@@ -20,25 +20,26 @@
  * （2）当前出售收益，若大于记录的最大收益，则更新记录的最大收益；
  *
  * 【解题分析】
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
  * @date 2021-06-04
- **************************************************************************************************/ 
+ **************************************************************************************************/
 #include <iostream>
 #include <vector>
 using namespace std;
 
-int MaxStockGains_DP(const vector<int>& prices)
+int MaxStockGains_DP(const vector<int> &prices)
 {
-	if (prices.size() == 0) return 0;
+	if (prices.size() == 0)
+		return 0;
 
 	int maxGains = 0;
 	int minPrice = prices[0];
 	unsigned int dataSize = prices.size();
 
-	// 仅仅用于打印购买和售出的下标 
+	// 仅仅用于打印购买和售出的下标
 	unsigned int buyIdx = 0, sellIdx = 0;
 
 	for (unsigned int idx = 0; idx < dataSize; ++idx)
@@ -48,7 +49,7 @@ int MaxStockGains_DP(const vector<int>& prices)
 			minPrice = prices[idx];
 			buyIdx = idx;
 		}
-		// 这里需要注意一定要else if，因为买入和售出不能是同一天 
+		// 这里需要注意一定要else if，因为买入和售出不能是同一天
 		else if (prices[idx] - minPrice > maxGains)
 		{
 			maxGains = prices[idx] - minPrice;
@@ -56,11 +57,11 @@ int MaxStockGains_DP(const vector<int>& prices)
 		}
 	}
 
-	// 显示买入和卖出的信息，卖出的时间肯定晚于买入的时间 
+	// 显示买入和卖出的信息，卖出的时间肯定晚于买入的时间
 	if (sellIdx > buyIdx)
 	{
 		cout << "\n\nBuy prices[" << buyIdx << "]=" << prices[buyIdx]
-			<< "\nSell prices[" << sellIdx << "]=" << prices[sellIdx] << endl;
+			 << "\nSell prices[" << sellIdx << "]=" << prices[sellIdx] << endl;
 	}
 
 	return maxGains;
@@ -68,9 +69,10 @@ int MaxStockGains_DP(const vector<int>& prices)
 
 int main()
 {
-	vector<int> prices = { 7,6,4,3,1,2,1,4,4,9 };
+	vector<int> prices = {7, 6, 4, 3, 1, 2, 1, 4, 4, 9};
 	cout << "Stock prices:\n";
-	for (const int& num : prices) cout << num << ", ";
+	for (const int &num : prices)
+		cout << num << ", ";
 
 	cout << "\nMax Gains: " << MaxStockGains_DP(prices) << endl;
 

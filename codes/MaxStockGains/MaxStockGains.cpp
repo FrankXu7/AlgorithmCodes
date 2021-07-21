@@ -16,7 +16,7 @@
  * 遍历价格数组，并依次与当前遍历数据后面的价格计算利润，找到最大利润。
  * 
  * 【解题分析】
- * 时间复杂度：O(n^2)
+ * 时间复杂度：O(N^2)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -26,14 +26,15 @@
 #include <vector>
 using namespace std;
 
-int MaxStockGains(const vector<int>& prices)
+int MaxStockGains(const vector<int> &prices)
 {
-	if (prices.size() == 0) return 0;
+	if (prices.size() == 0)
+		return 0;
 
 	int maxGains = 0;
 	unsigned int dataSize = prices.size();
 
-	// 用于打印买入和卖出的下标，与算法本身无关 
+	// 用于打印买入和卖出的下标，与算法本身无关
 	unsigned int saveBuyIdx = 0, saveSellIdx = 0;
 
 	for (unsigned int buyIdx = 0; buyIdx < dataSize; ++buyIdx)
@@ -50,11 +51,11 @@ int MaxStockGains(const vector<int>& prices)
 		}
 	}
 
-	// 显示买入和卖出的信息，卖出的时间肯定晚于买入的时间 
+	// 显示买入和卖出的信息，卖出的时间肯定晚于买入的时间
 	if (saveSellIdx > saveBuyIdx)
 	{
 		cout << "\n\nBuy prices[" << saveBuyIdx << "]=" << prices[saveBuyIdx]
-			<< "\nSell prices[" << saveSellIdx << "]=" << prices[saveSellIdx] << endl;
+			 << "\nSell prices[" << saveSellIdx << "]=" << prices[saveSellIdx] << endl;
 	}
 
 	return maxGains;
@@ -62,9 +63,10 @@ int MaxStockGains(const vector<int>& prices)
 
 int main()
 {
-	vector<int> prices = { 7,6,4,3,1,2,1,4,4,4 };
+	vector<int> prices = {7, 6, 4, 3, 1, 2, 1, 4, 4, 4};
 	cout << "Stock prices:\n";
-	for (const int& num : prices) cout << num << ", ";
+	for (const int &num : prices)
+		cout << num << ", ";
 
 	cout << "\nMax Gains: " << MaxStockGains(prices) << endl;
 

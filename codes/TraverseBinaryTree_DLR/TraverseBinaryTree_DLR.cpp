@@ -43,13 +43,13 @@
  * 
  * 【解题分析】
  * 方法一：
- * 时间复杂度：O(n)
- * 空间复杂度：O(n)
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(N)
  * 方法二：
- * 时间复杂度：O(n)
- * 空间复杂度：O(n)
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(N)
  * 方法三：
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -62,14 +62,14 @@
 #include <queue>
 using namespace std;
 
-template<typename T>
+template <typename T>
 struct TreeNode
 {
 	T data;
-	TreeNode<T>* left;
-	TreeNode<T>* right;
+	TreeNode<T> *left;
+	TreeNode<T> *right;
 	/** 父节点主要用于打印的时候标名关系，算法本身并不需要 */
-	TreeNode<T>* dad;
+	TreeNode<T> *dad;
 
 	TreeNode<T>(T _data)
 	{
@@ -81,7 +81,7 @@ struct TreeNode
 #define N(value) (new TreeNode<int>(value))
 
 /** 递归遍历 */
-void TraverseBinaryTree_DLR_Recursion(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
+void TraverseBinaryTree_DLR_Recursion(TreeNode<int> *treeRoot, vector<TreeNode<int> *> &resultArr)
 {
 	if (!treeRoot)
 	{
@@ -100,7 +100,7 @@ void TraverseBinaryTree_DLR_Recursion(TreeNode<int>* treeRoot, vector<TreeNode<i
 }
 
 /** 利用栈迭代遍历 */
-void TraverseBinaryTree_DLR_Stack(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
+void TraverseBinaryTree_DLR_Stack(TreeNode<int> *treeRoot, vector<TreeNode<int> *> &resultArr)
 {
 	if (!treeRoot)
 	{
@@ -108,8 +108,8 @@ void TraverseBinaryTree_DLR_Stack(TreeNode<int>* treeRoot, vector<TreeNode<int>*
 		return;
 	}
 
-	stack<TreeNode<int>*> tempStack({ treeRoot });
-	TreeNode<int>* node = nullptr;
+	stack<TreeNode<int> *> tempStack({treeRoot});
+	TreeNode<int> *node = nullptr;
 
 	while (!tempStack.empty())
 	{
@@ -127,7 +127,7 @@ void TraverseBinaryTree_DLR_Stack(TreeNode<int>* treeRoot, vector<TreeNode<int>*
 }
 
 /** Morris（莫里斯）遍历 */
-void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
+void TraverseBinaryTree_DLR_Morris(TreeNode<int> *treeRoot, vector<TreeNode<int> *> &resultArr)
 {
 	if (!treeRoot)
 	{
@@ -135,9 +135,9 @@ void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>
 		return;
 	}
 
-	TreeNode<int>* pCur = treeRoot;
-	// 左子树最右侧节点 
-	TreeNode<int>* pMostRight = nullptr;
+	TreeNode<int> *pCur = treeRoot;
+	// 左子树最右侧节点
+	TreeNode<int> *pMostRight = nullptr;
 
 	while (pCur)
 	{
@@ -152,7 +152,7 @@ void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>
 
 			if (!pMostRight->right)
 			{
-				// 根，第一次访问就输出，满足前序遍历“根左右”特性 
+				// 根，第一次访问就输出，满足前序遍历“根左右”特性
 				resultArr.push_back(pCur);
 
 				pMostRight->right = pCur;
@@ -173,7 +173,7 @@ void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>
 		}
 		else
 		{
-			// 左右 
+			// 左右
 			resultArr.push_back(pCur);
 			pCur = pCur->right;
 		}
@@ -184,7 +184,7 @@ void TraverseBinaryTree_DLR_Morris(TreeNode<int>* treeRoot, vector<TreeNode<int>
  * @brief 依据数组创建一颗二叉树
  * @param treeData 数据容器，右值引用
  */
-TreeNode<int>* CreateTree(vector<TreeNode<int>*>&& treeData)
+TreeNode<int> *CreateTree(vector<TreeNode<int> *> &&treeData)
 {
 	unsigned int dataSize = treeData.size();
 
@@ -197,9 +197,9 @@ TreeNode<int>* CreateTree(vector<TreeNode<int>*>&& treeData)
 		return nullptr;
 	}
 
-	TreeNode<int>* head = treeData[0];
+	TreeNode<int> *head = treeData[0];
 
-	TreeNode<int>* node = nullptr;
+	TreeNode<int> *node = nullptr;
 	for (unsigned int idx = 0, n = 0; n < dataSize; ++idx)
 	{
 		node = treeData[idx];
@@ -224,19 +224,22 @@ TreeNode<int>* CreateTree(vector<TreeNode<int>*>&& treeData)
  * @brief 释放一颗二叉树内存
  * @param treeRoot 树根节点，指针引用，释放后置nullptr
  */
-void DeleteTree(TreeNode<int>*& treeRoot)
+void DeleteTree(TreeNode<int> *&treeRoot)
 {
-	if (!treeRoot) return;
+	if (!treeRoot)
+		return;
 
-	queue<TreeNode<int>*> delQue({ treeRoot });
+	queue<TreeNode<int> *> delQue({treeRoot});
 
 	while (!delQue.empty())
 	{
 		treeRoot = delQue.front();
 		delQue.pop();
 
-		if (treeRoot->left) delQue.push(treeRoot->left);
-		if (treeRoot->right) delQue.push(treeRoot->right);
+		if (treeRoot->left)
+			delQue.push(treeRoot->left);
+		if (treeRoot->right)
+			delQue.push(treeRoot->right);
 
 		delete treeRoot;
 	}
@@ -248,7 +251,7 @@ void DeleteTree(TreeNode<int>*& treeRoot)
  * @brief 打印一颗二叉树，BFS遍历
  * @param treeRoot 树根节点，常量指针
  */
-void PrintTree(const TreeNode<int>* treeRoot)
+void PrintTree(const TreeNode<int> *treeRoot)
 {
 	if (!treeRoot)
 	{
@@ -256,8 +259,8 @@ void PrintTree(const TreeNode<int>* treeRoot)
 		return;
 	}
 
-	queue<const TreeNode<int>*> printQue({ treeRoot });
-	queue<const TreeNode<int>*> tempQue;
+	queue<const TreeNode<int> *> printQue({treeRoot});
+	queue<const TreeNode<int> *> tempQue;
 	unsigned int layerCount = 0;
 
 	while (!printQue.empty())
@@ -271,8 +274,7 @@ void PrintTree(const TreeNode<int>* treeRoot)
 
 			if (treeRoot)
 			{
-				(treeRoot->dad) ? cout << treeRoot->data << '(' << treeRoot->dad->data << "), " :
-					cout << treeRoot->data << "(null), ";
+				(treeRoot->dad) ? cout << treeRoot->data << '(' << treeRoot->dad->data << "), " : cout << treeRoot->data << "(null), ";
 			}
 			else
 				cout << "null, ";
@@ -290,34 +292,45 @@ void PrintTree(const TreeNode<int>* treeRoot)
 
 int main()
 {
-	TreeNode<int>* treeRoot = CreateTree({
-								 N(4),
-				   N(2),                       N(6),
-			N(1),         N(3),         N(5),         N(7),
-		N(11), N(22), N(33), N(44), N(55), N(66), N(77), N(88),
-		});
+	TreeNode<int> *treeRoot = CreateTree({
+		N(4),
+		N(2),
+		N(6),
+		N(1),
+		N(3),
+		N(5),
+		N(7),
+		N(11),
+		N(22),
+		N(33),
+		N(44),
+		N(55),
+		N(66),
+		N(77),
+		N(88),
+	});
 
 	cout << "The tree: \n";
 	PrintTree(treeRoot);
 
-	vector<TreeNode<int>*> resultArr;
+	vector<TreeNode<int> *> resultArr;
 	TraverseBinaryTree_DLR_Recursion(treeRoot, resultArr);
 	cout << "\n[Recursion] DLR Traverse array: \n";
-	for (vector<TreeNode<int>*>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
+	for (vector<TreeNode<int> *>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
 		cout << (*itr)->data << ", ";
 	cout << endl;
 
 	resultArr.clear();
 	TraverseBinaryTree_DLR_Stack(treeRoot, resultArr);
 	cout << "\n[Stack] DLR Traverse array: \n";
-	for (vector<TreeNode<int>*>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
+	for (vector<TreeNode<int> *>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
 		cout << (*itr)->data << ", ";
 	cout << endl;
 
 	resultArr.clear();
 	TraverseBinaryTree_DLR_Morris(treeRoot, resultArr);
 	cout << "\n[Morris] DLR Traverse array: \n";
-	for (vector<TreeNode<int>*>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
+	for (vector<TreeNode<int> *>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
 		cout << (*itr)->data << ", ";
 	cout << endl;
 

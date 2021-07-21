@@ -23,7 +23,7 @@
  * 返回最小元素 -2；
  *
  * 【解题思路】
- * 利用辅助栈来保存最小元素，会使得空间复杂度达到O(n)，可以用记录与最小值差值的方法，来保存数据。
+ * 利用辅助栈来保存最小元素，会使得空间复杂度达到O(N)，可以用记录与最小值差值的方法，来保存数据。
  * 即元素不直接入栈，而是与当前的最小值做差后再入栈，显然，出栈或获取栈顶元素时，需要还原。
  * 大致过程：
  * （1）入栈数据 element：实际的入栈元素 pushNum = element - minElement，如果 element >= minElement，
@@ -38,7 +38,7 @@
  * 因为一直记录着最小元素，所以符合题意，在常数时间内获取最小值。
  * 
  * 【解题分析】
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -48,25 +48,25 @@
 #include <stack>
 using namespace std;
 
-void Push(int element, stack<int>& dataStack, int& minElement);
-void Pop(stack<int>& dataStack, int& minElement);
-int Top(stack<int>& dataStack, int& minElement);
+void Push(int element, stack<int> &dataStack, int &minElement);
+void Pop(stack<int> &dataStack, int &minElement);
+int Top(stack<int> &dataStack, int &minElement);
 
 void MinStackElement_OneStack()
 {
 	stack<int> dataStack;
 	int minElement = 0;
 
-	Push(-2, dataStack, minElement); // 入栈 -2
-	Push(0, dataStack, minElement); // 入栈 0
-	Push(-3, dataStack, minElement); // 入栈 -3
-	minElement; // 当前最小元素
-	Pop(dataStack, minElement); // 弹出栈顶元素
+	Push(-2, dataStack, minElement);			 // 入栈 -2
+	Push(0, dataStack, minElement);				 // 入栈 0
+	Push(-3, dataStack, minElement);			 // 入栈 -3
+	minElement;									 // 当前最小元素
+	Pop(dataStack, minElement);					 // 弹出栈顶元素
 	int topElement = Top(dataStack, minElement); // 返回栈顶元素
-	minElement; // 当前最小元素
+	minElement;									 // 当前最小元素
 }
 
-void Push(int element, stack<int>& dataStack, int& minElement)
+void Push(int element, stack<int> &dataStack, int &minElement)
 {
 	if (dataStack.empty())
 	{
@@ -87,7 +87,7 @@ void Push(int element, stack<int>& dataStack, int& minElement)
 	dataStack.push(pushNum);
 }
 
-void Pop(stack<int>& dataStack, int& minElement)
+void Pop(stack<int> &dataStack, int &minElement)
 {
 	int pushNum = dataStack.top();
 	// 栈顶元素小于零，标识之前入栈时存在最小值更新，此最小值即为当时的入栈元素
@@ -100,10 +100,10 @@ void Pop(stack<int>& dataStack, int& minElement)
 	dataStack.pop();
 }
 
-int Top(stack<int>& dataStack, int& minElement)
+int Top(stack<int> &dataStack, int &minElement)
 {
 	int pushNum = dataStack.top();
-	// 栈顶元素大于零，标识之前入栈的元素大于入栈时的最小值，否则存在最小值更新，当前最小值即为当时的入栈元素 
+	// 栈顶元素大于零，标识之前入栈的元素大于入栈时的最小值，否则存在最小值更新，当前最小值即为当时的入栈元素
 	if (pushNum > 0)
 		return (pushNum + minElement);
 	else

@@ -61,16 +61,16 @@
  *
  * 【解题分析】
  * 方法一：
- * 时间复杂度：O(n)
- * 空间复杂度：O(n)
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(N)
  * 方法二：
- * 时间复杂度：O(n)
- * 空间复杂度：O(n)
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(N)
  * 方法三：
- * 时间复杂度：O(n)
- * 空间复杂度：O(n)
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(N)
  * 方法四：
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -83,13 +83,13 @@
 #include <list>
 using namespace std;
 
-template<typename T>
+template <typename T>
 struct TreeNode
 {
 	T data;
-	TreeNode<T>* left;
-	TreeNode<T>* right;
-	TreeNode<T>* dad; // 仅用于打印显示层次结构，不参与算法逻辑 
+	TreeNode<T> *left;
+	TreeNode<T> *right;
+	TreeNode<T> *dad; // 仅用于打印显示层次结构，不参与算法逻辑
 
 	TreeNode<T>(T _data)
 	{
@@ -101,7 +101,7 @@ struct TreeNode
 #define N(value) (new TreeNode<int>(value))
 
 /** 递归遍历 */
-void TraverseBinaryTree_LRD_Recursion(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
+void TraverseBinaryTree_LRD_Recursion(TreeNode<int> *treeRoot, vector<TreeNode<int> *> &resultArr)
 {
 	if (!treeRoot)
 	{
@@ -118,7 +118,7 @@ void TraverseBinaryTree_LRD_Recursion(TreeNode<int>* treeRoot, vector<TreeNode<i
 }
 
 /** 利用双栈迭代遍历 */
-void TraverseBinaryTree_LRD_TwoStack(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
+void TraverseBinaryTree_LRD_TwoStack(TreeNode<int> *treeRoot, vector<TreeNode<int> *> &resultArr)
 {
 	if (!treeRoot)
 	{
@@ -126,8 +126,8 @@ void TraverseBinaryTree_LRD_TwoStack(TreeNode<int>* treeRoot, vector<TreeNode<in
 		return;
 	}
 
-	stack<TreeNode<int>*> inputStack({ treeRoot });
-	stack<TreeNode<int>*> tempStack;
+	stack<TreeNode<int> *> inputStack({treeRoot});
+	stack<TreeNode<int> *> tempStack;
 
 	while (!inputStack.empty())
 	{
@@ -137,11 +137,13 @@ void TraverseBinaryTree_LRD_TwoStack(TreeNode<int>* treeRoot, vector<TreeNode<in
 		if (treeRoot)
 		{
 			tempStack.push(treeRoot);
-			// 也可以如下所示直接从后往前构建序列，这样就不需要再遍历一遍tempStack了 
+			// 也可以如下所示直接从后往前构建序列，这样就不需要再遍历一遍tempStack了
 			//resultArr.insert(resultArr.begin(), treeRoot);
 
-			if (treeRoot->left) inputStack.push(treeRoot->left);
-			if (treeRoot->right) inputStack.push(treeRoot->right);
+			if (treeRoot->left)
+				inputStack.push(treeRoot->left);
+			if (treeRoot->right)
+				inputStack.push(treeRoot->right);
 		}
 	}
 
@@ -153,7 +155,7 @@ void TraverseBinaryTree_LRD_TwoStack(TreeNode<int>* treeRoot, vector<TreeNode<in
 }
 
 /** 利用单栈迭代遍历 */
-void TraverseBinaryTree_LRD_OneStack(TreeNode<int>* treeRoot, vector<TreeNode<int>*>& resultArr)
+void TraverseBinaryTree_LRD_OneStack(TreeNode<int> *treeRoot, vector<TreeNode<int> *> &resultArr)
 {
 	if (!treeRoot)
 	{
@@ -161,9 +163,9 @@ void TraverseBinaryTree_LRD_OneStack(TreeNode<int>* treeRoot, vector<TreeNode<in
 		return;
 	}
 
-	stack <TreeNode<int>*> inputStack;
-	// 输出序列中的最后一个元素 
-	TreeNode<int>* lastNode = nullptr;
+	stack<TreeNode<int> *> inputStack;
+	// 输出序列中的最后一个元素
+	TreeNode<int> *lastNode = nullptr;
 
 	while (!inputStack.empty() || treeRoot)
 	{
@@ -192,9 +194,8 @@ void TraverseBinaryTree_LRD_OneStack(TreeNode<int>* treeRoot, vector<TreeNode<in
 	}
 }
 
-
 /** Morris（莫里斯）遍历，因为有逆序遍历的步骤，用list效率更高 */
-void TraverseBinaryTree_LRD_Morris(TreeNode<int>* treeRoot, list<TreeNode<int>*>& resultList)
+void TraverseBinaryTree_LRD_Morris(TreeNode<int> *treeRoot, list<TreeNode<int> *> &resultList)
 {
 	if (!treeRoot)
 	{
@@ -202,12 +203,12 @@ void TraverseBinaryTree_LRD_Morris(TreeNode<int>* treeRoot, list<TreeNode<int>*>
 		return;
 	}
 
-	TreeNode<int>* pCur = treeRoot;
+	TreeNode<int> *pCur = treeRoot;
 	/** 左子树最右侧节点 */
-	TreeNode<int>* pMostRight = nullptr;
+	TreeNode<int> *pMostRight = nullptr;
 
-	list<TreeNode<int>*>::iterator inPos;
-	TreeNode<int>* node = nullptr;
+	list<TreeNode<int> *>::iterator inPos;
+	TreeNode<int> *node = nullptr;
 
 	while (pCur)
 	{
@@ -252,7 +253,7 @@ void TraverseBinaryTree_LRD_Morris(TreeNode<int>* treeRoot, list<TreeNode<int>*>
 		}
 	}
 
-	// 逆序输出整个二叉树最右侧的分支 
+	// 逆序输出整个二叉树最右侧的分支
 	inPos = resultList.end();
 	while (treeRoot)
 	{
@@ -266,7 +267,7 @@ void TraverseBinaryTree_LRD_Morris(TreeNode<int>* treeRoot, list<TreeNode<int>*>
  * @param treeData 树节点容器，右值引用
  * @return 返回树根节点指针，指针指向内存并非在此函数内申请
  */
-TreeNode<int>* CreateTree(vector<TreeNode<int>*>&& treeData)
+TreeNode<int> *CreateTree(vector<TreeNode<int> *> &&treeData)
 {
 	// 空容器，或首节点为空的容器，都当作空树处理
 	if (treeData.empty() || !treeData[0])
@@ -278,10 +279,10 @@ TreeNode<int>* CreateTree(vector<TreeNode<int>*>&& treeData)
 		return nullptr;
 	}
 
-	TreeNode<int>* head = treeData[0];
+	TreeNode<int> *head = treeData[0];
 	unsigned int dataSize = treeData.size();
 
-	TreeNode<int>* node = nullptr;
+	TreeNode<int> *node = nullptr;
 	for (unsigned int idx = 0, n = 0; n < dataSize; ++idx)
 	{
 		node = treeData[idx];
@@ -306,19 +307,22 @@ TreeNode<int>* CreateTree(vector<TreeNode<int>*>&& treeData)
  * @brief 释放一颗二叉树内存
  * @param treeRoot 二叉树根节点，指针引用，释放后置nullptr
  */
-void DeleteTree(TreeNode<int>*& treeRoot)
+void DeleteTree(TreeNode<int> *&treeRoot)
 {
-	if (!treeRoot) return;
+	if (!treeRoot)
+		return;
 
-	queue<TreeNode<int>*> delQue({ treeRoot });
+	queue<TreeNode<int> *> delQue({treeRoot});
 
 	while (!delQue.empty())
 	{
 		treeRoot = delQue.front();
 		delQue.pop();
 
-		if (treeRoot->left) delQue.push(treeRoot->left);
-		if (treeRoot->right) delQue.push(treeRoot->right);
+		if (treeRoot->left)
+			delQue.push(treeRoot->left);
+		if (treeRoot->right)
+			delQue.push(treeRoot->right);
 
 		delete treeRoot;
 	}
@@ -330,7 +334,7 @@ void DeleteTree(TreeNode<int>*& treeRoot)
  * @brief 打印一颗二叉树
  * @param treeRoot 树根节点，常量指针
  */
-void PrintTree(const TreeNode<int>* treeRoot)
+void PrintTree(const TreeNode<int> *treeRoot)
 {
 	if (!treeRoot)
 	{
@@ -338,8 +342,8 @@ void PrintTree(const TreeNode<int>* treeRoot)
 		return;
 	}
 
-	queue<const TreeNode<int>*> printQue({ treeRoot });
-	queue<const TreeNode<int>*> tempQue;
+	queue<const TreeNode<int> *> printQue({treeRoot});
+	queue<const TreeNode<int> *> tempQue;
 
 	unsigned int layerCount = 0;
 
@@ -353,8 +357,7 @@ void PrintTree(const TreeNode<int>* treeRoot)
 
 			if (treeRoot)
 			{
-				(treeRoot->dad) ? cout << treeRoot->data << '(' << treeRoot->dad->data << "), " :
-					cout << treeRoot->data << "(null), ";
+				(treeRoot->dad) ? cout << treeRoot->data << '(' << treeRoot->dad->data << "), " : cout << treeRoot->data << "(null), ";
 			}
 			else
 				cout << "null, ";
@@ -372,38 +375,49 @@ void PrintTree(const TreeNode<int>* treeRoot)
 
 int main()
 {
-	TreeNode<int>* treeRoot = CreateTree({
-								 N(4),
-				   N(2),                       N(6),
-			N(1),         N(3),         N(5),         N(7),
-		N(11), N(22), N(33), N(44), N(55), N(66), N(77), N(88),
-		});
+	TreeNode<int> *treeRoot = CreateTree({
+		N(4),
+		N(2),
+		N(6),
+		N(1),
+		N(3),
+		N(5),
+		N(7),
+		N(11),
+		N(22),
+		N(33),
+		N(44),
+		N(55),
+		N(66),
+		N(77),
+		N(88),
+	});
 
 	cout << "The tree:\n";
 	PrintTree(treeRoot);
 
-	vector<TreeNode<int>*> resultArr;
+	vector<TreeNode<int> *> resultArr;
 	TraverseBinaryTree_LRD_Recursion(treeRoot, resultArr);
 	cout << "\n\n[Recursion] LRD traverse array:\n";
-	for (vector<TreeNode<int>*>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
+	for (vector<TreeNode<int> *>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
 		cout << (*itr)->data << ", ";
 
 	resultArr.clear();
 	TraverseBinaryTree_LRD_TwoStack(treeRoot, resultArr);
 	cout << "\n\n[Two Stack] LRD traverse array:\n";
-	for (vector<TreeNode<int>*>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
+	for (vector<TreeNode<int> *>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
 		cout << (*itr)->data << ", ";
 
 	resultArr.clear();
 	TraverseBinaryTree_LRD_OneStack(treeRoot, resultArr);
 	cout << "\n\n[One Stack] LRD traverse array:\n";
-	for (vector<TreeNode<int>*>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
+	for (vector<TreeNode<int> *>::iterator itr = resultArr.begin(); itr != resultArr.end(); ++itr)
 		cout << (*itr)->data << ", ";
 
-	list<TreeNode<int>*> resultList;
+	list<TreeNode<int> *> resultList;
 	TraverseBinaryTree_LRD_Morris(treeRoot, resultList);
 	cout << "\n\n[Morris] LRD traverse array:\n";
-	for (list<TreeNode<int>*>::iterator itr = resultList.begin(); itr != resultList.end(); ++itr)
+	for (list<TreeNode<int> *>::iterator itr = resultList.begin(); itr != resultList.end(); ++itr)
 		cout << (*itr)->data << ", ";
 
 	cout << endl;

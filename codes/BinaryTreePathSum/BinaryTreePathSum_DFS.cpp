@@ -21,7 +21,7 @@
  * 【解题分析】
  * 时间复杂度：O(N)
  * 空间复杂度：O(H)，H为数的高度，此处空间复杂度主要取决于树的高度，最差的情况为单链表，
- *			  空间复杂度为O(N)，平均情况下树的高度与结点数的对数正相关，空间复杂度为O(log N)。
+ *			  空间复杂度为O(N)，平均情况下树的高度与结点数的对数正相关，空间复杂度为O(logN)。
  * 
  * @author FrankX
  * @date 2021-05-25
@@ -35,9 +35,9 @@ template <typename T>
 struct TreeNode
 {
 	T data;
-	TreeNode<T>* dad;
-	TreeNode<T>* left;
-	TreeNode<T>* right;
+	TreeNode<T> *dad;
+	TreeNode<T> *left;
+	TreeNode<T> *right;
 
 	TreeNode<T>(T _data)
 	{
@@ -48,15 +48,16 @@ struct TreeNode
 
 #define NODE(value) (new TreeNode<int>(value))
 
-bool BinaryTreePathSum_DFS(const TreeNode<int>* treeRoot, int curSum, const int& targetNum)
+bool BinaryTreePathSum_DFS(const TreeNode<int> *treeRoot, int curSum, const int &targetNum)
 {
-	if (!treeRoot) return false;
-	
+	if (!treeRoot)
+		return false;
+
 	curSum += treeRoot->data;
-	if (!treeRoot->left && !treeRoot->right) return (curSum == targetNum);
+	if (!treeRoot->left && !treeRoot->right)
+		return (curSum == targetNum);
 
 	return BinaryTreePathSum_DFS(treeRoot->left, curSum, targetNum) || BinaryTreePathSum_DFS(treeRoot->right, curSum, targetNum);
-	
 }
 
 /**
@@ -64,7 +65,7 @@ bool BinaryTreePathSum_DFS(const TreeNode<int>* treeRoot, int curSum, const int&
  * @param treeData 二叉树数据源，右值引用
  * @param treeRoot 二叉树根节点，指针引用
  */
-void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
+void CreateTree(vector<TreeNode<int> *> &&treeData, TreeNode<int> *&treeRoot)
 {
 	// 首元素为空当空树处理
 	if (treeData.empty() || !treeData[0])
@@ -76,7 +77,7 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
 	}
 
 	treeRoot = treeData[0];
-	TreeNode<int>* node = nullptr;
+	TreeNode<int> *node = nullptr;
 	unsigned int dataSize = treeData.size();
 
 	for (unsigned int idx = 0, n = 0; n < dataSize; ++idx)
@@ -102,20 +103,23 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
  * @brief 释放一颗二叉树内存
  * @param treeRoot 树根节点，指针引用
  */
-void DeleteTree(TreeNode<int>*& treeRoot)
+void DeleteTree(TreeNode<int> *&treeRoot)
 {
-	if (!treeRoot) return;
+	if (!treeRoot)
+		return;
 
-	queue<TreeNode<int>*> delQue({ treeRoot });
+	queue<TreeNode<int> *> delQue({treeRoot});
 
-	while (!delQue.empty()) 
+	while (!delQue.empty())
 	{
 		treeRoot = delQue.front();
 		delQue.pop();
 
-		if (treeRoot->left) delQue.push(treeRoot->left);
+		if (treeRoot->left)
+			delQue.push(treeRoot->left);
 
-		if (treeRoot->right) delQue.push(treeRoot->right);
+		if (treeRoot->right)
+			delQue.push(treeRoot->right);
 
 		delete treeRoot;
 	}
@@ -127,7 +131,7 @@ void DeleteTree(TreeNode<int>*& treeRoot)
  * @brief 打印一颗二叉树
  * @param treeRoot 树根节点
  */
-void PrintTree(const TreeNode<int>* treeRoot)
+void PrintTree(const TreeNode<int> *treeRoot)
 {
 	if (!treeRoot)
 	{
@@ -135,8 +139,8 @@ void PrintTree(const TreeNode<int>* treeRoot)
 		return;
 	}
 
-	queue<const TreeNode<int>*> printQue({ treeRoot });
-	queue<const TreeNode<int>*> tempQue;
+	queue<const TreeNode<int> *> printQue({treeRoot});
+	queue<const TreeNode<int> *> tempQue;
 	int layerCount = 0;
 
 	while (!printQue.empty())
@@ -168,26 +172,37 @@ void PrintTree(const TreeNode<int>* treeRoot)
 
 int main()
 {
-	TreeNode<int>* root = nullptr;
+	TreeNode<int> *root = nullptr;
 
 	CreateTree({
-		NODE(5),
-		NODE(4), NODE(8),
-		NODE(11), nullptr, NODE(13), NODE(99),
-		NODE(7), NODE(2), nullptr,  nullptr, nullptr, nullptr, nullptr, NODE(1),
-	}, root);
+				   NODE(5),
+				   NODE(4),
+				   NODE(8),
+				   NODE(11),
+				   nullptr,
+				   NODE(13),
+				   NODE(99),
+				   NODE(7),
+				   NODE(2),
+				   nullptr,
+				   nullptr,
+				   nullptr,
+				   nullptr,
+				   nullptr,
+				   NODE(1),
+			   },
+			   root);
 
 	PrintTree(root);
-	
+
 	int targetNum = 0;
 	cout << "Input target number:\n";
 	cin >> targetNum;
-	cout << "\nHas any path node value sum equal the target number?\n"; 
-	cout << (BinaryTreePathSum_DFS(root, 0, targetNum) ? "true" : "false") << endl << endl;
-	
+	cout << "\nHas any path node value sum equal the target number?\n";
+	cout << (BinaryTreePathSum_DFS(root, 0, targetNum) ? "true" : "false") << endl
+		 << endl;
+
 	DeleteTree(root);
 
 	return 0;
 }
-
-

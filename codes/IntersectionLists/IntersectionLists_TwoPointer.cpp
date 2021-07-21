@@ -19,7 +19,7 @@
  * 双指针最多各进行一次切换能同时指向相交节点（相同长度时不用切换）。
  *
  * 【解题分析】
- * 时间复杂度：O(n) 最差的情况为两个链表长度之和，此时无相交节点，或相交节点无后继节点
+ * 时间复杂度：O(N) 最差的情况为两个链表长度之和，此时无相交节点，或相交节点无后继节点
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -29,11 +29,11 @@
 #include <vector>
 using namespace std;
 
-template<typename T>
+template <typename T>
 struct Node
 {
 	T data;
-	Node<T>* next;
+	Node<T> *next;
 
 	Node<T>(T _data)
 	{
@@ -42,20 +42,21 @@ struct Node
 	}
 };
 
-#define N(Type, value) (new Node<Type>(value)) 
+#define N(Type, value) (new Node<Type>(value))
 
-#define PRINT(tip, pNode) cout << tip; \
-while (pNode) \
-{ \
-	cout << pNode->data << ", "; \
-	pNode = pNode->next; \
-}
+#define PRINT(tip, pNode)            \
+	cout << tip;                     \
+	while (pNode)                    \
+	{                                \
+		cout << pNode->data << ", "; \
+		pNode = pNode->next;         \
+	}
 
-template<typename T>
-Node<T>* IntersectionLists_TwoPointer(Node<T>* pList1, Node<T>* pList2)
+template <typename T>
+Node<T> *IntersectionLists_TwoPointer(Node<T> *pList1, Node<T> *pList2)
 {
-	Node<T>* pNode1 = pList1;
-	Node<T>* pNode2 = pList2;
+	Node<T> *pNode1 = pList1;
+	Node<T> *pNode2 = pList2;
 
 	// 标记是否进行过头节点切换，如果两个单链表有交点，只需要最多一次头节点切换，则双指针会同时指向相交首节点
 	bool exchanged1 = false;
@@ -103,11 +104,11 @@ Node<T>* IntersectionLists_TwoPointer(Node<T>* pList1, Node<T>* pList2)
  * @param dataArr 节点数据容器，右值引用
  * @return 链表头节点
  */
-template<typename T>
-Node<T>* CreateList(vector<T>&& dataArr)
+template <typename T>
+Node<T> *CreateList(vector<T> &&dataArr)
 {
-	Node<T>* pList = nullptr;
-	Node<T>* pNode = nullptr;
+	Node<T> *pList = nullptr;
+	Node<T> *pNode = nullptr;
 
 	for (typename vector<T>::iterator itr = dataArr.begin(); itr != dataArr.end(); ++itr)
 	{
@@ -130,11 +131,12 @@ Node<T>* CreateList(vector<T>&& dataArr)
  * @param pList 链表头节点
  * @param appendList 追加的链表头指针或节点指针
  */
-template<typename T>
-void AppendList(Node<T>* pList, Node<T>* appendList)
+template <typename T>
+void AppendList(Node<T> *pList, Node<T> *appendList)
 {
-	if (!appendList) return;
-	
+	if (!appendList)
+		return;
+
 	while (pList)
 	{
 		if (!pList->next)
@@ -151,10 +153,10 @@ void AppendList(Node<T>* pList, Node<T>* appendList)
  * @param pList 链表头节点
  * @param stopNode 中止节点，标识从此节点起为其它链表的组合，其它链表不应由它来释放，谁申请，谁释放
  */
-template<typename T>
-void DeleteList(Node<T>* pList, Node<T>* stopNode = nullptr)
+template <typename T>
+void DeleteList(Node<T> *pList, Node<T> *stopNode = nullptr)
 {
-	Node<T>* pNode = nullptr;
+	Node<T> *pNode = nullptr;
 	while (pList && pList != stopNode)
 	{
 		pNode = pList;
@@ -167,16 +169,16 @@ void DeleteList(Node<T>* pList, Node<T>* stopNode = nullptr)
 
 int main()
 {
-	Node<int>* appendList = CreateList<int>({ 11, 22, 33, 44, 55 });
-	Node<int>* pNode = appendList;
+	Node<int> *appendList = CreateList<int>({11, 22, 33, 44, 55});
+	Node<int> *pNode = appendList;
 	PRINT("Append List:\n", pNode);
 
-	Node<int>* pList1 = CreateList<int>({ 1001, 1002, 1003, 1004, 1005 });
+	Node<int> *pList1 = CreateList<int>({1001, 1002, 1003, 1004, 1005});
 	AppendList(pList1, appendList);
 	pNode = pList1;
 	PRINT("\n\nList 1:\n", pNode);
 
-	Node<int>* pList2 = CreateList <int>({ 2001, 2002, 2003 });
+	Node<int> *pList2 = CreateList<int>({2001, 2002, 2003});
 	AppendList(pList2, appendList);
 	pNode = pList2;
 	PRINT("\n\nList 2:\n", pNode);

@@ -1,7 +1,7 @@
 /**************************************************************************************************
  * 【题目描述】
  * 给定一个非空整数数组，除了某一个元素只出现一次以外，其余元素均出现两次。需要找出那个只出现一次的元素。
- * 要求算法具有线性时间复杂度（最差O(k·n)），且不能使用额外空间（最差O(1)）。
+ * 要求算法具有线性时间复杂度（最差O(K·N)），且不能使用额外空间（最差O(1)）。
  *
  * 【输入】
  * array=[1,1,3,3,4,5,5,6,6]
@@ -11,8 +11,8 @@
  * 【解题思路】
  * 按题目所说的数组，假设数组是有序的情况下，那么数组中从头开始两两元素相等，直到遇到那个只出现一次的元素，
  * 所以首先会想到排序。
- * 但是题目要求具有线性时间复杂度（基础排序算法普遍不具备），基础排序算法中，只有桶排序最差的时间复杂度为O(nk)，
- * 与此同时，题目又要求不能使用额外空间，而桶排序的空间复杂度为O(n+k)。
+ * 但是题目要求具有线性时间复杂度（基础排序算法普遍不具备），基础排序算法中，只有桶排序最差的时间复杂度为O(NK)，
+ * 与此同时，题目又要求不能使用额外空间，而桶排序的空间复杂度为O(N+K)。
  * 
  * 在看题解后，可以考虑【异或】运算，异或运算具有如下性质：
  * （1）任何数和0进行异或运算，结果仍是原来的数；
@@ -24,7 +24,7 @@
  * 最终相当于只出现一次的数字与 (len-1)/2 个0进行异或运算，其结果为原来的数，即找到了那个只出现一次的数字。
  * 
  * 【解题分析】
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -35,7 +35,7 @@
 
 using namespace std;
 
-int AppearOnceNumber(vector<int>& nums)
+int AppearOnceNumber(vector<int> &nums)
 {
 	unsigned int dataSize = nums.size();
 	int targetNum = 0;
@@ -49,13 +49,15 @@ int AppearOnceNumber(vector<int>& nums)
 
 int main()
 {
-	vector<int> nums = { 1,1,3,3,5,9,5,6,6 };
+	vector<int> nums = {1, 1, 3, 3, 5, 9, 5, 6, 6};
 	cout << "Input Array:\n";
 	for (vector<int>::iterator itr = nums.begin(); itr != nums.end(); ++itr)
 		cout << *itr << ", ";
 
-	if (nums.size() % 2 == 0) cout << "\nNot exist!\n";
-	else cout << "\nThe targe number is: " << AppearOnceNumber(nums) << endl;
-	
+	if (nums.size() % 2 == 0)
+		cout << "\nNot exist!\n";
+	else
+		cout << "\nThe targe number is: " << AppearOnceNumber(nums) << endl;
+
 	return 0;
 }

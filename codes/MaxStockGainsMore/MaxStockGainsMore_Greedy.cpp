@@ -25,7 +25,7 @@
  * 需要特别注意的是，贪心算法只是计算最大利润，并不是实际交易过程。
  * 
  * 【解题分析】
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -35,22 +35,23 @@
 #include <vector>
 using namespace std;
 
-int MaxStockGainsMore(vector<int>& prices)
+int MaxStockGainsMore(vector<int> &prices)
 {
-	if (prices.empty()) return 0;
+	if (prices.empty())
+		return 0;
 
 	unsigned int dataSize = prices.size();
 	int maxGains = 0;
 
 	for (unsigned int idx = 1; idx < dataSize; ++idx)
 	{
-		// 只要收益为正，就交易 
+		// 只要收益为正，就交易
 		if (prices[idx] - prices[idx - 1] > 0)
 		{
 			maxGains += prices[idx] - prices[idx - 1];
 
 			cout << "\nBuy prices[" << idx - 1 << "]=" << prices[idx - 1]
-				<< "    Sell prices[" << idx << "]=" << prices[idx];
+				 << "    Sell prices[" << idx << "]=" << prices[idx];
 		}
 	}
 
@@ -59,7 +60,7 @@ int MaxStockGainsMore(vector<int>& prices)
 
 int main()
 {
-	vector<int> prices = { 7,1,5,3,6,4 };
+	vector<int> prices = {7, 1, 5, 3, 6, 4};
 	cout << "Stock prices:\n";
 	for (vector<int>::iterator itr = prices.begin(); itr != prices.end(); ++itr)
 		cout << *itr << ", ";

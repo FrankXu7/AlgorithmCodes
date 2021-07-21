@@ -17,7 +17,7 @@
  * 而在代码实现上，拆出这部分一样的逻辑，所以看起来是减1
  *
  * 【解题分析】
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -27,7 +27,7 @@
 #include <string>
 using namespace std;
 
-const unsigned int ExcelColumnNumber(const string& colName)
+const unsigned int ExcelColumnNumber(const string &colName)
 {
 	int colNum = 0;
 
@@ -39,11 +39,11 @@ const unsigned int ExcelColumnNumber(const string& colName)
 	 * 这里虽然是减1，但用当前遍历字符减去此变量后，相当于在减去‘A’后加1 
 	 */
 	char start = 'A' - 1;
-	
+
 	for (unsigned int idx = 0; idx < nameLen; ++idx)
 	{
-		// 等价于 colName[idx] - 'A' + 1，这里+1保证了Excel列名最小从字符‘A’开始 
-		curCh = (colName[idx] - start); 
+		// 等价于 colName[idx] - 'A' + 1，这里+1保证了Excel列名最小从字符‘A’开始
+		curCh = (colName[idx] - start);
 		weightCalc = static_cast<unsigned int>(pow(26, (nameLen - idx - 1)));
 		colNum += (curCh * weightCalc);
 	}

@@ -20,10 +20,10 @@
  * 
  * 【解题分析】
  * 方法一：
- * 时间复杂度：O(n)
- * 空间复杂度：O(n)
+ * 时间复杂度：O(N)
+ * 空间复杂度：O(N)
  * 方法二：
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -34,11 +34,11 @@
 #include <map>
 using namespace std;
 
-template<typename T>
+template <typename T>
 struct Node
 {
 	T data;
-	Node<T>* next;
+	Node<T> *next;
 
 	Node<T>(T _data)
 	{
@@ -49,13 +49,14 @@ struct Node
 
 #define N(value) (new Node<int>(value))
 
-bool ExistCircularList_1(Node<int>* head)
+bool ExistCircularList_1(Node<int> *head)
 {
-	map<Node<int>*, bool> tempMap = { make_pair(head, true) };
+	map<Node<int> *, bool> tempMap = {make_pair(head, true)};
 
 	while (head)
 	{
-		if (tempMap.count(head->next) > 0) return true;
+		if (tempMap.count(head->next) > 0)
+			return true;
 
 		tempMap.insert(make_pair(head->next, true));
 		head = head->next;
@@ -64,10 +65,10 @@ bool ExistCircularList_1(Node<int>* head)
 	return false;
 }
 
-bool ExistCircularList_2(Node<int>* head)
+bool ExistCircularList_2(Node<int> *head)
 {
-	Node<int>* pSlow = head;
-	Node<int>* pFast = head->next;
+	Node<int> *pSlow = head;
+	Node<int> *pFast = head->next;
 
 	while (pSlow != pFast)
 	{
@@ -85,11 +86,23 @@ bool ExistCircularList_2(Node<int>* head)
 
 int main()
 {
-	vector<Node<int>*> dataArr = { N(10),N(11),N(12),N(13),N(14),N(15),N(16),N(17),N(18),N(19), };
+	vector<Node<int> *> dataArr = {
+		N(10),
+		N(11),
+		N(12),
+		N(13),
+		N(14),
+		N(15),
+		N(16),
+		N(17),
+		N(18),
+		N(19),
+	};
 	unsigned int maxIdx = dataArr.size() - 1;
-	for (unsigned int idx = 0; idx < maxIdx; ++idx) dataArr[idx]->next = dataArr[idx + 1];
+	for (unsigned int idx = 0; idx < maxIdx; ++idx)
+		dataArr[idx]->next = dataArr[idx + 1];
 	dataArr[maxIdx]->next = dataArr[4];
-	
+
 	cout << "[Solution 1] Is circular linked list: " << (ExistCircularList_1(dataArr[0]) ? "YES\n" : "NO\n");
 	cout << "[Solution 2] Is circular linked list: " << (ExistCircularList_2(dataArr[0]) ? "YES\n" : "NO\n");
 

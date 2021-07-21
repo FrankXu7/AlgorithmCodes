@@ -16,7 +16,7 @@
  * 字符判断使用ASCII码判断。
  *
  * 【解题分析】
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -34,9 +34,10 @@ char FormatChar(char ch);
  * [A-Z]:[65-89];
  * [a-z]:[97-122];
  */
-bool PalindromeString(string& str)
+bool PalindromeString(string &str)
 {
-	if (str.empty()) return true;
+	if (str.empty())
+		return true;
 
 	bool isPalindrome = true;
 
@@ -48,21 +49,23 @@ bool PalindromeString(string& str)
 
 	while (leftIdx < rightIdx)
 	{
-		if (!leftChar) leftChar = FormatChar(str[leftIdx]);
+		if (!leftChar)
+			leftChar = FormatChar(str[leftIdx]);
 		if (!leftChar)
 		{
 			++leftIdx;
 			continue;
 		}
 
-		if(!rightChar) rightChar = FormatChar(str[rightIdx]);
+		if (!rightChar)
+			rightChar = FormatChar(str[rightIdx]);
 		if (!rightChar)
 		{
 			--rightIdx;
 			continue;
 		}
 
-		// 执行到此，左右字符存在且必然是小写字母和数字，若不相等就可以直接中止处理了 
+		// 执行到此，左右字符存在且必然是小写字母和数字，若不相等就可以直接中止处理了
 		if (leftChar != rightChar)
 		{
 			isPalindrome = false;
@@ -84,9 +87,12 @@ bool PalindromeString(string& str)
 
 char FormatChar(char ch)
 {
-	if (('0' <= ch && ch <= '9') || ('a' <= ch && ch <= 'z')) return ch;
-	else if ('A' <= ch && ch <= 'Z') return (ch + 32); // 相同大小写字母ASCII码值相差32，通过+32转化为小写字母 
-	else return '\0';
+	if (('0' <= ch && ch <= '9') || ('a' <= ch && ch <= 'z'))
+		return ch;
+	else if ('A' <= ch && ch <= 'Z')
+		return (ch + 32); // 相同大小写字母ASCII码值相差32，通过+32转化为小写字母
+	else
+		return '\0';
 }
 
 int main()

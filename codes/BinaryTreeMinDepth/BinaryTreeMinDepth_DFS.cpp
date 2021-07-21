@@ -17,7 +17,7 @@
  * 【解题分析】
  * 时间复杂度：O(N^2)
  * 空间复杂度：O(H)，h为树的高度，这里空间复杂度主要取决于树的高度，最坏的情况为单链表，
- *			  空间复杂度为O(N)，平均情况下树的高度和节点数的对数正相关，空间复杂度为O(log N)。
+ *			  空间复杂度为O(N)，平均情况下树的高度和节点数的对数正相关，空间复杂度为O(logN)。
  * 
  * @author FrankX
  * @date 2021-05-22
@@ -31,9 +31,9 @@ template <typename T>
 struct TreeNode
 {
 	T data;
-	TreeNode<T>* dad;
-	TreeNode<T>* left;
-	TreeNode<T>* right;
+	TreeNode<T> *dad;
+	TreeNode<T> *left;
+	TreeNode<T> *right;
 
 	TreeNode<T>(T _data)
 	{
@@ -44,14 +44,15 @@ struct TreeNode
 
 #define NODE(Value) (new TreeNode<int>(Value))
 
-unsigned int BinaryTreeMinDepth_DFS(const TreeNode<int>* treeRoot)
+unsigned int BinaryTreeMinDepth_DFS(const TreeNode<int> *treeRoot)
 {
-	if (!treeRoot) return 0;
+	if (!treeRoot)
+		return 0;
 
 	unsigned int leftDepth = BinaryTreeMinDepth_DFS(treeRoot->left);
 	unsigned int rightDepth = BinaryTreeMinDepth_DFS(treeRoot->right);
 
-	// 当前节点的子树最小深度，+1后即为当前节点父节点的子树最小深度 
+	// 当前节点的子树最小深度，+1后即为当前节点父节点的子树最小深度
 	return (min(leftDepth, rightDepth) + 1);
 }
 
@@ -60,12 +61,13 @@ unsigned int BinaryTreeMinDepth_DFS(const TreeNode<int>* treeRoot)
  * @param treeData 二叉树数据源，右值引用
  * @param treeRoot 二叉树根节点，指针引用
  */
-void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
+void CreateTree(vector<TreeNode<int> *> &&treeData, TreeNode<int> *&treeRoot)
 {
-	if (treeData.empty()) treeRoot = nullptr;
+	if (treeData.empty())
+		treeRoot = nullptr;
 
 	treeRoot = treeData[0];
-	TreeNode<int>* node = nullptr;
+	TreeNode<int> *node = nullptr;
 	unsigned int dataSize = treeData.size();
 
 	for (unsigned int idx = 0, n = 0; n < dataSize; ++idx)
@@ -91,10 +93,11 @@ void CreateTree(vector<TreeNode<int>*>&& treeData, TreeNode<int>*& treeRoot)
  * @brief 释放一棵二叉树的内存
  * @param treeRoot 树根结点，指针引用，释放后置nullptr
  */
-void DeleteTree(TreeNode<int>*& treeRoot)
+void DeleteTree(TreeNode<int> *&treeRoot)
 {
-	if (!treeRoot) return;
-	queue<TreeNode<int>*> delQue({ treeRoot });
+	if (!treeRoot)
+		return;
+	queue<TreeNode<int> *> delQue({treeRoot});
 
 	while (!delQue.empty())
 	{
@@ -116,10 +119,10 @@ void DeleteTree(TreeNode<int>*& treeRoot)
  * @brief 打印一颗二叉树
  * @param treeRoot 树根结点，常量指针
  */
-void PrintTree(const TreeNode<int>* treeRoot)
+void PrintTree(const TreeNode<int> *treeRoot)
 {
-	queue<const TreeNode<int>*> printQue({ treeRoot });
-	queue<const TreeNode<int>*> tempQue;
+	queue<const TreeNode<int> *> printQue({treeRoot});
+	queue<const TreeNode<int> *> tempQue;
 	int layer = 0;
 
 	while (!printQue.empty())
@@ -151,14 +154,13 @@ void PrintTree(const TreeNode<int>* treeRoot)
 
 int main()
 {
-	TreeNode<int>* root = nullptr;
-	CreateTree({
-		NODE(1), 
-		NODE(2), NODE(3),
-		NODE(4), NODE(5), NODE(6), NODE(7), 
-		NODE(8), NODE(9), NODE(10), NODE(11), NODE(12), nullptr, nullptr, nullptr,
-		NODE(13), NODE(14), NODE(15), nullptr, nullptr, NODE(16)
-	}, root);
+	TreeNode<int> *root = nullptr;
+	CreateTree({NODE(1),
+				NODE(2), NODE(3),
+				NODE(4), NODE(5), NODE(6), NODE(7),
+				NODE(8), NODE(9), NODE(10), NODE(11), NODE(12), nullptr, nullptr, nullptr,
+				NODE(13), NODE(14), NODE(15), nullptr, nullptr, NODE(16)},
+			   root);
 
 	PrintTree(root);
 

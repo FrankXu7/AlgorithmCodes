@@ -25,10 +25,10 @@
  * 
  * 【解题分析】
  * 方法一：
- * 时间复杂度：O(nlogn) 第一层遍历时间复杂度为O(n)，第二层遍历时间复杂度为O(logn)
+ * 时间复杂度：O(NlogN) 第一层遍历时间复杂度为O(N)，第二层遍历时间复杂度为O(logN)
  * 空间复杂度：O(1)
  * 方法二：
- * 时间复杂度：O(n)
+ * 时间复杂度：O(N)
  * 空间复杂度：O(1)
  *
  * @author FrankX
@@ -39,10 +39,11 @@
 using namespace std;
 
 /** 这里返回的容器，要么是找到了数组中两个数，返回两个下标，要么就是没找到，返回空容器 */
-template<typename T>
-vector<unsigned int> SumOfTwoNumbersSorted_1(vector<T>& dataArr, T& targetNum)
+template <typename T>
+vector<unsigned int> SumOfTwoNumbersSorted_1(vector<T> &dataArr, T &targetNum)
 {
-	if (dataArr.empty()) return {};
+	if (dataArr.empty())
+		return {};
 
 	unsigned int dataSize = dataArr.size();
 
@@ -61,9 +62,12 @@ vector<unsigned int> SumOfTwoNumbersSorted_1(vector<T>& dataArr, T& targetNum)
 		{
 			midIdx = static_cast<unsigned int>((leftIdx + rightIdx) / 2);
 
-			if (dataArr[midIdx] < desireData) ++leftIdx;
-			else if (dataArr[midIdx] > desireData) --rightIdx;
-			else return { idx + 1, midIdx + 1 };
+			if (dataArr[midIdx] < desireData)
+				++leftIdx;
+			else if (dataArr[midIdx] > desireData)
+				--rightIdx;
+			else
+				return {idx + 1, midIdx + 1};
 		}
 	}
 
@@ -71,10 +75,11 @@ vector<unsigned int> SumOfTwoNumbersSorted_1(vector<T>& dataArr, T& targetNum)
 }
 
 /** 这里返回的容器，要么是找到了数组中两个数，返回两个下标，要么就是没找到，返回空容器 */
-template<typename T>
-vector<unsigned int> SumOfTwoNumbersSorted_2(vector<T>& dataArr, T& targetNum)
+template <typename T>
+vector<unsigned int> SumOfTwoNumbersSorted_2(vector<T> &dataArr, T &targetNum)
 {
-	if (dataArr.empty()) return {};
+	if (dataArr.empty())
+		return {};
 
 	unsigned int leftIdx = 0;
 	unsigned int rightIdx = dataArr.size() - 1;
@@ -84,9 +89,12 @@ vector<unsigned int> SumOfTwoNumbersSorted_2(vector<T>& dataArr, T& targetNum)
 	while (leftIdx <= rightIdx)
 	{
 		addSum = dataArr[leftIdx] + dataArr[rightIdx];
-		if (addSum < targetNum)	++leftIdx;
-		else if (addSum > targetNum) --rightIdx;
-		else return { leftIdx + 1, rightIdx + 1 };
+		if (addSum < targetNum)
+			++leftIdx;
+		else if (addSum > targetNum)
+			--rightIdx;
+		else
+			return {leftIdx + 1, rightIdx + 1};
 	}
 
 	return {};
@@ -94,7 +102,7 @@ vector<unsigned int> SumOfTwoNumbersSorted_2(vector<T>& dataArr, T& targetNum)
 
 int main()
 {
-	vector<int> dataArr({ 1, 7, 9, 12, 19, 21, 28, 32, 44 });
+	vector<int> dataArr({1, 7, 9, 12, 19, 21, 28, 32, 44});
 	int targetNum = 8;
 
 	cout << "Data array:\n";
