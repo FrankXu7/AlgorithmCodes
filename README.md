@@ -55,4 +55,5 @@
 40. [[简单 - 168th]](https://leetcode-cn.com/problems/excel-sheet-column-title/) [Excel表格列名称(ExcelColumnName)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ExcelColumnName)
 41. [[简单 - 169th]](https://leetcode-cn.com/problems/majority-element/) [多数元素(MajorityElement)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MajorityElement)
 42. [[简单 - 171th]](https://leetcode-cn.com/problems/excel-sheet-column-number/) [Excel表格列序号(ExcelColumnNumber)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ExcelColumnNumber)
+43. [[简单 - 172th]](https://leetcode-cn.com/problems/factorial-trailing-zeroes/) [阶乘后的尾数零(FactorialZeroTailNum)]()
 
