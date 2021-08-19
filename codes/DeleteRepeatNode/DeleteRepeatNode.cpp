@@ -41,40 +41,41 @@ struct ListNode
  * delHead 展现了另一种用法，使用【指针值引用】，形参delHead为实参别名，
  * 对形参delHead的改变实际上就是在改变实参。
  */
-ListNode<int>* DeleteRepeatNode(ListNode<int>* head, ListNode<int>*& delHead)
+void DeleteRepeatNode(ListNode<int>* head, ListNode<int>*& delHead)
 {
-	ListNode<int>* p = head;
 	ListNode<int>* pDel = nullptr;
 
-	while (p)
+	while (head)
 	{
-		if (p->next && p->data == p->next->data)
+		if (head->next && head->data == head->next->data)
 		{
 			if (pDel)
 			{
-				pDel->next = p->next;
+				pDel->next = head->next;
 				pDel = pDel->next;
 			}
 			else
 			{
-				pDel = p->next;
+				pDel = head->next;
 				delHead = pDel;
 			}
 
-			p->next = p->next->next;
+			// 因为两个相同节点删除的是后一个，所以按值传递的head指针值在函数返回后不会被改变 
+			head->next = head->next->next;
 		}
 		else
 		{
-			p = p->next;
+			head = head->next;
 		}
 	}
 
-	return head;
+	// 此时pDel是最后一个重复节点指针，其next指向的肯定是非重复节点，必须置空以免被释放 
+	if (pDel) pDel->next = nullptr;
 }
 
 int main()
 {
-	vector<int> listData = { 1, 2, 3, 3, 3, 4, 5 };
+	vector<int> listData = { 1, 1, 1, 2, 3, 3, 3, 4, 5 };
 	
 	ListNode<int>* head = new ListNode<int>;
 	ListNode<int>* delHead = nullptr;
@@ -92,7 +93,7 @@ int main()
 		p->next = nullptr;
 	}
 
-	head = DeleteRepeatNode(head, delHead);
+	DeleteRepeatNode(head, delHead);
 
 	p = head;
 	cout << "New List: ";
@@ -103,7 +104,7 @@ int main()
 	}
 	cout << endl;
 
-	p = delHead;
+	// 释放被找出的重复节点内存
 	cout << "Delete Nodes: ";
 	while (delHead)
 	{
@@ -115,6 +116,16 @@ int main()
 		p = nullptr;
 	}
 	cout << endl;
+
+	// 释放链表内存
+	while (head)
+	{
+		p = head;
+		head = head->next;
+
+		delete p;
+		p = nullptr;
+	}
 
 	return 0;
 }
