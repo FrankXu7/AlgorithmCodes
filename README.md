@@ -59,4 +59,5 @@
 44. [[简单 - 190th]](https://leetcode-cn.com/problems/reverse-bits/) [整数二进制翻转(ReverseIntBinary)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ReverseIntBinary)
 45. [[简单 - 191th]](https://leetcode-cn.com/problems/number-of-1-bits/) [统计二进制1的个数(CountBitsOfOne)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/CountBitsOfOne)
 46. [[简单 - 202th]](https://leetcode-cn.com/problems/happy-number/) [快乐数(HappyNumber)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/HappyNumber)
+47. [[简单 - 203th]](https://leetcode-cn.com/problems/remove-linked-list-elements/) [移除链表元素(RemoveListElement)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/RemoveListElement)
 
