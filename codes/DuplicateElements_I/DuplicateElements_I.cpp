@@ -26,7 +26,7 @@
 #include <unordered_set>
 using namespace std;
 
-bool DuplicateElements(const vector<int>& arr)
+bool DuplicateElements_I(const vector<int>& arr)
 {
 	unordered_set<int> tempGather;
 
@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 	for (vector<int>::iterator itr = arr.begin(); itr != arr.end(); ++itr)
 		cout << *itr << ", ";
 
-	cout << "\n\n[Solution 1] Exist duplicate elements? " << (DuplicateElements(arr) ? "YES\n" : "NO\n");
+	cout << "\n\n[Solution 1] Exist duplicate elements? " << (DuplicateElements_I(arr) ? "YES\n" : "NO\n");
 
 	cout << endl << endl;
 	return 0;
