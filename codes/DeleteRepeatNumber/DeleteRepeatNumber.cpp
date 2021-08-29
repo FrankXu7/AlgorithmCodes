@@ -34,6 +34,7 @@ unsigned int DeleteRepeatNumber(vector<int>& nums)
 	unsigned int slowIdx = 0;
 	unsigned int fastIdx = 0;
 
+	// 特别注意：数组本身是有序的 
 	while (fastIdx < nums.size())
 	{
 		if (nums[slowIdx] != nums[fastIdx])
