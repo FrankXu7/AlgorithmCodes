@@ -64,3 +64,4 @@
 49. [[简单 - 205th]](https://leetcode-cn.com/problems/isomorphic-strings/) [同构字符串(IsomorphismString)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/IsomorphismString)
 50. [[简单 - 206th]](https://leetcode-cn.com/problems/reverse-linked-list/) [反转链表(ReverseList)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ReverseList)
 51. [[简单 - 217th]](https://leetcode-cn.com/problems/contains-duplicate/) [存在重复元素 I(DuplicateElements_I)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/DuplicateElements_I)
+52. [[简单 - 219th]](https://leetcode-cn.com/problems/contains-duplicate-ii/) [存在重复元素 II(DuplicateElements_II)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/DuplicateElements_II)
