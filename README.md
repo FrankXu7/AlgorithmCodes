@@ -66,4 +66,5 @@
 51. [[简单 - 217th]](https://leetcode-cn.com/problems/contains-duplicate/) [存在重复元素 I(DuplicateElements_I)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/DuplicateElements_I)
 52. [[简单 - 219th]](https://leetcode-cn.com/problems/contains-duplicate-ii/) [存在重复元素 II(DuplicateElements_II)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/DuplicateElements_II)
 53. [[简单 - 225th]](https://leetcode-cn.com/problems/implement-stack-using-queues/) [用队列实现栈(StackImplementByQueues)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/StackImplementByQueues)
-54. [[简单 - 226th]](https://leetcode-cn.com/problems/invert-binary-tree/) [反转二叉树(InvertBinaryTree)]()https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/InvertBinaryTree
+54. [[简单 - 226th]](https://leetcode-cn.com/problems/invert-binary-tree/) [反转二叉树(InvertBinaryTree)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/InvertBinaryTree)
+55. [[简单 - 228th]](https://leetcode-cn.com/problems/summary-ranges/) [汇总区间(SummaryRanges)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SummaryRanges)
