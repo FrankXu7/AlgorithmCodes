@@ -68,3 +68,4 @@
 53. [[简单 - 225th]](https://leetcode-cn.com/problems/implement-stack-using-queues/) [用队列实现栈(StackImplementByQueues)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/StackImplementByQueues)
 54. [[简单 - 226th]](https://leetcode-cn.com/problems/invert-binary-tree/) [反转二叉树(InvertBinaryTree)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/InvertBinaryTree)
 55. [[简单 - 228th]](https://leetcode-cn.com/problems/summary-ranges/) [汇总区间(SummaryRanges)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SummaryRanges)
+56. [[简单 - 231th]](https://leetcode-cn.com/problems/power-of-two/) [2的幂(PowerOfTwo)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/PowerOfTwo)
