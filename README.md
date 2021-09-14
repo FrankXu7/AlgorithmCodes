@@ -72,4 +72,4 @@
 57. [[简单 - 232th]](https://leetcode-cn.com/problems/implement-queue-using-stacks/) [用栈实现队列(QueueImplementByStacks)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/QueueImplementByStacks)
 58. [[简单 - 234th]](https://leetcode-cn.com/problems/palindrome-linked-list/) [回文链表(PalindromeList)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/PalindromeList)
 59. [[简单 - 236th]](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/) [二叉搜索树最近公共祖先(LowerstCommonAncestor)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/LowerstCommonAncestor)
-60. [[简单 - 237]](https://leetcode-cn.com/problems/delete-node-in-a-linked-list/) [删除链表中的节点(DeleteTargetNode)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/DeleteTargetNode)
+60. [[简单 - 237th]](https://leetcode-cn.com/problems/delete-node-in-a-linked-list/) [删除链表中的节点(DeleteTargetNode)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/DeleteTargetNode)
