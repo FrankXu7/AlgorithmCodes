@@ -33,7 +33,7 @@
  **************************************************************************************************/
 #include <iostream>
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <algorithm>
 using namespace std;
 
@@ -42,7 +42,7 @@ bool ValidAnagram_1(string& s, string& t)
 	// 长度不同必然不是异位词 
 	if (s.size() != t.size()) return false;
 
-	map<char, int> charMap;
+	unordered_map<char, int> charMap;
 
 	// 分类并统计字符串 s 的各类字符数量 
 	for (string::iterator itr = s.begin(); itr != s.end(); ++itr)
@@ -58,7 +58,7 @@ bool ValidAnagram_1(string& s, string& t)
 	}
 
 	// 如果最总字符map剩下有不为0的字符统计，表示有字符在两个字符串中出现次数不同 
-	for (map<char, int>::iterator itr = charMap.begin(); itr != charMap.end(); ++itr)
+	for (unordered_map<char, int>::iterator itr = charMap.begin(); itr != charMap.end(); ++itr)
 	{
 		if ((*itr).second != 0)
 			return false;
