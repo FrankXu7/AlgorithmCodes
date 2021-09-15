@@ -79,8 +79,8 @@ bool ValidAnagram_2(string s, string t)
 
 int main(int argc, char** argv)
 {
-	string s = "这是一个字符串";
-	string t = "这也是个字符串";
+	string s = "Anagram";
+	string t = "agramnA";
 
 	cout << "The strings:\n" << s << endl << t;
 
