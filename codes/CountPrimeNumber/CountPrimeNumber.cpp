@@ -1,58 +1,58 @@
 /**************************************************************************************************
- * ¡¾ÌâÄ¿ÃèÊö¡¿
- * Í³¼ÆËùÓÐÐ¡ÓÚÕýÕûÊýNµÄÖÊÊýµÄÊýÁ¿¡£
- * ÖÊÊýÌØÐÔ£º
- * £¨1£©Ò»¸öÊýÖ»ÄÜ±»1ºÍ×ÔÉíÕû³ýµÄÊý£¬³ÆÎªÖÊÊý£¨ËØÊý£©£¬·ñÔòÎªºÏÊý£¬0ºÍ1¼È²»ÊÇÖÊÊýÒ²²»ÊÇºÏÊý£»
- * £¨2£©Å¼ÊýÖÐ£¬Ö»ÓÐ2²ÅÊÇÖÊÊý£»
+ * ã€é¢˜ç›®æè¿°ã€‘
+ * ç»Ÿè®¡æ‰€æœ‰å°äºŽæ­£æ•´æ•°Nçš„è´¨æ•°çš„æ•°é‡ã€‚
+ * è´¨æ•°ç‰¹æ€§ï¼š
+ * ï¼ˆ1ï¼‰ä¸€ä¸ªæ•°åªèƒ½è¢«1å’Œè‡ªèº«æ•´é™¤çš„æ•°ï¼Œç§°ä¸ºè´¨æ•°ï¼ˆç´ æ•°ï¼‰ï¼Œå¦åˆ™ä¸ºåˆæ•°ï¼Œ0å’Œ1æ—¢ä¸æ˜¯è´¨æ•°ä¹Ÿä¸æ˜¯åˆæ•°ï¼›
+ * ï¼ˆ2ï¼‰å¶æ•°ä¸­ï¼Œåªæœ‰2æ‰æ˜¯è´¨æ•°ï¼›
  *
- * ¡¾ÊäÈë¡¿
+ * ã€è¾“å…¥ã€‘
  * N = 203898
- * ¡¾Êä³ö¡¿
+ * ã€è¾“å‡ºã€‘
  * Prime numbers count = 18294
  *
- * ¡¾½âÌâË¼Â·¡¿
- * ·½·¨Ò»:
- * ×îÏÈ×îÖ±¹ÛÏëµ½µÄ£¬¾ÍÊÇ±éÀúNÒÔÄÚµÄÕýÕûÊýÁË£¬È»ºó¶ÔÃ¿Ò»¸öÕýÕûÊý£¬±éÀúÐ¡ÓÚËüµÄÕýÕûÊý£¬ÒÀ´Î×÷Õû³ýµÄÅÐ¶Ï£¬Í³¼ÆÖ®¡£
- * ÏëÏë¾ÍÃ÷°×Ê±¼ä¸´ÔÓ¶È»áºÜ¸ß£¬µ«Í¨¹ýÖÊÊýµÄÐÔÖÊ¿ÉÖª£¬0ºÍ1¼È²»ÊÇÖÊÊýÒ²²»ÊÇºÏÊý£¬ËùÒÔ¿ÉÒÔÖ±½Ó´Ó2¿ªÊ¼±éÀú£¬
- * ÓÖÒòÎªËùÓÐÅ¼ÊýÖÐ£¬Ö»ÓÐ2²ÅÊÇÖÊÊý£¬ËùÒÔ¿ÉÒÔ´Ó3¿ªÊ¼±éÀú£¬±éÀú²½³¤Îª2£¬ÅÅ³ýËùÓÐÅ¼Êý£¬ÌáÉýÐ§ÂÊ¡£
- * µ«»¹ÓÐ¸Ä½ø¿Õ¼ä£¬ÅÅ³ýÅ¼Êýºó£¬»¹ÊÇ»á±éÀúµ½½Ó½üNµÄÊý£¬µ«×ÐÏ¸ÏëÏë£¬Á½¸öÕýÕûÊý a,b£¬Èç¹ûÂú×ã a*b=N£¬
- * Ôò±ØÓÐÒÔ sqrt(N) Îª½ç£¬a,b Ò»´óÒ»Ð¡£¬·Ö±ðÎ»ÓÚ sqrt(N) ×óÓÒÁ½²à£¬Èç¹û´æÔÚÕýÕûÊý a,b Âú×ã a*b=N£¬
- * Ö»ÐèÒª´ÓÐ¡µ½´ó±éÀúµ½ sqrt(N) ¼´¿É£¬Èô´æÔÚÒòÊý£¬ÔòÁíÒ»¸öÒòÊý±Ø´óÓÚµÈÓÚ sqrt(N)¡£
+ * ã€è§£é¢˜æ€è·¯ã€‘
+ * æ–¹æ³•ä¸€:
+ * æœ€å…ˆæœ€ç›´è§‚æƒ³åˆ°çš„ï¼Œå°±æ˜¯éåŽ†Nä»¥å†…çš„æ­£æ•´æ•°äº†ï¼Œç„¶åŽå¯¹æ¯ä¸€ä¸ªæ­£æ•´æ•°ï¼ŒéåŽ†å°äºŽå®ƒçš„æ­£æ•´æ•°ï¼Œä¾æ¬¡ä½œæ•´é™¤çš„åˆ¤æ–­ï¼Œç»Ÿè®¡ä¹‹ã€‚
+ * æƒ³æƒ³å°±æ˜Žç™½æ—¶é—´å¤æ‚åº¦ä¼šå¾ˆé«˜ï¼Œä½†é€šè¿‡è´¨æ•°çš„æ€§è´¨å¯çŸ¥ï¼Œ0å’Œ1æ—¢ä¸æ˜¯è´¨æ•°ä¹Ÿä¸æ˜¯åˆæ•°ï¼Œæ‰€ä»¥å¯ä»¥ç›´æŽ¥ä»Ž2å¼€å§‹éåŽ†ï¼Œ
+ * åˆå› ä¸ºæ‰€æœ‰å¶æ•°ä¸­ï¼Œåªæœ‰2æ‰æ˜¯è´¨æ•°ï¼Œæ‰€ä»¥å¯ä»¥ä»Ž3å¼€å§‹éåŽ†ï¼ŒéåŽ†æ­¥é•¿ä¸º2ï¼ŒæŽ’é™¤æ‰€æœ‰å¶æ•°ï¼Œæå‡æ•ˆçŽ‡ã€‚
+ * ä½†è¿˜æœ‰æ”¹è¿›ç©ºé—´ï¼ŒæŽ’é™¤å¶æ•°åŽï¼Œè¿˜æ˜¯ä¼šéåŽ†åˆ°æŽ¥è¿‘Nçš„æ•°ï¼Œä½†ä»”ç»†æƒ³æƒ³ï¼Œä¸¤ä¸ªæ­£æ•´æ•° a,bï¼Œå¦‚æžœæ»¡è¶³ a*b=Nï¼Œ
+ * åˆ™å¿…æœ‰ä»¥ sqrt(N) ä¸ºç•Œï¼Œa,b ä¸€å¤§ä¸€å°ï¼Œåˆ†åˆ«ä½äºŽ sqrt(N) å·¦å³ä¸¤ä¾§ï¼Œå¦‚æžœå­˜åœ¨æ­£æ•´æ•° a,b æ»¡è¶³ a*b=Nï¼Œ
+ * åªéœ€è¦ä»Žå°åˆ°å¤§éåŽ†åˆ° sqrt(N) å³å¯ï¼Œè‹¥å­˜åœ¨å› æ•°ï¼Œåˆ™å¦ä¸€ä¸ªå› æ•°å¿…å¤§äºŽç­‰äºŽ sqrt(N)ã€‚
  *
- * ·½·¨¶þ£º
- * ¿É²ÉÓÃ°£ÊÏÉ¸£¨°£À­ÍÐË¹ÌØÄáÉ¸·¨£©£¬Èç¹ûÒ»¸öÊý NUM£¬±»ÅÐ¶ÏÎªÊÇÒ»¸öÖÊÊý£¬ÏÔÈ»£¬NUM µÄ N(N>=2) ±¶£¬
- * ±ØÎªÒ»¸öºÏÊý¡£ËùÒÔ£¬¿ÉÒÔÓÃÒ»¸öÊý×é£¬ÒÔÆäÏÂ±ê×÷Îª²Ù×÷Êý£¬µ±Ä³Ò»¸öÏÂ±êËù±íÊ¾µÄÊýÖµ±»ÅÐ¶ÏÎªÊÇÒ»¸öÖÊÊý£¬
- * ¿ÉÓÃ¸ÃÏÂ±ê¶ÔÓ¦µÄÊý×éÔªËØÖµ±ê¼ÇÖ®£¬Í¬Ê±£¬¿É±ê¼ÇÏÂ±ê NUM ºóÐø N(N>=2) ±¶µÄËùÓÐÏÂ±ê£¬ËüÃÇ±ØÈ»ÊÇºÏÊý¡£
- * ¸ù¾ÝÖÊÊýÐÔÖÊ£¬³ýÁË2ÒÔÍâ£¬ËùÓÐµÄÖÊÊý±ØÎªÆæÊý£¬ËùÒÔÆäÊµ²»ÐèÒª´¦ÀíÏÂ±êÎªÅ¼ÊýµÄÔªËØ£¬µ«ÒòÎªÏÂ±ê±¾Éí¾ÍÊÇ²Ù×÷Êý£¬
- * Ïàµ±ÓÚÊý×éÓÐÒ»°ëµÄ¿Õ¼äÊÇ¿ÕÏÐµÄ¡£
- * ÕâÀï±ê¼ÇµÄ±éÀú¿ÉÒÔ½øÒ»²½ÓÅ»¯£¬ÈôÒ»¸öÊýÖµ NUM ±»ÅÐ¶ÏÎªÖÊÊý£¬²»±Ø´ÓNUM*2 ¿ªÊ¼±ê¼ÇÊý×éÔªËØÎªºÏÊý£¬
- * ÒòÎªËüÃÇ¿Ï¶¨±» NUM Ö®Ç°µÄÖÊÊý±ê¼Ç¹ýÁË£¬Ö±½Ó´Ó NUM*NUM ¿ªÊ¼±ê¼Ç£¬±éÀúµÄÃ¿´Î²½³¤Îª NUM£¬
- * ÒÀ´Î±ê¼Ç¶ÔÓ¦ÏÂ±êÊýÖµÎªºÏÊý¡£
- * ×îºó£¬×ÐÏ¸¿¼ÂÇ£¬Ã¿´ÎµÄ²½³¤ NUM »áÓÐÊ²Ã´Ð§¹û£¬±ÈÈçÖÊÊý3£¬´Ó 3*3 ¿ªÊ¼±ê¼Ç£¬²½³¤¼´Îª3£¬ÔòÏÂÒ»¸ö´¦ÀíµÄÊýÊÇ 9+3=12£¬
- * ÏÔÈ»£¬ÕâÊÇÒ»¸öÅ¼Êý£¬ÒòÎª¿ªÍ·¾ÍÅÅ³ýÁËÅ¼Êý2£¬ËùÒÔÊ£ÓàÅ¼ÊýÖÐ²»¿ÉÄÜ´æÔÚÖÊÊýÁË£¬ÕâÑù¾ÍÊÇÈßÓà´¦ÀíÁË£¬¿ÉÔÙ½øÒ»²½ÓÅ»¯£¬
- * ½«²½³¤Éè¶¨Îª NUM*2£¬ÒòÎª NUM ±ØÈ»ÊÇÒ»¸öÆæÊý£¬¶ø NUM*2 ±ØÈ»ÊÇÒ»¸öÅ¼Êý£¬ËùÒÔËüÃÇµÄºÍ£¬Ò²±ØÈ»ÊÇÆæÊý£¬ÕâÑù¾Í²»»á
- * ÈßÓàµÄÈ¥´¦ÀíÅ¼ÊýÁË¡£
+ * æ–¹æ³•äºŒï¼š
+ * å¯é‡‡ç”¨åŸƒæ°ç­›ï¼ˆåŸƒæ‹‰æ‰˜æ–¯ç‰¹å°¼ç­›æ³•ï¼‰ï¼Œå¦‚æžœä¸€ä¸ªæ•° NUMï¼Œè¢«åˆ¤æ–­ä¸ºæ˜¯ä¸€ä¸ªè´¨æ•°ï¼Œæ˜¾ç„¶ï¼ŒNUM çš„ N(N>=2) å€ï¼Œ
+ * å¿…ä¸ºä¸€ä¸ªåˆæ•°ã€‚æ‰€ä»¥ï¼Œå¯ä»¥ç”¨ä¸€ä¸ªæ•°ç»„ï¼Œä»¥å…¶ä¸‹æ ‡ä½œä¸ºæ“ä½œæ•°ï¼Œå½“æŸä¸€ä¸ªä¸‹æ ‡æ‰€è¡¨ç¤ºçš„æ•°å€¼è¢«åˆ¤æ–­ä¸ºæ˜¯ä¸€ä¸ªè´¨æ•°ï¼Œ
+ * å¯ç”¨è¯¥ä¸‹æ ‡å¯¹åº”çš„æ•°ç»„å…ƒç´ å€¼æ ‡è®°ä¹‹ï¼ŒåŒæ—¶ï¼Œå¯æ ‡è®°ä¸‹æ ‡ NUM åŽç»­ N(N>=2) å€çš„æ‰€æœ‰ä¸‹æ ‡ï¼Œå®ƒä»¬å¿…ç„¶æ˜¯åˆæ•°ã€‚
+ * æ ¹æ®è´¨æ•°æ€§è´¨ï¼Œé™¤äº†2ä»¥å¤–ï¼Œæ‰€æœ‰çš„è´¨æ•°å¿…ä¸ºå¥‡æ•°ï¼Œæ‰€ä»¥å…¶å®žä¸éœ€è¦å¤„ç†ä¸‹æ ‡ä¸ºå¶æ•°çš„å…ƒç´ ï¼Œä½†å› ä¸ºä¸‹æ ‡æœ¬èº«å°±æ˜¯æ“ä½œæ•°ï¼Œ
+ * ç›¸å½“äºŽæ•°ç»„æœ‰ä¸€åŠçš„ç©ºé—´æ˜¯ç©ºé—²çš„ã€‚
+ * è¿™é‡Œæ ‡è®°çš„éåŽ†å¯ä»¥è¿›ä¸€æ­¥ä¼˜åŒ–ï¼Œè‹¥ä¸€ä¸ªæ•°å€¼ NUM è¢«åˆ¤æ–­ä¸ºè´¨æ•°ï¼Œä¸å¿…ä»ŽNUM*2 å¼€å§‹æ ‡è®°æ•°ç»„å…ƒç´ ä¸ºåˆæ•°ï¼Œ
+ * å› ä¸ºå®ƒä»¬è‚¯å®šè¢« NUM ä¹‹å‰çš„è´¨æ•°æ ‡è®°è¿‡äº†ï¼Œç›´æŽ¥ä»Ž NUM*NUM å¼€å§‹æ ‡è®°ï¼ŒéåŽ†çš„æ¯æ¬¡æ­¥é•¿ä¸º NUMï¼Œ
+ * ä¾æ¬¡æ ‡è®°å¯¹åº”ä¸‹æ ‡æ•°å€¼ä¸ºåˆæ•°ã€‚
+ * æœ€åŽï¼Œä»”ç»†è€ƒè™‘ï¼Œæ¯æ¬¡çš„æ­¥é•¿ NUM ä¼šæœ‰ä»€ä¹ˆæ•ˆæžœï¼Œæ¯”å¦‚è´¨æ•°3ï¼Œä»Ž 3*3 å¼€å§‹æ ‡è®°ï¼Œæ­¥é•¿å³ä¸º3ï¼Œåˆ™ä¸‹ä¸€ä¸ªå¤„ç†çš„æ•°æ˜¯ 9+3=12ï¼Œ
+ * æ˜¾ç„¶ï¼Œè¿™æ˜¯ä¸€ä¸ªå¶æ•°ï¼Œå› ä¸ºå¼€å¤´å°±æŽ’é™¤äº†å¶æ•°2ï¼Œæ‰€ä»¥å‰©ä½™å¶æ•°ä¸­ä¸å¯èƒ½å­˜åœ¨è´¨æ•°äº†ï¼Œè¿™æ ·å°±æ˜¯å†—ä½™å¤„ç†äº†ï¼Œå¯å†è¿›ä¸€æ­¥ä¼˜åŒ–ï¼Œ
+ * å°†æ­¥é•¿è®¾å®šä¸º NUM*2ï¼Œå› ä¸º NUM å¿…ç„¶æ˜¯ä¸€ä¸ªå¥‡æ•°ï¼Œè€Œ NUM*2 å¿…ç„¶æ˜¯ä¸€ä¸ªå¶æ•°ï¼Œæ‰€ä»¥å®ƒä»¬çš„å’Œï¼Œä¹Ÿå¿…ç„¶æ˜¯å¥‡æ•°ï¼Œè¿™æ ·å°±ä¸ä¼š
+ * å†—ä½™çš„åŽ»å¤„ç†å¶æ•°äº†ã€‚
  *
- * ·½·¨Èý£º
- * ÏßÐÔÉ¸£¨Å·À­É¸£©£¬ÔÚ°£ÊÏÉ¸ÖÐ£¬¼´Ê¹´Ó NUM*NUM ¿ªÊ¼±ê¼Ç£¬ÈÔ»á´æÔÚÖØ¸´±ê¼Ç£¬±ÈÈç45£¬µ±±éÀúµ½3Ê±£¬»á´Ó 3*3 ¿ªÊ¼±ê¼Ç£¬
- * ¹Ê 3*15 »á±»±ê¼ÇÎªºÏÊý£¬ÔÙ±éÀúµ½5£¬»á´Ó 5*5 ¿ªÊ¼±ê¼Ç£¬»á½«ÒÑ¾­±ê¼ÇÎªºÏÊýµÄ45»á±» 5*9 ÖØ¸´±ê¼ÇÒ»´Î¡£
- * ºÏÊýÓÐÒ»¸öÐÔÖÊ£ºÈÎºÎºÏÊý¶¼ÄÜ·Ö½âÎªÎ¨Ò»Ò»×é¶à¸öÖÊÊýµÄ³Ë»ý¡£¶øÏßÐÔÉ¸µÄºËÐÄË¼Ïë¾ÍÊÇ±£Ö¤Ã¿¸ö±»É¸Ñ¡µôµÄºÏÊý£¬
- * ±Ø¶¨ÊÇ±»Æä×îÐ¡ÖÊÒòÊýÉ¸Ñ¡µôµÄ£¬´ËÊ±ÖÐÖ¹¼ÌÐøÉ¸Ñ¡£¬¾Í¿ÉÒÔ±ÜÃâ±»ÖØ¸´±ê¼ÇÁË¡£ËùÒÔ£¬µ±±éÀúµ½Ä³¸ö num Ê±£¬
- * Ö»ÐèÒª½«ÖÊÊýÈÝÆ÷ÖÐµÄÔªËØÓë num Ïà³Ë£¬³Ë»ý±Ø¶¨ÎªºÏÊý£¬±ê¼ÇÖ®¡£¶øÈç¹û num ÊÇºÏÊý£¬ÔòÔÚÖÊÊýÈÝÆ÷ÖÐ
- * ±Ø¶¨´æÔÚÎ¨Ò»Ò»×éÖÊÊýµÄ³Ë»ýµÈÓÚ num£¬ÒòÎªÖÊÊýÊÇ°´ÉýÐò¼ÓÈëÈÝÆ÷µÄ£¬ËùÒÔÈÝÆ÷ÄÚµÄÔªËØÒ»¶¨Ð¡ÓÚµÈÓÚ num£¬´ËÊ±£¬
- * Èç¹ûÕÒµ½ÁËµÚÒ»¸öÄÜ¹»±» num Õû³ýµÄÖÊÊý£¬ÄÇÃ´£¬Õâ¸öÖÊÊý¾ÍÊÇ num µÄ×îÐ¡ÖÊÒòÊý¡£ÔÚÕâÀïÖÐÖ¹µôºóÐøµÄÉ¸Ñ¡£¬±ÜÃâÖØ¸´±ê¼Ç¡£
+ * æ–¹æ³•ä¸‰ï¼š
+ * çº¿æ€§ç­›ï¼ˆæ¬§æ‹‰ç­›ï¼‰ï¼Œåœ¨åŸƒæ°ç­›ä¸­ï¼Œå³ä½¿ä»Ž NUM*NUM å¼€å§‹æ ‡è®°ï¼Œä»ä¼šå­˜åœ¨é‡å¤æ ‡è®°ï¼Œæ¯”å¦‚45ï¼Œå½“éåŽ†åˆ°3æ—¶ï¼Œä¼šä»Ž 3*3 å¼€å§‹æ ‡è®°ï¼Œ
+ * æ•… 3*15 ä¼šè¢«æ ‡è®°ä¸ºåˆæ•°ï¼Œå†éåŽ†åˆ°5ï¼Œä¼šä»Ž 5*5 å¼€å§‹æ ‡è®°ï¼Œä¼šå°†å·²ç»æ ‡è®°ä¸ºåˆæ•°çš„45ä¼šè¢« 5*9 é‡å¤æ ‡è®°ä¸€æ¬¡ã€‚
+ * åˆæ•°æœ‰ä¸€ä¸ªæ€§è´¨ï¼šä»»ä½•åˆæ•°éƒ½èƒ½åˆ†è§£ä¸ºå”¯ä¸€ä¸€ç»„å¤šä¸ªè´¨æ•°çš„ä¹˜ç§¯ã€‚è€Œçº¿æ€§ç­›çš„æ ¸å¿ƒæ€æƒ³å°±æ˜¯ä¿è¯æ¯ä¸ªè¢«ç­›é€‰æŽ‰çš„åˆæ•°ï¼Œ
+ * å¿…å®šæ˜¯è¢«å…¶æœ€å°è´¨å› æ•°ç­›é€‰æŽ‰çš„ï¼Œæ­¤æ—¶ä¸­æ­¢ç»§ç»­ç­›é€‰ï¼Œå°±å¯ä»¥é¿å…è¢«é‡å¤æ ‡è®°äº†ã€‚æ‰€ä»¥ï¼Œå½“éåŽ†åˆ°æŸä¸ª num æ—¶ï¼Œ
+ * åªéœ€è¦å°†è´¨æ•°å®¹å™¨ä¸­çš„å…ƒç´ ä¸Ž num ç›¸ä¹˜ï¼Œä¹˜ç§¯å¿…å®šä¸ºåˆæ•°ï¼Œæ ‡è®°ä¹‹ã€‚è€Œå¦‚æžœ num æ˜¯åˆæ•°ï¼Œåˆ™åœ¨è´¨æ•°å®¹å™¨ä¸­
+ * å¿…å®šå­˜åœ¨å”¯ä¸€ä¸€ç»„è´¨æ•°çš„ä¹˜ç§¯ç­‰äºŽ numï¼Œå› ä¸ºè´¨æ•°æ˜¯æŒ‰å‡åºåŠ å…¥å®¹å™¨çš„ï¼Œæ‰€ä»¥å®¹å™¨å†…çš„å…ƒç´ ä¸€å®šå°äºŽç­‰äºŽ numï¼Œæ­¤æ—¶ï¼Œ
+ * å¦‚æžœæ‰¾åˆ°äº†ç¬¬ä¸€ä¸ªèƒ½å¤Ÿè¢« num æ•´é™¤çš„è´¨æ•°ï¼Œé‚£ä¹ˆï¼Œè¿™ä¸ªè´¨æ•°å°±æ˜¯ num çš„æœ€å°è´¨å› æ•°ã€‚åœ¨è¿™é‡Œä¸­æ­¢æŽ‰åŽç»­çš„ç­›é€‰ï¼Œé¿å…é‡å¤æ ‡è®°ã€‚
  * 
  * 
- * ¡¾½âÌâ·ÖÎö¡¿
- * ·½·¨Ò»£º
- * Ê±¼ä¸´ÔÓ¶È£ºO(N¡ÌN) ËäÈ»¸´ÔÓ¶È¸ßÓÚ°£ÊÏÉ¸ºÍÏßÐÔÉ¸£¬µ«Êµ¼ÊÖ´ÐÐÊ±¼ä»áÔ¶Ð¡ÓÚÁíÍâÁ½ÖÖËã·¨
- * ¿Õ¼ä¸´ÔÓ¶È£ºO(1)
- * ·½·¨¶þ£º
- * Ê±¼ä¸´ÔÓ¶È£ºO(Nlog(logN))
- * ¿Õ¼ä¸´ÔÓ¶È£ºO(N) ÒòÎªÅÅ³ýµôÁËÅ¼Êý£¬Êµ¼ÊÉÏÖ»ÓÐO(N/2)µÄ¿Õ¼äÓÐÓÃµ½
- * ·½·¨Èý£º
- * Ê±¼ä¸´ÔÓ¶È£ºO(N)
- * ¿Õ¼ä¸´ÔÓ¶È£ºO(N)
+ * ã€è§£é¢˜åˆ†æžã€‘
+ * æ–¹æ³•ä¸€ï¼š
+ * æ—¶é—´å¤æ‚åº¦ï¼šO(NâˆšN) è™½ç„¶å¤æ‚åº¦é«˜äºŽåŸƒæ°ç­›å’Œçº¿æ€§ç­›ï¼Œä½†å®žé™…æ‰§è¡Œæ—¶é—´ä¼šè¿œå°äºŽå¦å¤–ä¸¤ç§ç®—æ³•
+ * ç©ºé—´å¤æ‚åº¦ï¼šO(1)
+ * æ–¹æ³•äºŒï¼š
+ * æ—¶é—´å¤æ‚åº¦ï¼šO(Nlog(logN))
+ * ç©ºé—´å¤æ‚åº¦ï¼šO(N) å› ä¸ºæŽ’é™¤æŽ‰äº†å¶æ•°ï¼Œå®žé™…ä¸Šåªæœ‰O(N/2)çš„ç©ºé—´æœ‰ç”¨åˆ°
+ * æ–¹æ³•ä¸‰ï¼š
+ * æ—¶é—´å¤æ‚åº¦ï¼šO(N)
+ * ç©ºé—´å¤æ‚åº¦ï¼šO(N)
  *
  * @author FrankX
  * @date 2021-08-26
@@ -65,23 +65,23 @@ using namespace std::chrono;
 
 void CountPrimeNumber_1(vector<unsigned int>& primeVec, const unsigned int& targetNum)
 {
-	// ÖÊÊý´óÓÚ1£¨0ºÍ1¼´²»ÊÇÖÊÊýÒ²²»ÊÇºÏÊý£©
+	// è´¨æ•°å¤§äºŽ1ï¼ˆ0å’Œ1å³ä¸æ˜¯è´¨æ•°ä¹Ÿä¸æ˜¯åˆæ•°ï¼‰
 	if (targetNum <= 1) return;
 
-	// 2ÊÇÖÊÊýÖÐÎ¨Ò»µÄÅ¼Êý 
+	// 2æ˜¯è´¨æ•°ä¸­å”¯ä¸€çš„å¶æ•° 
 	primeVec.emplace_back(2);
 
-	// ×÷Îª³ýÊýÅÐ¶Ïµ±Ç°ÊýÖµµÄÒòÊý 
+	// ä½œä¸ºé™¤æ•°åˆ¤æ–­å½“å‰æ•°å€¼çš„å› æ•° 
 	unsigned int divNum = 0;
 
-	// ³ýÁË2ÒÔÍâ£¬Ö»ÓÐÆæÊý²Å¿ÉÄÜÊÇÖÊÊý£¬¹Ê¶ø += 2 ÅÅ³ýÅ¼Êý
+	// é™¤äº†2ä»¥å¤–ï¼Œåªæœ‰å¥‡æ•°æ‰å¯èƒ½æ˜¯è´¨æ•°ï¼Œæ•…è€Œ += 2 æŽ’é™¤å¶æ•°
 	for (unsigned int num = 3; num < targetNum; num += 2)
 	{
-		// ÒÔÆ½·½¸ùÎª½ç£¬Èç¹ûÔÚ×ó²àÓÐÒòÊý£¬ÔòÁíÒ»¸öÒòÊý±ØÔÚÓÒ²à£¬ËùÒÔÖ»ÐèÒªÅÐ¶Ïµ½Æ½·½¸ù¾Í¿ÉÒÔ
+		// ä»¥å¹³æ–¹æ ¹ä¸ºç•Œï¼Œå¦‚æžœåœ¨å·¦ä¾§æœ‰å› æ•°ï¼Œåˆ™å¦ä¸€ä¸ªå› æ•°å¿…åœ¨å³ä¾§ï¼Œæ‰€ä»¥åªéœ€è¦åˆ¤æ–­åˆ°å¹³æ–¹æ ¹å°±å¯ä»¥
 		unsigned int cycleNum = static_cast<unsigned int>(sqrt(num));
 		divNum = 3;
 
-		// ÒòÎª num ±ØÎªÆæÊý£¬ËùÒÔ³ýÊý divNum ²»¿ÉÄÜÊÇÅ¼Êý£¬¹Ê¶ø += 2 ÅÅ³ýÅ¼Êý 
+		// å› ä¸º num å¿…ä¸ºå¥‡æ•°ï¼Œæ‰€ä»¥é™¤æ•° divNum ä¸å¯èƒ½æ˜¯å¶æ•°ï¼Œæ•…è€Œ += 2 æŽ’é™¤å¶æ•° 
 		for (; divNum <= cycleNum; divNum += 2)
 		{
 			if (num % divNum == 0)
@@ -95,20 +95,20 @@ void CountPrimeNumber_1(vector<unsigned int>& primeVec, const unsigned int& targ
 
 void CountPrimeNumber_2(vector<unsigned int>& primeVec, const unsigned int& targetNum)
 {
-	// ÖÊÊý´óÓÚ1£¨0ºÍ1¼´²»ÊÇÖÊÊýÒ²²»ÊÇºÏÊý£©
+	// è´¨æ•°å¤§äºŽ1ï¼ˆ0å’Œ1å³ä¸æ˜¯è´¨æ•°ä¹Ÿä¸æ˜¯åˆæ•°ï¼‰
 	if (targetNum <= 1) return;
 
-	// 2ÊÇÖÊÊýÖÐÎ¨Ò»µÄÅ¼Êý 
+	// 2æ˜¯è´¨æ•°ä¸­å”¯ä¸€çš„å¶æ•° 
 	primeVec.emplace_back(2);
 
-	// ÅÅ³ýÁËÅ¼ÊýµÄ»°ÆäÊµÓÐÒ»°ëµÄ¿Õ¼äÊÇÓÃ²»µ½µÄ£¬µ«ÊÇÓÖÐèÒª½øÐÐÏÂ±ê¼ÆËã 
+	// æŽ’é™¤äº†å¶æ•°çš„è¯å…¶å®žæœ‰ä¸€åŠçš„ç©ºé—´æ˜¯ç”¨ä¸åˆ°çš„ï¼Œä½†æ˜¯åˆéœ€è¦è¿›è¡Œä¸‹æ ‡è®¡ç®— 
 	vector<bool> judgeVec(targetNum, true);
-	// ÌáÉýÈÝÁ¿£¬¼ì²âÎÞ·ûºÅÊýÔ½½ç 
+	// æå‡å®¹é‡ï¼Œæ£€æµ‹æ— ç¬¦å·æ•°è¶Šç•Œ 
 	unsigned long long int borderNum = 0;
-	// ÒòÎªÆæÊýµÄ N(N>=2) ±¶°üº¬Å¼Êý£¬ËùÒÔ²½³¤ÊÇµ±Ç°ÖÊÊýµÄÁ½±¶£¬ÆæÅ¼Ö®ºÍ±ØÎªÆæ 
+	// å› ä¸ºå¥‡æ•°çš„ N(N>=2) å€åŒ…å«å¶æ•°ï¼Œæ‰€ä»¥æ­¥é•¿æ˜¯å½“å‰è´¨æ•°çš„ä¸¤å€ï¼Œå¥‡å¶ä¹‹å’Œå¿…ä¸ºå¥‡ 
 	unsigned int stepNum = 0;
 
-	// ´óÓÚ2µÄÅ¼Êý±Ø¶¨ÊÇºÏÊý£¬Í¨¹ý += 2 ÅÅ³ýÅ¼Êý 
+	// å¤§äºŽ2çš„å¶æ•°å¿…å®šæ˜¯åˆæ•°ï¼Œé€šè¿‡ += 2 æŽ’é™¤å¶æ•° 
 	for (unsigned int num = 3; num < targetNum; num += 2)
 	{
 		if (judgeVec[num] == false) continue;
@@ -119,8 +119,8 @@ void CountPrimeNumber_2(vector<unsigned int>& primeVec, const unsigned int& targ
 		if (borderNum >= targetNum) continue;
 
 		/**
-		 * Èô num ÊÇÖÊÊý£¬Ôò num µÄ N(N >= 2) ±¶±Ø¶¨ÊÇºÏÊý£¬Í¨¹ý += num ±ê¼ÇºÏÊý
-		 * ´Ó num * 2 ¿ªÊ¼»áÓÐÈßÓàµÄÉèÖÃ²Ù×÷£¬¹Ê¶ø´Ó num * num ¿ªÊ¼´¦Àí
+		 * è‹¥ num æ˜¯è´¨æ•°ï¼Œåˆ™ num çš„ N(N >= 2) å€å¿…å®šæ˜¯åˆæ•°ï¼Œé€šè¿‡ += num æ ‡è®°åˆæ•°
+		 * ä»Ž num * 2 å¼€å§‹ä¼šæœ‰å†—ä½™çš„è®¾ç½®æ“ä½œï¼Œæ•…è€Œä»Ž num * num å¼€å§‹å¤„ç†
 		 */
 		stepNum = num * 2;
 		for (unsigned int idx = static_cast<unsigned int>(borderNum); idx < targetNum; idx += stepNum)
@@ -132,16 +132,16 @@ void CountPrimeNumber_2(vector<unsigned int>& primeVec, const unsigned int& targ
 
 void CountPrimeNumber_3(vector<unsigned int>& primeVec, const unsigned int& targetNum)
 {
-	// ÖÊÊý´óÓÚ1£¨0ºÍ1¼´²»ÊÇÖÊÊýÒ²²»ÊÇºÏÊý£©
+	// è´¨æ•°å¤§äºŽ1ï¼ˆ0å’Œ1å³ä¸æ˜¯è´¨æ•°ä¹Ÿä¸æ˜¯åˆæ•°ï¼‰
 	if (targetNum <= 1) return;
 
-	// ÅÅ³ýÁËÅ¼ÊýµÄ»°ÆäÊµÓÐÒ»°ëµÄ¿Õ¼äÊÇÓÃ²»µ½µÄ£¬µ«ÊÇÓÖÐèÒª½øÐÐÏÂ±ê¼ÆËã 
+	// æŽ’é™¤äº†å¶æ•°çš„è¯å…¶å®žæœ‰ä¸€åŠçš„ç©ºé—´æ˜¯ç”¨ä¸åˆ°çš„ï¼Œä½†æ˜¯åˆéœ€è¦è¿›è¡Œä¸‹æ ‡è®¡ç®— 
 	vector<bool> judgeVec(targetNum, true);
-	// ÌáÉýÈÝÁ¿£¬¼ì²âÎÞ·ûºÅÊýÔ½½ç 
+	// æå‡å®¹é‡ï¼Œæ£€æµ‹æ— ç¬¦å·æ•°è¶Šç•Œ 
 	unsigned long long int borderNum = 0;
 	unsigned int primeCount = 0;
 
-	// ´óÓÚ2µÄÅ¼Êý±Ø¶¨ÊÇºÏÊý£¬Í¨¹ý += 2 ÅÅ³ýÅ¼Êý 
+	// å¤§äºŽ2çš„å¶æ•°å¿…å®šæ˜¯åˆæ•°ï¼Œé€šè¿‡ += 2 æŽ’é™¤å¶æ•° 
 	for (unsigned int num = 3; num < targetNum; num += 2)
 	{
 		if (judgeVec[num])
@@ -153,19 +153,19 @@ void CountPrimeNumber_3(vector<unsigned int>& primeVec, const unsigned int& targ
 			borderNum = static_cast<unsigned long long int>(num) * primeVec[idx];
 			if (borderNum >= targetNum) break;
 
-			// Á½Êý³Ë»ý±ØÈ»ÎªºÏÊý£¬±ê¼ÇÖ® 
+			// ä¸¤æ•°ä¹˜ç§¯å¿…ç„¶ä¸ºåˆæ•°ï¼Œæ ‡è®°ä¹‹ 
 			judgeVec[static_cast<unsigned int>(borderNum)] = false;
 
-			// primeVec °´´ÓÐ¡µ½´óË³Ðò¼ÓÈëÔªËØ£¬ËùÒÔÄÜÕû³ýÊ±£¬µ±Ç°µÄÖÊÊý±Ø¶¨Îª num µÄ×îÐ¡ÖÊÒòÊý 
+			// primeVec æŒ‰ä»Žå°åˆ°å¤§é¡ºåºåŠ å…¥å…ƒç´ ï¼Œæ‰€ä»¥èƒ½æ•´é™¤æ—¶ï¼Œå½“å‰çš„è´¨æ•°å¿…å®šä¸º num çš„æœ€å°è´¨å› æ•° 
 			if (num % primeVec[idx] == 0) break;
 		}
 	}
 
 	/**
-	 * 2ÊÇÖÊÊýÖÐÎ¨Ò»µÄÅ¼Êý£»
-	 * ÒòÎªËã·¨Âß¼­ÖÐ£¬ÖÊÊýÈÝÆ÷Ã¿Ò»¸öÔªËØ»á²ÎÓë¼ÆËã£¬
-	 * ¶ø2×÷ÎªÅ¼Êý£¬ÓëÈÎºÎ´óÓÚ1µÄÕýÕûÊý³Ë»ý¶¼ÊÇºÏÊý£¬
-	 * ËùÒÔÐèÒªÔÚËã·¨Ö÷ÌåÂß¼­Íê³Éºó£¬ÔÙ¼ÓÈëµ½ÖÊÊýÈÝÆ÷
+	 * 2æ˜¯è´¨æ•°ä¸­å”¯ä¸€çš„å¶æ•°ï¼›
+	 * å› ä¸ºç®—æ³•é€»è¾‘ä¸­ï¼Œè´¨æ•°å®¹å™¨æ¯ä¸€ä¸ªå…ƒç´ ä¼šå‚ä¸Žè®¡ç®—ï¼Œ
+	 * è€Œ2ä½œä¸ºå¶æ•°ï¼Œä¸Žä»»ä½•å¤§äºŽ1çš„æ­£æ•´æ•°ä¹˜ç§¯éƒ½æ˜¯åˆæ•°ï¼Œ
+	 * æ‰€ä»¥éœ€è¦åœ¨ç®—æ³•ä¸»ä½“é€»è¾‘å®ŒæˆåŽï¼Œå†åŠ å…¥åˆ°è´¨æ•°å®¹å™¨
 	 */
 	primeVec.emplace_back(2);
 }
@@ -182,15 +182,15 @@ int main()
 
 	CountPrimeNumber_1(primeGather1, primeLimit);
 	cout << "[Solution 1] The prime numbers under " << primeLimit
-		<< "£¨" << primeGather1.size() << "£©";
+		<< "ï¼ˆ" << primeGather1.size() << "ï¼‰";
 
 	end = system_clock::now();
-	cout << "\n[Solution 1] Execute time: " << duration_cast<milliseconds>(end - start).count() << " ms  O(N¡ÌN)";
+	cout << "\n[Solution 1] Execute time: " << duration_cast<milliseconds>(end - start).count() << " ms  O(NâˆšN)";
 	start = end;
 
 	CountPrimeNumber_2(primeGather2, primeLimit);
 	cout << "\n\n[Solution 2] The prime numbers under " << primeLimit
-		<< "£¨" << primeGather2.size() << "£©";
+		<< "ï¼ˆ" << primeGather2.size() << "ï¼‰";
 
 	end = system_clock::now();
 	cout << "\n[Solution 2] Execute time: " << duration_cast<milliseconds>(end - start).count() << " ms  O(Nlog(logN))";
@@ -198,7 +198,7 @@ int main()
 
 	CountPrimeNumber_3(primeGather3, primeLimit);
 	cout << "\n\n[Solution 3] The prime numbers under " << primeLimit
-		<< "£¨" << primeGather3.size() << "£©";
+		<< "ï¼ˆ" << primeGather3.size() << "ï¼‰";
 
 	end = system_clock::now();
 	cout << "\n[Solution 3] Execute time: " << duration_cast<milliseconds>(end - start).count() << " ms  O(N)";
