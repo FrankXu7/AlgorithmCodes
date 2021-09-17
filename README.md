@@ -75,4 +75,4 @@
 60. [[简单 - 237th]](https://leetcode-cn.com/problems/delete-node-in-a-linked-list/) [删除链表中的节点(DeleteTargetNode)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/DeleteTargetNode)
 61. [[简单 - 242th]](https://leetcode-cn.com/problems/valid-anagram/) [有效的字母异位词(ValidAnagram)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ValidAnagram)
 62. [[简单 - 257th]](https://leetcode-cn.com/problems/binary-tree-paths/) [二叉树的所有路径(BinaryTreePaths)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/BinaryTreePaths)
-63. [[简单 - 258th]](https://leetcode-cn.com/problems/add-digits/) [数字各位相加直到一(AddNumDigits)]()(https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/AddNumDigits)
+63. [[简单 - 258th]](https://leetcode-cn.com/problems/add-digits/) [数字各位相加直到一(AddNumDigits)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/AddNumDigits)
