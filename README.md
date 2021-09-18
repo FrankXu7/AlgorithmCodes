@@ -77,3 +77,4 @@
 62. [[简单 - 257th]](https://leetcode-cn.com/problems/binary-tree-paths/) [二叉树的所有路径(BinaryTreePaths)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/BinaryTreePaths)
 63. [[简单 - 258th]](https://leetcode-cn.com/problems/add-digits/) [数字各位相加直到一(AddNumDigits)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/AddNumDigits)
 64. [[简单 - 263th]](https://leetcode-cn.com/problems/ugly-number/) [丑数(UglyNumber)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/UglyNumber)
+65. [[简单 - 268th]](https://leetcode-cn.com/problems/missing-number/) [丢失的数字(MissingNumber)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MissingNumber)
