@@ -94,7 +94,7 @@ unsigned int MissingNumber_2(vector<unsigned int>& nums)
 
 unsigned int MissingNumber_3(vector<unsigned int>& nums)
 {
-	// 计算未丢失那个数字时等差数量之和 
+	// 计算未丢失那个数字时等差数列之和 
 	unsigned int realSize = nums.size() + 1;
 	unsigned int realSum = realSize * (realSize - 1) / 2;
 
