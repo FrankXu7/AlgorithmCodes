@@ -79,3 +79,4 @@
 64. [[简单 - 263th]](https://leetcode-cn.com/problems/ugly-number/) [丑数(UglyNumber)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/UglyNumber)
 65. [[简单 - 268th]](https://leetcode-cn.com/problems/missing-number/) [丢失的数字(MissingNumber)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MissingNumber)
 66. [[简单 - 278th]](https://leetcode-cn.com/problems/first-bad-version/) [第一个错误的版本(FirstBadVersion)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/FirstBadVersion)
+67. [[简单 - 283th]](https://leetcode-cn.com/problems/move-zeroes/) [移动零元素(MoveZeroes)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MoveZeroes)
