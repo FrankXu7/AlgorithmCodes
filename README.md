@@ -83,4 +83,5 @@
 68. [[简单 - 290th]](https://leetcode-cn.com/problems/word-pattern/) [单词规律(WordsPattern)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/WordsPattern)
 69. [[简单 - 292th]](https://leetcode-cn.com/problems/nim-game/) [Nim游戏(NimGame)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/NimGame)
 70. [[简单 - 303th]](https://leetcode-cn.com/problems/range-sum-query-immutable/) [区域和检索-数组不可变(RangeAndSearch)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/RangeAndSearch)
+71. [[简单 - 326th]](https://leetcode-cn.com/problems/power-of-three/) [3的幂(PowerOfThree)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/PowerOfThree)
 
