@@ -162,12 +162,7 @@ vector<int> CountingBits_5(int num)
 
 	for (int idx = 1; idx <= num; ++idx)
 	{
-		if ((idx & 1) == 1) // 奇数 
-			countArr[idx] = countArr[idx - 1] + 1;
-		else // 偶数 
-			countArr[idx] = countArr[idx >> 1];
-
-		//countArr[idx] = countArr[idx >> 1] + 1;
+		countArr[idx] = countArr[idx >> 1] + (idx & 1);
 	}
 
 	return countArr;
