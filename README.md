@@ -85,4 +85,5 @@
 70. [[简单 - 303th]](https://leetcode-cn.com/problems/range-sum-query-immutable/) [区域和检索-数组不可变(RangeAndSearch)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/RangeAndSearch)
 71. [[简单 - 326th]](https://leetcode-cn.com/problems/power-of-three/) [3的幂(PowerOfThree)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/PowerOfThree)
 72. [[简单 - 338th]](https://leetcode-cn.com/problems/counting-bits/) [比特位计数(CountingBits)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/CountingBits)
+73. [[简单 - 342th]](https://leetcode-cn.com/problems/power-of-four/) [4的幂(PowerOfFour)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/PowerOfFour)
 
