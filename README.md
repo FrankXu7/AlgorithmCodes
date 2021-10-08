@@ -87,3 +87,4 @@
 72. [[简单 - 338th]](https://leetcode-cn.com/problems/counting-bits/) [比特位计数(CountingBits)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/CountingBits)
 73. [[简单 - 342th]](https://leetcode-cn.com/problems/power-of-four/) [4的幂(PowerOfFour)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/PowerOfFour)
 74. [[简单 - 344th]](https://leetcode-cn.com/problems/reverse-string/) [反转字符串(ReverseString)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ReverseString)
+75. [[简单 - 345th]](https://leetcode-cn.com/problems/reverse-vowels-of-a-string/) [反转字符串中的元音字母(ReverseStrVowelsChar)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ReverseStrVowelsChar)
