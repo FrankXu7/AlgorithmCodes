@@ -6,9 +6,9 @@
  * String Array = ['A','B','C','D','E','F','G']
  * 【输出】
  * After Reverse = ['G','F','E','D','C','B','A']
- * 
+ *
  * 【解题思路】
- * 使用双指针，分别指向数组头尾，交换指针指向元素，左右指针向数组中间移动，相遇时算法结束。 
+ * 使用双指针，分别指向数组头尾，交换指针指向元素，左右指针向数组中间移动，相遇时算法结束。
  *
  * 【解题分析】
  * 时间复杂度：O(N)
@@ -25,27 +25,29 @@ void ReverseString(vector<char>& strArr)
 {
 	char tempCh = '\0';
 
-	for (unsigned int leftIdx = 0, rightIdx = strArr.size() - 1; (leftIdx < rightIdx); ++leftIdx, --rightIdx)
+	for (unsigned int leftIdx = 0, rightIdx = strArr.size() - 1; leftIdx < rightIdx; ++leftIdx, --rightIdx)
 	{
 		tempCh = strArr[leftIdx];
 		strArr[leftIdx] = strArr[rightIdx];
 		strArr[rightIdx] = tempCh;
 	}
-
 }
 
 int main(int argc, char** argv)
 {
-	vector<char> strArr{ 'A','B', 'C', 'D', 'E', 'F', 'G', 'H'};
+	vector<char> strArr{ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
 
 	cout << "String befor reverse: \n";
-	for (auto& ch : strArr) cout << ch << ", ";
+	for (auto& ch : strArr)
+		cout << ch << ", ";
 
 	ReverseString(strArr);
 
 	cout << "\n\nString after reverse: \n";
-	for (auto& ch : strArr) cout << ch << ", ";
+	for (auto& ch : strArr)
+		cout << ch << ", ";
 
-	cout << endl << endl;
+	cout << endl
+		<< endl;
 	return 0;
 }
