@@ -24,9 +24,8 @@ using namespace std;
 void ReverseString(vector<char>& strArr)
 {
 	char tempCh = '\0';
-	auto arrSize = strArr.size();
 
-	for (unsigned int leftIdx = 0, rightIdx = arrSize - 1; (leftIdx < rightIdx); ++leftIdx, --rightIdx)
+	for (unsigned int leftIdx = 0, rightIdx = strArr.size() - 1; (leftIdx < rightIdx); ++leftIdx, --rightIdx)
 	{
 		tempCh = strArr[leftIdx];
 		strArr[leftIdx] = strArr[rightIdx];
