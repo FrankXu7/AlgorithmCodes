@@ -42,7 +42,8 @@ using namespace std;
 
 vector<int> IntersectionOfArrays_I_1(vector<int>& vec1, vector<int>& vec2)
 {
-	vector<int>& bigVec = vec1.size() > vec2.size() ? vec1 : vec2;
+	// 区分大小数组，需要注意比较运算符应该包含所有可能性 
+	vector<int>& bigVec = vec1.size() >= vec2.size() ? vec1 : vec2;
 	vector<int>& smallVec = vec1.size() < vec2.size() ? vec1 : vec2;
 
 	unordered_set<int> smallSet;
@@ -101,7 +102,7 @@ vector<int> IntersectionOfArrays_I_2(vector<int>& vec1, vector<int>& vec2)
 
 int main(int argc, char* argv[])
 {
-	vector<int> vec1{ 3,1,5,4,2,3,5, };
+	vector<int> vec1{ 3,1,5,4,2,3,5,66,77 };
 	vector<int> vec2{ 3,2,6,7,3,8,9,0,10 };
 
 	cout << "Array 1 elements:\n";
@@ -109,11 +110,11 @@ int main(int argc, char* argv[])
 	cout << "\n\nArray 2 elements:\n";
 	for (auto& element : vec2) cout << element << ", ";
 
-	vector<int> resultVec1 = IntersectionOfArrays_1(vec1, vec2);
+	vector<int> resultVec1 = IntersectionOfArrays_I_1(vec1, vec2);
 	cout << "\n\n[Solution 1] Intersection elements of two arrays:\n";
 	for (auto& element : resultVec1) cout << element << ", ";
 
-	vector<int> resultVec2 = IntersectionOfArrays_2(vec1, vec2);
+	vector<int> resultVec2 = IntersectionOfArrays_I_2(vec1, vec2);
 	cout << "\n\n[Solution 2] Intersection elements of two arrays:\n";
 	for (auto& element : resultVec2) cout << element << ", ";
 
