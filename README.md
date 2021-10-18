@@ -91,3 +91,4 @@
 76. [[简单 - 349th]](https://leetcode-cn.com/problems/intersection-of-two-arrays/) [两个数组的交集_I(IntersectionOfArrays_I)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/IntersectionOfArrays_I)
 77. [[简单 - 350th]](https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/) [两个数组的交集_II(IntersectionOfArrays_II)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/IntersectionOfArrays_II)
 78. [[简单 - 367th]](https://leetcode-cn.com/problems/valid-perfect-square/) [有效的完全平方数(PerfectSquare)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/PerfectSquare)
+79. [[简单 - 374th]](https://leetcode-cn.com/problems/guess-number-higher-or-lower/) [猜数字大小(GuessNumber)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/GuessNumber)
