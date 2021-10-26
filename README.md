@@ -95,3 +95,4 @@
 80. [[简单 - 383th]](https://leetcode-cn.com/problems/ransom-note/) [赎金信(RansomNote)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/RansomNote)
 81. [[简单 - 387th]](https://leetcode-cn.com/problems/first-unique-character-in-a-string/) [字符串中的第一个唯一字符(FirstUniqueChar)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/FirstUniqueChar)
 82. [[简单 - 389th]](https://leetcode-cn.com/problems/find-the-difference/) [找不同(FindStrDifference)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/FindStrDifference)
+83. [[简单 - 392th]](https://leetcode-cn.com/problems/is-subsequence/) [判断子序列(IsSubString)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/IsSubString)
