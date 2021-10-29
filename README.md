@@ -97,3 +97,4 @@
 82. [[简单 - 389th]](https://leetcode-cn.com/problems/find-the-difference/)  [找不同(FindStrDifference)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/FindStrDifference)
 83. [[简单 - 392th]](https://leetcode-cn.com/problems/is-subsequence/)  [判断子序列(IsSubString)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/IsSubString)
 84. [[简单 - 401th]](https://leetcode-cn.com/problems/binary-watch/) [二进制手表(BinaryWatch)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/BinaryWatch)
+85. [[简单 - 404th]](https://leetcode-cn.com/problems/sum-of-left-leaves/) [左叶子之和(SumOfLeftLeaves)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SumOfLeftLeaves)
