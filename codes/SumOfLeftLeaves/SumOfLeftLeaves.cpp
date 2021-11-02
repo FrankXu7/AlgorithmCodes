@@ -64,8 +64,8 @@ struct TreeNode
 {
 	DataType data;
 	shared_ptr<TreeNode<DataType>> dad; // 算法本身不需要父节点，仅用于打印树结构 
-	decltype(dad) left;
-	decltype(dad) right;
+	shared_ptr<TreeNode<DataType>> left;
+	shared_ptr<TreeNode<DataType>> right;
 
 	TreeNode(DataType _data) { data = _data; }
 };
@@ -97,7 +97,7 @@ NodeType CreateTree(vector<NodeType>&& dataArr)
 		if (idx > 0 && dataArr[idx])
 		{
 			dadIdx = (idx - 1) / 2;
-			dataArr[idx]->dad = dataArr[(idx - 1) / 2];
+			dataArr[idx]->dad = dataArr[dadIdx];
 		}
 
 		// 找俩儿子 
