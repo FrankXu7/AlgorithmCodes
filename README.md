@@ -99,3 +99,4 @@
 84. [[简单 - 401th]](https://leetcode-cn.com/problems/binary-watch/) [二进制手表(BinaryWatch)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/BinaryWatch)
 85. [[简单 - 404th]](https://leetcode-cn.com/problems/sum-of-left-leaves/) [左叶子之和(SumOfLeftLeaves)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SumOfLeftLeaves)
 86. [[简单 - 405th]](https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/) [数字转换为十六进制(ConvertToHexadecimal)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ConvertToHexadecimal)
+87. [[简单 - 409th]](https://leetcode-cn.com/problems/longest-palindrome/) [最长回文串(LongestPalindrome)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/LongestPalindrome)
