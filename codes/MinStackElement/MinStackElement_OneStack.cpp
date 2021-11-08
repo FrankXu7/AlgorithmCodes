@@ -23,18 +23,18 @@
  * 返回最小元素 -2；
  *
  * 【解题思路】
- * 利用辅助栈来保存最小元素，会使得空间复杂度达到O(N)，可以用记录与最小值差值的方法，来保存数据。
- * 即元素不直接入栈，而是与当前的最小值做差后再入栈，显然，出栈或获取栈顶元素时，需要还原。
- * 大致过程：
+ * 利用辅助栈来保存最小元素，会使得空间复杂度达到O(N)，可以用记录与最小值差值的方法，来保存数据。即元素不
+ * 直接入栈，而是与当前的最小值做差后再入栈，显然，出栈或获取栈顶元素时，需要还原。大致过程：
  * （1）入栈数据 element：实际的入栈元素 pushNum = element - minElement，如果 element >= minElement，
- *		显然实际入栈元素 pushNum 是一个大于零的数，反之，入栈数据 element 比当前记录的最小值 minElement
- *		更小，则更新最小值，并将这个小于零的 pushNum 入栈，栈内元素小于零，也标识入栈时发生过最小值更新。
- * （2）出栈数据：栈内元素并不是实际的数据，按照步骤（1）中的操作，栈内元素 pushNum = element - minElement，
- *		所以出栈数据实际为 element = push + minElement，这里需要特别注意，在出栈前，需要判断栈顶元素是否小于零，
- *		按步骤（1）中所述，栈内元素小于零标识发生过最小值更新，所以出栈的元素小于零时，最小元素需更新为
- *		minElement = minElement - pushNum，此等式由步骤（1）中 pushNum = element - minElement 推导而来；
- *		由 pushNum = element - minElement 可得：minElement = element - pushNum，而出栈元素小于零时，当前的最小值
- *		其实就是之前的入栈元素，且该元素入栈时代替了之前的最小值，此时的 minElement 等价于等式中的 element；
+ *      显然实际入栈元素 pushNum 是一个大于零的数，反之，入栈数据 element 比当前记录的最小值 minElement
+ *      更小，则更新最小值，并将这个小于零的 pushNum 入栈，栈内元素小于零，也标识入栈时发生过最小值更新。
+ * （2）出栈数据：栈内元素并不是实际的数据，按照步骤（1）中的操作，栈内元素 pushNum=element-minElement，
+ *		所以出栈数据实际为 element = push + minElement，这里需要特别注意，在出栈前，需要判断栈顶元素是
+ *      否小于零，按步骤（1）中所述，栈内元素小于零标识发生过最小值更新，所以出栈的元素小于零时，最小元素
+ *      需更新为 minElement = minElement - pushNum，此等式由步骤（1）中 pushNum = element - minElement
+ *      推导而来；由 pushNum = element - minElement 可得：minElement = element - pushNum，而出栈元素小
+ *      于零时，当前的最小值其实就是之前的入栈元素，且该元素入栈时代替了之前的最小值，此时的 minElement 
+ *      等价于等式中的 element；
  * 因为一直记录着最小元素，所以符合题意，在常数时间内获取最小值。
  * 
  * 【解题分析】

@@ -23,11 +23,11 @@
  * 返回最小元素 -2；
  *
  * 【解题思路】
- * 考虑采用一个辅助栈来记录最小元素，dataStack保存数据，minStack在每次入栈dataStack时，比较出最小元素入栈minStack；
- * 大致过程：
- * （1）数据N入栈dataStack，比较N与minStack栈顶元素大小，若N更小，则将N也入栈minStack，若N更大，则将
- *		minStack的栈顶元素再次入栈minStack，这样就保证了每次dataStack入栈一个元素时，对应在minStack入栈的
- *		一定是当前dataStack所有数据中的最小值。
+ * 考虑采用一个辅助栈来记录最小元素，dataStack保存数据，minStack在每次入栈dataStack时，比较出最小元素入
+ * 栈minStack；大致过程：
+ * （1）数据N入栈 dataStack，比较N与minStack栈顶元素大小，若N更小，则将N也入栈minStack，若N更大，则将
+ *      minStack的栈顶元素再次入栈minStack，这样就保证了每次dataStack入栈一个元素时，对应在minStack入栈
+ *      的一定是当前dataStack所有数据中的最小值。
  * 特别注意：首个元素默认为最小值。
  * 
  * 【解题分析】
