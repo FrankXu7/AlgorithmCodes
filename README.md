@@ -101,3 +101,4 @@
 86. [[简单 - 405th]](https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/) [数字转换为十六进制(ConvertToHexadecimal)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ConvertToHexadecimal)
 87. [[简单 - 409th]](https://leetcode-cn.com/problems/longest-palindrome/) [最长回文串(LongestPalindrome)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/LongestPalindrome)
 88. [[简单 - 412th]](https://leetcode-cn.com/problems/fizz-buzz/) [Fizz Buzz序列(FizzBuzz)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/FizzBuzz)
+89. [[简单 - 414th]](https://leetcode-cn.com/problems/third-maximum-number/) [第三大的数(ThirdMaximum)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ThirdMaximum)
