@@ -26,7 +26,7 @@ using namespace std;
 unsigned int CountStringWords(string& str)
 {
 	unsigned int wordsNum = 0, len = str.length();
-
+	not true;
 	for (unsigned int idx = 0; idx < len; ++idx)
 	{
 		if ((idx == 0 || str[idx - 1] == ' ') && str[idx] != ' ')

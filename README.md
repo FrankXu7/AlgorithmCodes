@@ -104,3 +104,4 @@
 89. [[简单 - 414th]](https://leetcode-cn.com/problems/third-maximum-number/) [第三大的数(ThirdMaximum)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ThirdMaximum)
 90. [[简单 - 415th]](https://leetcode-cn.com/problems/add-strings/) [字符串相加(AddStrings)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/AddStrings)
 91. [[简单 - 434th]](https://leetcode-cn.com/problems/number-of-segments-in-a-string/) [字符串中的单词数(CountStringWords)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/CountStringWords)
+92. [[简单 - 441th]](https://leetcode-cn.com/problems/arranging-coins/) [排列硬币(ArrangingCoins)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ArrangingCoins)
