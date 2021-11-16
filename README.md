@@ -106,3 +106,4 @@
 91. [[简单 - 434th]](https://leetcode-cn.com/problems/number-of-segments-in-a-string/) [字符串中的单词数(CountStringWords)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/CountStringWords)
 92. [[简单 - 441th]](https://leetcode-cn.com/problems/arranging-coins/) [排列硬币(ArrangingCoins)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ArrangingCoins)
 93. [[简单 - 448th]](https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/) [找到数组中所有消失的数字(FindDisappearedNums)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/FindDisappearedNums)
+94. [[简单 - 453th]](https://leetcode-cn.com/problems/minimum-moves-to-equal-array-elements/) [最小操作次数使数组元素相等(MakeArrayElementsEqual)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MakeArrayElementsEqual)
