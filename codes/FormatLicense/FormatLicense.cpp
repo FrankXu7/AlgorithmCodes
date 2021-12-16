@@ -38,7 +38,7 @@
 #include <string>
 using namespace std;
 
-string FormatLicense_1(string str, int keyLen)
+string FormatLicense_1(string& str, int keyLen)
 {
 	int charNum = 0;
 	for (char& ch : str)
@@ -75,7 +75,7 @@ string FormatLicense_1(string str, int keyLen)
 	return resultStr;
 }
 
-string FormatLicense_2(string str, int keyLen)
+string FormatLicense_2(string& str, int keyLen)
 {
 	string resultStr = "";
 
