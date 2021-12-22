@@ -117,3 +117,4 @@
 102. [[简单 - 492th]](https://leetcode-cn.com/problems/construct-the-rectangle/) [构造矩形(ConstructRectangle)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ConstructRectangle)
 103. [[简单 - 495th]](https://leetcode-cn.com/problems/teemo-attacking/) [提莫攻击(TeemoAttack)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/TeemoAttack)
 104. [[简单 - 496th]](https://leetcode-cn.com/problems/next-greater-element-i/) [下一个更大元素 I(NextGreaterNum_I)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/NextGreaterNum_I)
+105. [[简单 - 500th]](https://leetcode-cn.com/problems/keyboard-row/) [键盘行(KeyboardRow)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/KeyboardRow)
