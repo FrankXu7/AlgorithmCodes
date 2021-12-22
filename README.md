@@ -116,4 +116,4 @@
 101. [[简单 - 485th]](https://leetcode-cn.com/problems/max-consecutive-ones/) [最大连续1的个数(MaxConsecutiveOne)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MaxConsecutiveOne)
 102. [[简单 - 492th]](https://leetcode-cn.com/problems/construct-the-rectangle/) [构造矩形(ConstructRectangle)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ConstructRectangle)
 103. [[简单 - 495th]](https://leetcode-cn.com/problems/teemo-attacking/) [提莫攻击(TeemoAttack)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/TeemoAttack)
-104. [[简单 - 496th]](https://leetcode-cn.com/problems/next-greater-element-i/) [下一个更大元素 I(NextGreaterNum)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/NextGreaterNum)
+104. [[简单 - 496th]](https://leetcode-cn.com/problems/next-greater-element-i/) [下一个更大元素 I(NextGreaterNum_I)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/NextGreaterNum_I)
