@@ -9,7 +9,7 @@
 
 **[[简单 - 1st]](https://leetcode-cn.com/problems/two-sum/)：** **点击**跳转至**LeetCode原题**链接；
 
-**[两数之和(SumOfTwoNumbers)](SumOfTwoNumbers)：** **点击**跳转至**解题源码**链接；
+**[两数之和(SumOfTwoNumbers)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SumOfTwoNumbers)：** **点击**跳转至**解题源码**链接；
 
 ------
 
