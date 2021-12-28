@@ -1,15 +1,19 @@
 # 算法练习
 **针对[LeetCode](https://leetcode-cn.com)的算法练习。**
 
-------
 
-**[简单 - 1st]：** 跳转至**LeetCode原题**链接；
-
-**两数之和(SumOfTwoNumbers)：**跳转至**解题源码**链接；
-
-**出于学习C++的目的，会尽可能多用不同的C++语法。**
 
 ------
+
+**示例：**
+
+**[[简单 - 1st]](https://leetcode-cn.com/problems/two-sum/)：** **点击**跳转至**LeetCode原题**链接；
+
+**[两数之和(SumOfTwoNumbers)](SumOfTwoNumbers)：** **点击**跳转至**解题源码**链接；
+
+------
+
+
 
 **练习进度：**
 
