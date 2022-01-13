@@ -126,4 +126,5 @@
 107. [[中等 - 2th]](https://leetcode-cn.com/problems/add-two-numbers/) [两数相加(AddTwoNums)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/AddTwoNums)
 108. [[中等 - 3th]](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) [无重复字符的最长子串(MaxNoRepeatSubStr)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MaxNoRepeatSubStr)
 109. [[中等 - 5th]](https://leetcode-cn.com/problems/longest-palindromic-substring/) [最长回文子串(MaxPalindromeSubStr)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MaxPalindromeSubStr)
+110. [[中等 - 6th](https://leetcode-cn.com/problems/zigzag-conversion/)] [Z字形变换(ZigzagConversion)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ZigzagConversion)
 
