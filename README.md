@@ -18,7 +18,6 @@
 **练习进度：**
 
 1. [[简单 - 1st]](https://leetcode-cn.com/problems/two-sum/)  [两数之和(SumOfTwoNumbers)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SumOfTwoNumbers)
-2. [[简单 - 7th]](https://leetcode-cn.com/problems/reverse-integer/)  [整数反转(OverturnAnInteger)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/OverturnAnInteger)
 3. [[简单 - 9th]](https://leetcode-cn.com/problems/palindrome-number/)  [回文数(PalindromeInteger)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/PalindromeInteger)
 4. [[简单 - 13th]](https://leetcode-cn.com/problems/roman-to-integer/)  [罗马数字转整数(RomanToInteger)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/RomanToInteger)
 5. [[简单 - 14th]](https://leetcode-cn.com/problems/longest-common-prefix/)  [最长公共前缀(LongestStringPrefix)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/LongestStringPrefix)
@@ -127,4 +126,5 @@
 108. [[中等 - 3th]](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/) [无重复字符的最长子串(MaxNoRepeatSubStr)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MaxNoRepeatSubStr)
 109. [[中等 - 5th]](https://leetcode-cn.com/problems/longest-palindromic-substring/) [最长回文子串(MaxPalindromeSubStr)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/MaxPalindromeSubStr)
 110. [[中等 - 6th]](https://leetcode-cn.com/problems/zigzag-conversion/) [Z字形变换(ZigzagConversion)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ZigzagConversion)
+110. [[中等 - 7th]](https://leetcode-cn.com/problems/reverse-integer/)  [整数反转(ReverseInteger)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/ReverseInteger)
 

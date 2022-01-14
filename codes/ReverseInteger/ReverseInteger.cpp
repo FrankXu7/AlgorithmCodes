@@ -14,18 +14,18 @@
  * 重复（1）（2）步骤直至原数等于0为止。
  *
  * 【解题分析】
- * 时间复杂度：O(N)
+ * 时间复杂度：O(lg(N)) 循环的次数就是整数按十进制算的位数 
  * 空间复杂度：O(1)
  * 
  * @author FrankX
- * @date 2021-03-30
+ * @date 2022-01-14
  **************************************************************************************************/
 #include <iostream>
 #include <climits>
 
 using namespace std;
 
-int OverturnAnInteger(int inputNum)
+int ReverseInteger(int inputNum)
 {
 	int resultNum = 0;
 
@@ -44,7 +44,7 @@ int main()
 	cout << "Input an Integer: ";
 	cin >> inputNum;
 
-	int resultNum = OverturnAnInteger(inputNum);
+	int resultNum = ReverseInteger(inputNum);
 	if (resultNum < INT_MIN || resultNum > INT_MAX) resultNum = 0;
 
 	cout << "Overturn Number: " << resultNum << endl;
