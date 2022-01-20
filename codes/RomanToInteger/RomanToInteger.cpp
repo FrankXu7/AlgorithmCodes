@@ -1,6 +1,6 @@
 /**************************************************************************************************
  * 【题目描述】
- * 将给定的罗马数字，范围限定在[1, 3999]，超出定义域或罗马数字组合非法，则返回-1；
+ * 将给定的罗马数字转换为整数输出，取值范围限定在区间：[1, 3999]
  *
  * 罗马数字只包含下列字符：
  * {
@@ -17,8 +17,8 @@
  *		CD=400,	CM=900,
  * }
  *
- * 补充：罗马数字按题意最大只能表示到4999，即 MMMMCMXCIX，从5000开始，字母的书写会在【字母上加一横线】，
- * 打不出来，加在右上方：
+ * 补充：按题中所给出的字符，罗马数字其实最大可以表示到4999，即 MMMMCMXCIX，而从5000开始，字母的书写会在
+ * 【字母上方加一横线】，输入法打不出来，加在右上方表示：
  * 5000    V￣
  * 10000   X￣
  * 50000   L￣
@@ -75,26 +75,27 @@ unordered_multimap<char, char> specialCase = {
 
 unsigned int RomanToInteger(string str)
 {
-	unsigned int dataSize = str.size(), resultNum = 0;
+	unsigned int dataSize = str.size();
+	int resultNum = 0;
 	char curCh = '\0', nextCh = '\0';
 
 	for (unsigned int idx = 0; idx < dataSize; ++idx)
 	{
 		curCh = (str[idx] >= 'a') ? (str[idx] - 32) : (str[idx]);
-		if (numMap.find(curCh) == numMap.end()) return 0;
+		if (numMap.find(curCh) == numMap.end()) return -1;
 
 		if (idx + 1 < dataSize)
 		{
 			// 小写转大写，兼容大小写情况 
 			nextCh = (str[idx + 1] >= 'a') ? (str[idx + 1] - 32) : (str[idx + 1]);
-			if (numMap.find(nextCh) == numMap.end()) return 0;
+			if (numMap.find(nextCh) == numMap.end()) return -1;
 		}
 
 		// 下一个字母比当前字母更大，且存在于数字映射map中 
 		if (numMap[nextCh] > numMap[curCh])
 		{
 			// 字母符合“左小右大”的特殊情况有很多种，但只有六种有效 
-			if (specialCase.find(curCh) == specialCase.end()) return 0;
+			if (specialCase.find(curCh) == specialCase.end()) return -1;
 
 			resultNum += (numMap[nextCh] - numMap[curCh]);
 			// 跳过已处理的字母 
@@ -106,16 +107,16 @@ unsigned int RomanToInteger(string str)
 		nextCh = '\0';
 	}
 
-	return (resultNum >= 5000 ? 0 : resultNum);
+	return (resultNum >= 4000 ? -1 : resultNum);
 }
 
 int main()
 {
-	string inputStr = "VIiI";
+	string inputStr = "MMMDLXII";
 	cout << "Input roman numerals (limits number 1 to 4999) : " << inputStr;
 
-	unsigned int resultNum = RomanToInteger(inputStr);
-	if (resultNum > 0)
+	int resultNum = RomanToInteger(inputStr);
+	if (resultNum >= 0)
 		cout << "\n\nThe Corresponding number: " << resultNum;
 	else
 		cout << "\n\n[error] Invalid Roman numerals input!";
