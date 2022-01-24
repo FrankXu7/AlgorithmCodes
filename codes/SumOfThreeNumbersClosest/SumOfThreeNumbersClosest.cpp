@@ -58,7 +58,7 @@ int SumOfThreeNumbersClosest(vector<int>& nums, int targetNum)
 			else
 				--rightIdx; // 当前求和大于目标值，右指针自减，使得求和结果靠近目标值 
 
-			// 比较当前计算的和，与之前保存的最接近的和之间的差值，一定要去绝对值比较 
+			// 比较当前计算的和，与之前保存的最接近的和之间的差值，一定要取绝对值比较 
 			if (abs(targetNum - sum) < abs(targetNum - closestSum))
 				closestSum = sum;
 		}
