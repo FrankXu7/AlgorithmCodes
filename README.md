@@ -135,5 +135,6 @@
 116. [[中等 - 17th]](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/) [电话号码的字母组合(CombinePhoneNumberLetter)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/CombinePhoneNumberLetter)
 117. [[中等 - 18th]](https://leetcode-cn.com/problems/4sum/) [四数之和(SumOfFourNumbers)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SumOfFourNumbers)
 118. [[中等 - 19th]](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/) [删除链表的到数第N个节点(DeleteNodeFromEnd)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/DeleteNodeFromEnd)
-118. [中等 - 22th](https://leetcode-cn.com/problems/generate-parentheses/) [括号生成(GenerateParentheses)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/GenerateParentheses)
+118. [[中等 - 22th]](https://leetcode-cn.com/problems/generate-parentheses/) [括号生成(GenerateParentheses)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/GenerateParentheses)
+118. [[中等 - 24th]](https://leetcode-cn.com/problems/swap-nodes-in-pairs/) [两两交换链表中的节点(SwapNodesInPairs)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SwapNodesInPairs)
 
