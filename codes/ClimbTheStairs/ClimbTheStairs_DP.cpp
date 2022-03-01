@@ -58,7 +58,7 @@ unsigned int ClimbTheStairs_2(const unsigned int &n)
 
 	unsigned int oneStepBack = 1; // 第 n-1 步的解
 	unsigned int twoStepBack = 2; // 第 n-2 步的解
-	unsigned int curStep = 0;	  // 第 n 步的解
+	unsigned int curStep = 0; // 第 n 步的解
 
 	for (unsigned int idx = 2; idx < n; ++idx)
 	{
