@@ -73,7 +73,7 @@ unordered_multimap<char, char> specialCase = {
    {'C', 'D'},{'C', 'M'},
 };
 
-unsigned int RomanToInteger(string str)
+int RomanToInteger(string str)
 {
 	unsigned int dataSize = str.size();
 	int resultNum = 0;
