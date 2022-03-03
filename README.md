@@ -138,3 +138,4 @@
 118. [[中等 - 22th]](https://leetcode-cn.com/problems/generate-parentheses/) [括号生成(GenerateParentheses)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/GenerateParentheses)
 118. [[中等 - 24th]](https://leetcode-cn.com/problems/swap-nodes-in-pairs/) [两两交换链表中的节点(SwapNodesInPairs)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/SwapNodesInPairs)
 118. [[中等 - 29th]](https://leetcode-cn.com/problems/divide-two-integers/) [两数相除(TwoIntegerDivision)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/TwoIntegerDivision)
+122. [[中等 - 31th]](https://leetcode-cn.com/problems/next-permutation/) [下一个排列(NextPermutation)](https://github.com/FrankXu7/AlgorithmCodes/tree/main/codes/NextPermutation)
