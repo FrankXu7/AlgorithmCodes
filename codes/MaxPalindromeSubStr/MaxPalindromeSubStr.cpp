@@ -23,7 +23,7 @@
  * 
  * 可建立一个和字符串等长的二维bool类型数组，假设为 dp[strLen][strLen]，其中 dp[i][j] 表示字符串下标区
  * 间 [i, j] 的子串是否为回文子串，故可得状态转移方程：
- * dp[i + 1][j + 1] = dp[i][j] && str[i + 1] == str[j + 1];
+ * dp[i - 1][j + 1] = dp[i][j] && str[i - 1] == str[j + 1];
  * 每次确定一组回文子串的下标区间时，都要和已记录的最长回文子串下标区间进行比较，判断是否需要更新记录。需
  * 要特别注意的是，最短的回文子串（即最小的问题规模）有两种情况，单个字符和双字符，可先判断这两种子串的回
  * 文标志作为转移基础。
@@ -137,8 +137,8 @@ string MaxPalindromeSubStr_2(string& str)
 			else // 状态转移到更小的子串，且更小子串已处理，直接获取是否为回文串的结果 
 			{
 				/**
-				 * endIdx-startIdx只会等于{0,1,2}，显然差值为0时代表指向同一个字符，而差值等于1时代表两
-				 * 个相等字符，最后差值等于2时表示某个单字符的左右字符相等 
+				 * startIdx 和 endIdx 指向字符相等，且这两个下标的差值小于3，必然为一个合法的回文子串，
+				 * 因为长度等于2的子串在一开始就标记过了，故可以直接确定是否为回文子串
 				 */
 				if (endIdx - startIdx < 3) dp[startIdx][endIdx] = true;
 				else dp[startIdx][endIdx] = dp[startIdx + 1][endIdx - 1];
@@ -185,8 +185,7 @@ string MaxPalindromeSubStr_3(string& str)
 		if (idx + 1 < strLen && str[idx] == str[idx + 1])
 		{
 			leftIdx = idx; 
-			++idx;
-			rightIdx = idx;
+			rightIdx = idx + 1;
 
 			spreadSide();
 		}
