@@ -18,21 +18,48 @@
 #include <vector>
 using namespace std;
 
-pair<int, int> SearchSortedArrRange(vector<int>& nums, int target)
+pair<int, int> SearchSortedArrRange_1(vector<int>& nums, int target)
+{
+	pair<int, int> range(-1, -1);
+
+	auto BinarySearch = [](vector<int>& nums, int target, bool biggerSide) ->int {
+		int leftIdx = 0, rightIdx = static_cast<int>(nums.size()) - 1, midIdx = -1;
+		int searchedIdx = -1;
+
+		while (leftIdx < rightIdx)
+		{
+			midIdx = leftIdx + static_cast<int>((rightIdx - leftIdx) / 2);
+			if (nums[midIdx] < target)
+				leftIdx = midIdx + 1;
+			else if (nums[midIdx] >= target)
+			{
+				rightIdx = midIdx - 1;
+				searchedIdx = midIdx;
+
+				if (biggerSide)
+					break;
+			}
+		}
+
+		return searchedIdx;
+	};
+
+	range.first = BinarySearch(nums, target, false);
+	range.second = BinarySearch(nums, target, true);
+
+	return range;
+}
+
+pair<int, int> SearchSortedArrRange_2(vector<int>& nums, int target)
 {
 	pair<int, int> range(-1, -1);
 
 	int leftIdx = 0, rightIdx = static_cast<int>(nums.size()) - 1, midIdx = -1;
-	int subLeftIdxL = 0, subLeftIdxR = 0, subMidIdxL = -1;
-	int subRightIdxL = 0, subRightIdxR = 0, subMidIdxR = -1;
-
-	int count = 0;
+	int subIdxL = 0, subIdxR = 0, subMidIdx = -1;
 
 	while (leftIdx < rightIdx)
 	{
 		midIdx = leftIdx + static_cast<int>((rightIdx - leftIdx) / 2);
-
-		++count;
 
 		if (nums[midIdx] < target)
 			leftIdx = midIdx + 1;
@@ -40,41 +67,39 @@ pair<int, int> SearchSortedArrRange(vector<int>& nums, int target)
 			rightIdx = midIdx - 1;
 		else
 		{
-			subLeftIdxL = leftIdx;
-			subLeftIdxR = midIdx;
-			while (subLeftIdxL < subLeftIdxR)
+			subIdxL = leftIdx;
+			subIdxR = midIdx;
+			while (subIdxL < subIdxR)
 			{
-				subMidIdxL = subLeftIdxL + static_cast<int>((subLeftIdxR - subLeftIdxL) / 2);
+				subMidIdx = subIdxL + static_cast<int>((subIdxR - subIdxL) / 2);
 
-				if (nums[subMidIdxL] < target)
-					subLeftIdxL = subMidIdxL + 1;
-				else if (nums[subMidIdxL] == target)
-					subLeftIdxR = subMidIdxL;
-
-				++count;
+				if (nums[subMidIdx] < target)
+					subIdxL = subMidIdx + 1;
+				else if (nums[subMidIdx] == target)
+					subIdxR = subMidIdx;
 			}
-			range.first = subLeftIdxL;
+			range.first = subIdxL;
 
-			subRightIdxL = midIdx;
-			subRightIdxR = rightIdx;
-			while (subRightIdxL < subRightIdxR)
+			subIdxL = midIdx;
+			subIdxR = rightIdx;
+			while (subIdxL < subIdxR)
 			{
-				subMidIdxR = subRightIdxL + static_cast<int>((subRightIdxR - subRightIdxL) / 2);
+				subMidIdx = subIdxL + static_cast<int>((subIdxR - subIdxL) / 2);
 
-				if (nums[subMidIdxR] > target)
-					subRightIdxR = subMidIdxR - 1;
-				else if (nums[subMidIdxR] == target)
-					subRightIdxL = subMidIdxR;
-
-				++count;
+				if (nums[subMidIdx] > target)
+					subIdxR = subMidIdx - 1;
+				else if (nums[subMidIdx] == target)
+				{
+					subIdxL = subMidIdx;
+					if (subIdxL + 1 == subIdxR)
+						break;
+				}
 			}
-			range.second = subRightIdxL;
+			range.second = subIdxL;
 
 			break;
 		}
 	}
-
-	cout << endl << endl << "Execute count: " << count << endl << endl;
 
 	return range;
 }
@@ -87,8 +112,11 @@ int main(int argc, char** argv)
 	for (int n : nums) cout << n << ", ";
 	cout << "\nSearch target number: " << target << endl;
 
-	pair<int, int> range = SearchSortedArrRange(nums, target);
-	cout << "\n\nThe range: [" << range.first << ", " << range.second << "] ";
+	pair<int, int> range1 = SearchSortedArrRange_1(nums, target);
+	cout << "\n\n[Solution 1] The range: [" << range1.first << ", " << range1.second << "] ";
+
+	pair<int, int> range2 = SearchSortedArrRange_2(nums, target);
+	cout << "\n\n[Solution 2] The range: [" << range2.first << ", " << range2.second << "] ";
 
 	cout << endl << endl;
 	return 0;
